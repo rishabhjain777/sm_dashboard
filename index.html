@@ -204,6 +204,165 @@ th:hover {
     cursor: default;
 }
 
+/* ── Tab Navigation ──────────────────────── */
+.tab-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0px;
+}
+
+.tab-nav-btn {
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    transition: background 0.15s, color 0.15s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.tab-nav-btn:hover {
+    background: #cbd5e0;
+    color: #1a202c;
+}
+
+.tab-nav-btn.active {
+    background: #ffffff;
+    color: #2b6cb0;
+    border-color: #ccc #ccc #ffffff #ccc;
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: -2px;
+}
+
+.tab-badge {
+    background: #2b6cb0;
+    color: white;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: normal;
+}
+
+.tab-nav-btn.active .tab-badge {
+    background: #2b6cb0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ── Stock Scores Tab KPI Cards ─────────── */
+.scores-kpi-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.scores-kpi-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 14px;
+    flex: 1 1 180px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.scores-kpi-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.scores-kpi-val {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a202c;
+    margin-top: 2px;
+}
+
+.scores-kpi-sub {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* ── Stock Scores Table Badges ───────────── */
+.score-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 12px;
+    min-width: 26px;
+    text-align: center;
+}
+
+.score-high {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.score-mid {
+    background: #feebc8;
+    color: #744210;
+    border: 1px solid #fbd38d;
+}
+
+.score-low {
+    background: #fed7d7;
+    color: #742a2a;
+    border: 1px solid #feb2b2;
+}
+
+.score-na {
+    background: #edf2f7;
+    color: #718096;
+}
+
+.sub-score {
+    font-weight: 600;
+}
+
+.sig-pill {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    display: inline-block;
+}
+
+.mc-link-btn {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #3182ce;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.mc-link-btn:hover {
+    background: #2b6cb0;
+}
+
 </style>
 
 </head>
@@ -211,6 +370,19 @@ th:hover {
 <body>
 
 <h2>NSE F&O Market Dashboard</h2>
+
+<div class="tab-nav">
+  <button class="tab-nav-btn active" id="tabBtn-fno" onclick="switchDashboardTab('fno')">
+    &#128202; F&amp;O Market Signals
+  </button>
+  <button class="tab-nav-btn" id="tabBtn-scores" onclick="switchDashboardTab('scores')">
+    &#9733; Stock Scores (Q / G / V / T)
+    <span class="tab-badge">50</span>
+  </button>
+</div>
+
+<!-- ══════════════════ TAB 1: F&O Market Signals ══════════════════ -->
+<div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty">
 NIFTY 50: 23128.10 | Change: 65.00 | Change %: 0.28% | Market: UP strongly | 15M: NA% NA | B: 1.00 | S: 0.20
@@ -9176,6 +9348,984 @@ NIFTY 50: 23128.10 | Change: 65.00 | Change %: 0.28% | Market: UP strongly | 15M
 
 </div><!-- /.main-layout bottom row -->
 
+</div><!-- /#tabContent-fno -->
+
+
+<!-- ══════════════════ TAB 2: Stock Scores Engine ══════════════════ -->
+<div id="tabContent-scores" class="tab-content">
+
+<!-- Summary KPI Cards -->
+<div class="scores-kpi-row">
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Universe Tracked</div>
+    <div class="scores-kpi-val">50 <span style="font-size:12px;color:#888;">Stocks</span></div>
+    <div class="scores-kpi-sub">Nifty 50 F&amp;O Universe</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">High Conviction (&ge;70)</div>
+    <div class="scores-kpi-val" style="color:#22543d;">23 <span style="font-size:12px;color:#888;">Stocks</span></div>
+    <div class="scores-kpi-sub">Strong Fundamentals &amp; Tech</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Average Score</div>
+    <div class="scores-kpi-val" style="color:#2b6cb0;">65.9 <span style="font-size:12px;color:#888;">/ 100</span></div>
+    <div class="scores-kpi-sub">Universe Composite Score</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Top Scorer</div>
+    <div class="scores-kpi-val" style="color:#2e7d32;">DIVISLAB (85)</div>
+    <div class="scores-kpi-sub">Highest Ranked in Universe</div>
+  </div>
+</div>
+
+<!-- Controls for Stock Scores -->
+<div class="controls">
+  <input
+    type="text"
+    id="searchScores"
+    placeholder="Search Stock / Company / Analysis"
+    onkeyup="applyScoreFilters()"
+  >
+  <select id="scoreCategoryFilter" onchange="applyScoreFilters()">
+    <option value="ALL" selected>All Scores</option>
+    <option value="HIGH">High Score (&ge; 70)</option>
+    <option value="MID">Moderate (50 - 69)</option>
+    <option value="LOW">Caution (&lt; 50)</option>
+  </select>
+  <select id="signalFilter" onchange="applyScoreFilters()">
+    <option value="ALL" selected>All F&amp;O Signals</option>
+    <option value="BUY">BUY Side (LONG / COVER)</option>
+    <option value="SELL">SELL Side (SHORT / UNWIND)</option>
+  </select>
+</div>
+
+<!-- Stock Scores Table -->
+<div class="section">
+<table id="scoresTable">
+<thead>
+<tr>
+  <th onclick="sortScoreTable(this, 0)" style="width: 35px;">#</th>
+  <th onclick="sortScoreTable(this, 1)" style="text-align: left; min-width: 150px;">Stock</th>
+  <th onclick="sortScoreTable(this, 2)">Spot &#8377;</th>
+  <th onclick="sortScoreTable(this, 3)">F&amp;O Signal</th>
+  <th onclick="sortScoreTable(this, 4)">Overall Score</th>
+  <th onclick="sortScoreTable(this, 5)" title="Quality: Financial Strength &amp; Operational Excellence">Quality (Q)</th>
+  <th onclick="sortScoreTable(this, 6)" title="Growth: Historical &amp; Forward Revenue/Earnings">Growth (G)</th>
+  <th onclick="sortScoreTable(this, 7)" title="Value: Price Multiple &amp; Relative Valuation">Value (V)</th>
+  <th onclick="sortScoreTable(this, 8)" title="Technical: Trend &amp; Momentum Indicators">Technical (T)</th>
+  <th onclick="sortScoreTable(this, 9)" title="Kotak Neo Trend Proxy">Neo T-Proxy</th>
+  <th onclick="sortScoreTable(this, 10)" style="text-align: left; min-width: 260px;">Valuation &amp; Financial Analysis</th>
+  <th style="width: 60px;">MC Link</th>
+</tr>
+</thead>
+<tbody>
+
+        <tr>
+          <td style="color:#777; font-weight:bold;">1</td>
+          <td style="text-align:left;">
+            <strong>DIVISLAB</strong>
+            <div style="font-size:10px; color:#666;">Divis Laboratories</div>
+          </td>
+          <td>9567.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">85</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/divislaboratories-DL03/" target="_blank" class="mc-link-btn" title="View DIVISLAB on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">2</td>
+          <td style="text-align:left;">
+            <strong>DRREDDY</strong>
+            <div style="font-size:10px; color:#666;">Dr Reddys Laboratories</div>
+          </td>
+          <td>1201.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">84</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">69</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/drreddyslaboratories-DRL/" target="_blank" class="mc-link-btn" title="View DRREDDY on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">3</td>
+          <td style="text-align:left;">
+            <strong>HEROMOTOCO</strong>
+            <div style="font-size:10px; color:#666;">Hero Motocorp</div>
+          </td>
+          <td>5357.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">81</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">59</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/heromotocorp-HHM/" target="_blank" class="mc-link-btn" title="View HEROMOTOCO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">4</td>
+          <td style="text-align:left;">
+            <strong>TCS</strong>
+            <div style="font-size:10px; color:#666;">Tata Consultancy Services</div>
+          </td>
+          <td>2080.50</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">80</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/tataconsultancyservices-TCS/" target="_blank" class="mc-link-btn" title="View TCS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">5</td>
+          <td style="text-align:left;">
+            <strong>BPCL</strong>
+            <div style="font-size:10px; color:#666;">Bharat Petroleum Corporation</div>
+          </td>
+          <td>307.30</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">77</span></td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">69</td>
+          <td class="sub-score">88</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bharatpetroleumcorporation-BPC/" target="_blank" class="mc-link-btn" title="View BPCL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">6</td>
+          <td style="text-align:left;">
+            <strong>COALINDIA</strong>
+            <div style="font-size:10px; color:#666;">Coal India</div>
+          </td>
+          <td>425.40</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">76</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">51</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/coalindia-CI11/" target="_blank" class="mc-link-btn" title="View COALINDIA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">7</td>
+          <td style="text-align:left;">
+            <strong>M&M</strong>
+            <div style="font-size:10px; color:#666;">Mahindra and Mahindra</div>
+          </td>
+          <td>3030.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">75</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/mahindramahindra-MM/" target="_blank" class="mc-link-btn" title="View M&M on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">8</td>
+          <td style="text-align:left;">
+            <strong>HCLTECH</strong>
+            <div style="font-size:10px; color:#666;">HCL Technologies</div>
+          </td>
+          <td>1257.10</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">75</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hcltechnologies-HCL02/" target="_blank" class="mc-link-btn" title="View HCLTECH on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">9</td>
+          <td style="text-align:left;">
+            <strong>ULTRACEMCO</strong>
+            <div style="font-size:10px; color:#666;">UltraTech Cement</div>
+          </td>
+          <td>11156.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">74</span></td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/ultratechcement-UTC01/" target="_blank" class="mc-link-btn" title="View ULTRACEMCO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">10</td>
+          <td style="text-align:left;">
+            <strong>MARUTI</strong>
+            <div style="font-size:10px; color:#666;">Maruti Suzuki India</div>
+          </td>
+          <td>12071.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">74</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/marutisuzukiindia-MS24/" target="_blank" class="mc-link-btn" title="View MARUTI on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">11</td>
+          <td style="text-align:left;">
+            <strong>APOLLOHOSP</strong>
+            <div style="font-size:10px; color:#666;">Apollo Hospitals Enterprises</div>
+          </td>
+          <td>8890.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">74</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/apollohospitalsenterprises-AHE/" target="_blank" class="mc-link-btn" title="View APOLLOHOSP on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">12</td>
+          <td style="text-align:left;">
+            <strong>HDFCBANK</strong>
+            <div style="font-size:10px; color:#666;">HDFC Bank</div>
+          </td>
+          <td>735.40</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">73</span></td>
+          <td class="sub-score">78</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">59</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hdfcbank-HDF01/" target="_blank" class="mc-link-btn" title="View HDFCBANK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">13</td>
+          <td style="text-align:left;">
+            <strong>INFY</strong>
+            <div style="font-size:10px; color:#666;">Infosys</div>
+          </td>
+          <td>998.80</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">73</span></td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/infosys-IT/" target="_blank" class="mc-link-btn" title="View INFY on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">14</td>
+          <td style="text-align:left;">
+            <strong>TATAMOTORS</strong>
+            <div style="font-size:10px; color:#666;">Tata Motors</div>
+          </td>
+          <td>NA</td>
+          <td><span style="color:#888;">—</span></td>
+          <td><span class="score-badge score-high">73</span></td>
+          <td class="sub-score">64</td>
+          <td class="sub-score">88</td>
+          <td class="sub-score">75</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/tatamotors-TML02/" target="_blank" class="mc-link-btn" title="View TATAMOTORS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">15</td>
+          <td style="text-align:left;">
+            <strong>ONGC</strong>
+            <div style="font-size:10px; color:#666;">Oil and Natural Gas Corporation</div>
+          </td>
+          <td>235.25</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">73</span></td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">57</td>
+          <td class="sub-score">88</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/oilnaturalgascorporation-ONG/" target="_blank" class="mc-link-btn" title="View ONGC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">16</td>
+          <td style="text-align:left;">
+            <strong>ADANIPORTS</strong>
+            <div style="font-size:10px; color:#666;">Adani Ports and Special Economic Zone</div>
+          </td>
+          <td>1790.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high">72</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/adaniportsspecialeconomiczone-MPS/" target="_blank" class="mc-link-btn" title="View ADANIPORTS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">17</td>
+          <td style="text-align:left;">
+            <strong>TATACONSUM</strong>
+            <div style="font-size:10px; color:#666;">TATA Consumer Products</div>
+          </td>
+          <td>980.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">72</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/tataconsumerproducts-TT/" target="_blank" class="mc-link-btn" title="View TATACONSUM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">18</td>
+          <td style="text-align:left;">
+            <strong>ICICIBANK</strong>
+            <div style="font-size:10px; color:#666;">ICICI Bank</div>
+          </td>
+          <td>1327.70</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">72</span></td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/icicibank-ICI02/" target="_blank" class="mc-link-btn" title="View ICICIBANK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">19</td>
+          <td style="text-align:left;">
+            <strong>WIPRO</strong>
+            <div style="font-size:10px; color:#666;">Wipro</div>
+          </td>
+          <td>164.07</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">71</span></td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/wipro-W/" target="_blank" class="mc-link-btn" title="View WIPRO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">20</td>
+          <td style="text-align:left;">
+            <strong>KOTAKBANK</strong>
+            <div style="font-size:10px; color:#666;">Kotak Mahindra Bank</div>
+          </td>
+          <td>401.80</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">71</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">60</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/kotakmahindrabank-KMB/" target="_blank" class="mc-link-btn" title="View KOTAKBANK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">21</td>
+          <td style="text-align:left;">
+            <strong>SUNPHARMA</strong>
+            <div style="font-size:10px; color:#666;">Sun Pharmaceutical Industries</div>
+          </td>
+          <td>1855.90</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-high">70</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">29</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/sunpharmaceuticalindustries-SPI/" target="_blank" class="mc-link-btn" title="View SUNPHARMA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">22</td>
+          <td style="text-align:left;">
+            <strong>TECHM</strong>
+            <div style="font-size:10px; color:#666;">Tech Mahindra</div>
+          </td>
+          <td>1550.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">70</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">91</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/techmahindra-TM4/" target="_blank" class="mc-link-btn" title="View TECHM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">23</td>
+          <td style="text-align:left;">
+            <strong>HINDALCO</strong>
+            <div style="font-size:10px; color:#666;">Hindalco Industries</div>
+          </td>
+          <td>977.70</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-high">70</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">77</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hindalcoindustries-HI/" target="_blank" class="mc-link-btn" title="View HINDALCO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">24</td>
+          <td style="text-align:left;">
+            <strong>NTPC</strong>
+            <div style="font-size:10px; color:#666;">NTPC</div>
+          </td>
+          <td>326.20</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">69</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">66</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/ntpc-NTP/" target="_blank" class="mc-link-btn" title="View NTPC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">25</td>
+          <td style="text-align:left;">
+            <strong>ITC</strong>
+            <div style="font-size:10px; color:#666;">ITC</div>
+          </td>
+          <td>268.90</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">68</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/itc-ITC/" target="_blank" class="mc-link-btn" title="View ITC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">26</td>
+          <td style="text-align:left;">
+            <strong>RELIANCE</strong>
+            <div style="font-size:10px; color:#666;">Reliance Industries</div>
+          </td>
+          <td>1224.70</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">68</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">77</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/relianceindustries-RI/" target="_blank" class="mc-link-btn" title="View RELIANCE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">27</td>
+          <td style="text-align:left;">
+            <strong>POWERGRID</strong>
+            <div style="font-size:10px; color:#666;">Power Grid Corporation of India</div>
+          </td>
+          <td>269.35</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">67</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">46</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/powergridcorporationindia-PGC/" target="_blank" class="mc-link-btn" title="View POWERGRID on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">28</td>
+          <td style="text-align:left;">
+            <strong>BRITANNIA</strong>
+            <div style="font-size:10px; color:#666;">Britannia Industries</div>
+          </td>
+          <td>4925.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">66</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/britanniaindustries-BI/" target="_blank" class="mc-link-btn" title="View BRITANNIA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">29</td>
+          <td style="text-align:left;">
+            <strong>NESTLEIND</strong>
+            <div style="font-size:10px; color:#666;">Nestle India</div>
+          </td>
+          <td>1356.90</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">65</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/nestleindia-NI/" target="_blank" class="mc-link-btn" title="View NESTLEIND on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">30</td>
+          <td style="text-align:left;">
+            <strong>JSWSTEEL</strong>
+            <div style="font-size:10px; color:#666;">JSW Steel</div>
+          </td>
+          <td>1270.60</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">65</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/jswsteel-JSW01/" target="_blank" class="mc-link-btn" title="View JSWSTEEL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">31</td>
+          <td style="text-align:left;">
+            <strong>TITAN</strong>
+            <div style="font-size:10px; color:#666;">Titan Company</div>
+          </td>
+          <td>4871.50</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">65</span></td>
+          <td class="sub-score">67</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">29</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/titancompany-TI01/" target="_blank" class="mc-link-btn" title="View TITAN on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">32</td>
+          <td style="text-align:left;">
+            <strong>UPL</strong>
+            <div style="font-size:10px; color:#666;">UPL</div>
+          </td>
+          <td>550.00</td>
+          <td><span style="color:#888;">—</span></td>
+          <td><span class="score-badge score-mid">64</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">54</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/upl-UP04/" target="_blank" class="mc-link-btn" title="View UPL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">33</td>
+          <td style="text-align:left;">
+            <strong>SBIN</strong>
+            <div style="font-size:10px; color:#666;">State Bank of India</div>
+          </td>
+          <td>982.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-mid">63</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/statebankindia-SBI/" target="_blank" class="mc-link-btn" title="View SBIN on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">34</td>
+          <td style="text-align:left;">
+            <strong>CIPLA</strong>
+            <div style="font-size:10px; color:#666;">Cipla</div>
+          </td>
+          <td>1402.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">63</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">60</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/cipla-C/" target="_blank" class="mc-link-btn" title="View CIPLA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">35</td>
+          <td style="text-align:left;">
+            <strong>TATASTEEL</strong>
+            <div style="font-size:10px; color:#666;">Tata Steel</div>
+          </td>
+          <td>187.79</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">62</span></td>
+          <td class="sub-score">57</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/tatasteel-TIS/" target="_blank" class="mc-link-btn" title="View TATASTEEL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">36</td>
+          <td style="text-align:left;">
+            <strong>HINDUNILVR</strong>
+            <div style="font-size:10px; color:#666;">Hindustan Unilever</div>
+          </td>
+          <td>1935.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">61</span></td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hindustanunilever-HU/" target="_blank" class="mc-link-btn" title="View HINDUNILVR on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">37</td>
+          <td style="text-align:left;">
+            <strong>BHARTIARTL</strong>
+            <div style="font-size:10px; color:#666;">Bharti Airtel</div>
+          </td>
+          <td>1789.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">61</span></td>
+          <td class="sub-score">67</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bhartiairtel-BA08/" target="_blank" class="mc-link-btn" title="View BHARTIARTL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">38</td>
+          <td style="text-align:left;">
+            <strong>BAJFINANCE</strong>
+            <div style="font-size:10px; color:#666;">Bajaj Finance</div>
+          </td>
+          <td>997.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">61</span></td>
+          <td class="sub-score">73</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bajajfinance-BAF/" target="_blank" class="mc-link-btn" title="View BAJFINANCE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">39</td>
+          <td style="text-align:left;">
+            <strong>BAJAJ-AUTO</strong>
+            <div style="font-size:10px; color:#666;">Bajaj Auto</div>
+          </td>
+          <td>11305.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">59</span></td>
+          <td class="sub-score">52</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">29</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bajajauto-BA10/" target="_blank" class="mc-link-btn" title="View BAJAJ-AUTO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">40</td>
+          <td style="text-align:left;">
+            <strong>SHREECEM</strong>
+            <div style="font-size:10px; color:#666;">Shree Cements</div>
+          </td>
+          <td>22415.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">59</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">63</td>
+          <td class="sub-score">29</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/shreecements-SC12/" target="_blank" class="mc-link-btn" title="View SHREECEM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">41</td>
+          <td style="text-align:left;">
+            <strong>SBILIFE</strong>
+            <div style="font-size:10px; color:#666;">SBI Life Insurance Company</div>
+          </td>
+          <td>1746.70</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">56</span></td>
+          <td class="sub-score">79</td>
+          <td class="sub-score">38</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Low Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/sbilifeinsurancecompany-SLI03/" target="_blank" class="mc-link-btn" title="View SBILIFE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">42</td>
+          <td style="text-align:left;">
+            <strong>EICHERMOT</strong>
+            <div style="font-size:10px; color:#666;">Eicher Motors</div>
+          </td>
+          <td>7357.50</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">56</span></td>
+          <td class="sub-score">57</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/eichermotors-EM/" target="_blank" class="mc-link-btn" title="View EICHERMOT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">43</td>
+          <td style="text-align:left;">
+            <strong>AXISBANK</strong>
+            <div style="font-size:10px; color:#666;">Axis Bank</div>
+          </td>
+          <td>1221.30</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">55</span></td>
+          <td class="sub-score">66</td>
+          <td class="sub-score">63</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, Average Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/axisbank-AB16/" target="_blank" class="mc-link-btn" title="View AXISBANK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">44</td>
+          <td style="text-align:left;">
+            <strong>ASIANPAINT</strong>
+            <div style="font-size:10px; color:#666;">Asian Paints</div>
+          </td>
+          <td>2447.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-mid">54</span></td>
+          <td class="sub-score">52</td>
+          <td class="sub-score">46</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, Average Growth Trend Stock at Discounted Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/asianpaints-API/" target="_blank" class="mc-link-btn" title="View ASIANPAINT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">45</td>
+          <td style="text-align:left;">
+            <strong>BAJAJFINSV</strong>
+            <div style="font-size:10px; color:#666;">Bajaj Finserv</div>
+          </td>
+          <td>1770.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">54</span></td>
+          <td class="sub-score">52</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bajajfinserv-BF04/" target="_blank" class="mc-link-btn" title="View BAJAJFINSV on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">46</td>
+          <td style="text-align:left;">
+            <strong>HDFCLIFE</strong>
+            <div style="font-size:10px; color:#666;">HDFC Life Insurance Company</div>
+          </td>
+          <td>528.70</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-mid">53</span></td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">46</td>
+          <td class="sub-score">38</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hdfclifeinsurancecompany-HSL01/" target="_blank" class="mc-link-btn" title="View HDFCLIFE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">47</td>
+          <td style="text-align:left;">
+            <strong>LT</strong>
+            <div style="font-size:10px; color:#666;">Larsen and Toubro</div>
+          </td>
+          <td>3878.00</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-low">47</span></td>
+          <td class="sub-score">43</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">29</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/larsentoubro-LT/" target="_blank" class="mc-link-btn" title="View LT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">48</td>
+          <td style="text-align:left;">
+            <strong>GRASIM</strong>
+            <div style="font-size:10px; color:#666;">Grasim Industries</div>
+          </td>
+          <td>3190.00</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-low">42</span></td>
+          <td class="sub-score">19</td>
+          <td class="sub-score">77</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Low Financial Strength, High Growth Trend Stock Priced at Expensive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/grasimindustries-GI01/" target="_blank" class="mc-link-btn" title="View GRASIM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">49</td>
+          <td style="text-align:left;">
+            <strong>INDUSINDBK</strong>
+            <div style="font-size:10px; color:#666;">IndusInd Bank</div>
+          </td>
+          <td>912.10</td>
+          <td><span class="signal-COVER sig-pill">COVER</span></td>
+          <td><span class="score-badge score-low">42</span></td>
+          <td class="sub-score">63</td>
+          <td class="sub-score">23</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Average Financial Strength, Low Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/indusindbank-IIB/" target="_blank" class="mc-link-btn" title="View INDUSINDBK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">50</td>
+          <td style="text-align:left;">
+            <strong>ADANIENT</strong>
+            <div style="font-size:10px; color:#666;">Adani Enterprises</div>
+          </td>
+          <td>2914.90</td>
+          <td><span class="signal-UNWIND sig-pill">UNWIND</span></td>
+          <td><span class="score-badge score-low">34</span></td>
+          <td class="sub-score">33</td>
+          <td class="sub-score">34</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Low Financial Strength, Low Growth Trend Stock Priced at Expensive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/adanienterprises-AE01/" target="_blank" class="mc-link-btn" title="View ADANIENT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+</tbody>
+</table>
+</div>
+
+</div><!-- /#tabContent-scores -->
+
 <script>
 
 let sortDirections = {};
@@ -9357,6 +10507,99 @@ function updateExpiry(expiry) {
 
 
 applyFilters();
+
+// Tab Switching with persistence across auto-reloads
+function switchDashboardTab(tabId) {
+    document.querySelectorAll(".tab-nav-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+
+    const btn = document.getElementById("tabBtn-" + tabId);
+    const content = document.getElementById("tabContent-" + tabId);
+    if (btn) btn.classList.add("active");
+    if (content) content.classList.add("active");
+
+    try {
+        localStorage.setItem("activeDashboardTab", tabId);
+        window.location.hash = tabId;
+    } catch(e) {}
+}
+
+(function initTab() {
+    let savedTab = "fno";
+    try {
+        const hash = window.location.hash.replace("#", "");
+        if (hash === "fno" || hash === "scores") {
+            savedTab = hash;
+        } else {
+            const ls = localStorage.getItem("activeDashboardTab");
+            if (ls === "fno" || ls === "scores") savedTab = ls;
+        }
+    } catch(e) {}
+    switchDashboardTab(savedTab);
+})();
+
+function applyScoreFilters() {
+    const search = document.getElementById("searchScores").value.toUpperCase();
+    const scoreCategory = document.getElementById("scoreCategoryFilter").value;
+    const sigFilter = document.getElementById("signalFilter").value;
+
+    const tbody = document.querySelector("#scoresTable tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+    rows.forEach(row => {
+        const stockText = row.cells[1] ? row.cells[1].innerText.toUpperCase() : "";
+        const analysisText = row.cells[10] ? row.cells[10].innerText.toUpperCase() : "";
+        const searchMatch = stockText.includes(search) || analysisText.includes(search);
+
+        const scoreVal = numericValue(row.cells[4] ? row.cells[4].innerText : "");
+        let scoreMatch = true;
+        if (scoreCategory === "HIGH") {
+            scoreMatch = (scoreVal !== null && scoreVal >= 70);
+        } else if (scoreCategory === "MID") {
+            scoreMatch = (scoreVal !== null && scoreVal >= 50 && scoreVal < 70);
+        } else if (scoreCategory === "LOW") {
+            scoreMatch = (scoreVal !== null && scoreVal < 50 && scoreVal >= 0);
+        }
+
+        const sigText = row.cells[3] ? row.cells[3].innerText.trim().toUpperCase() : "";
+        let sigMatch = true;
+        if (sigFilter === "BUY") {
+            sigMatch = (sigText.includes("LONG") || sigText.includes("COVER"));
+        } else if (sigFilter === "SELL") {
+            sigMatch = (sigText.includes("SHORT") || sigText.includes("UNWIND"));
+        }
+
+        if (searchMatch && scoreMatch && sigMatch) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+
+function sortScoreTable(header, column) {
+    const table = header.closest("table");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+
+    const key = "scores_" + column;
+    sortDirections[key] = (sortDirections[key] === "asc") ? "desc" : "asc";
+    const direction = sortDirections[key];
+
+    rows.sort((a, b) => {
+        const av = a.cells[column] ? a.cells[column].innerText.trim() : "";
+        const bv = b.cells[column] ? b.cells[column].innerText.trim() : "";
+        const an = numericValue(av);
+        const bn = numericValue(bv);
+
+        if (an !== null && bn !== null) {
+            return direction === "asc" ? an - bn : bn - an;
+        }
+        return direction === "asc" ? av.localeCompare(bv) : bv.localeCompare(av);
+    });
+
+    rows.forEach(r => tbody.appendChild(r));
+}
 
 </script>
 
