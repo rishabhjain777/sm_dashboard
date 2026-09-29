@@ -14150,7 +14150,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
 <!-- ── Full-width High Conviction Signals & Trade Plan ───── -->
 <div class="section" style="margin-top:16px;">
 <div class="high-score-box" style="width:100%;">
-<h3>&#9733; High Conviction Signals &nbsp;(Combined Score &gt; 85)</h3>
+<h3>&#9733; High Conviction Signals &nbsp;(Combined Score &ge; 85)</h3>
 <table id="highScoreTable">
 <thead><tr>
   <th onclick="sortTable(this, 0)">Stock</th>
@@ -36448,7 +36448,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                     Incremental Archive (1 Sessions)
                 </span>
                 <button onclick="scrollToTodoList()" style="background: #0f172a; color: #ffffff; border: none; border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                    🚀 View To-Do Checklist (<span id="btnTodoHeaderCount">6</span>)
+                    🚀 View To-Do Checklist (<span id="btnTodoHeaderCount">5</span>)
                 </button>
             </div>
         </div>
@@ -36477,7 +36477,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
                         <span style="font-size: 11.5px; font-weight: 700; color: #64748b; text-transform: uppercase;">Implementation:</span>
                         <span style="font-size: 13.5px; font-weight: 800; color: #0f172a;">
-                            <span id="todoCompletedCount">0</span> of <span id="todoTotalCount">6</span> Done (<span id="todoPercentText">0%</span>)
+                            <span id="todoCompletedCount">0</span> of <span id="todoTotalCount">5</span> Done (<span id="todoPercentText">0%</span>)
                         </span>
                     </div>
                     <div style="width: 100%; height: 7px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 6px;">
@@ -36490,10 +36490,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 14px; margin-bottom: 16px;">
                 <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                     <button class="todo-filter-btn" id="filterBtn-all" onclick="setTodoFilter('all')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #0f172a; background: #0f172a; color: #ffffff; cursor: pointer;">
-                        All (<span id="filterCountAll">6</span>)
+                        All (<span id="filterCountAll">5</span>)
                     </button>
                     <button class="todo-filter-btn" id="filterBtn-pending" onclick="setTodoFilter('pending')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
-                        ⏳ Pending (<span id="filterCountPending">6</span>)
+                        ⏳ Pending (<span id="filterCountPending">5</span>)
                     </button>
                     <button class="todo-filter-btn" id="filterBtn-completed" onclick="setTodoFilter('completed')" style="padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer;">
                         ✅ Completed (<span id="filterCountCompleted">0</span>)
@@ -36550,78 +36550,64 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                     <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
                     <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-1" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                 </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-1" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Volatility-Adjusted (ATR-Based) Stop Losses</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace static 1.0% stop losses with Average True Range (ATR) or volatility-band metrics (e.g., $1.5 \times 15\text{-min ATR}$). This prevents normal intraday market noise from prematurely stopping out valid directional signals.</div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-1" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Implement ATR-Based Dynamic Stop Losses</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace the static 1.0% stop-loss rule with a volatility-adjusted dynamic stop mechanism utilizing 1.25x of the 15-minute ATR to prevent premature shakeouts in high-beta F&O stocks.</div>
             </div>
         </div>
         
-        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-2" data-id="todo-2026-09-29-2" data-priority="HIGH" data-category="Signal Filters" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-2" data-id="todo-2026-09-29-2" data-priority="HIGH" data-category="Execution Engine" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
             <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-09-29-2" onchange="toggleTodo('todo-2026-09-29-2', this.checked)" style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
             <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
-                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Signal Filters</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Execution Engine</span>
                     <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
                     <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-2" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                 </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-2" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Volume, Liquidity, and VWAP Confirmation</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Incorporate intraday VWAP filters. A short signal should only be executed if the price trades consistently *below* the volume-weighted average price with expanding volume, filtering out counter-trend morning bounces.</div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-2" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Enforce Opening Range Time-Filter (09:15 - 09:45 AM Blackout)</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Update the execution engine to restrict any trade entries during the first 30 minutes of the trading session to avoid opening price discovery noise and initial fakeouts.</div>
             </div>
         </div>
         
-        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-3" data-id="todo-2026-09-29-3" data-priority="HIGH" data-category="Execution Timing" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-3" data-id="todo-2026-09-29-3" data-priority="MEDIUM" data-category="Alpha Model" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
             <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-09-29-3" onchange="toggleTodo('todo-2026-09-29-3', this.checked)" style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
             <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
-                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Execution Timing</span>
+                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Alpha Model</span>
                     <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
                     <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-3" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                 </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-3" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Opening Bell Exclusion / Time-Based Filters</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement a temporal blackout rule. Restrict execution of algorithmic short entries until at least **09:45 AM or 10:00 AM**, allowing the initial opening range noise and institutional rebalancing to settle.</div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-3" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Add Intraday VWAP Confirmation Filter</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Require short candidate selections to be trading strictly below the session VWAP and the 30-minute Opening Range Low (ORL) prior to signal validation.</div>
             </div>
         </div>
         
-        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-4" data-id="todo-2026-09-29-4" data-priority="MEDIUM" data-category="Risk Management" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-4" data-id="todo-2026-09-29-4" data-priority="HIGH" data-category="Risk Management" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
             <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-09-29-4" onchange="toggleTodo('todo-2026-09-29-4', this.checked)" style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
             <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
                     <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Risk Management</span>
                     <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
                     <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-4" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                 </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-4" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Adopt Dynamic Bracket Orders</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Transition from static percentage targets/stops to dynamic trailing stops tied to local market structure (e.g., previous 1-hour swing highs/lows).</div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-4" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Incorporate Index/Breadth Regime Gate</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Build a macro filter that pauses short signal generation when Nifty breadth or index snapshots are flat or indicating upward directional bias.</div>
             </div>
         </div>
         
-        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-5" data-id="todo-2026-09-29-5" data-priority="MEDIUM" data-category="Model Calibration" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-5" data-id="todo-2026-09-29-5" data-priority="MEDIUM" data-category="Execution Engine" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
             <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-09-29-5" onchange="toggleTodo('todo-2026-09-29-5', this.checked)" style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
             <div style="flex: 1;">
                 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
-                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Model Calibration</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Execution Engine</span>
                     <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
                     <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-5" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                 </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-5" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Macro-Gated Model Activation</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement a market-regime filter. If Nifty breadth and ATR indicate a flat/low-volatility regime, automatically scale down position sizing by 50% or suppress short-bias models until directional momentum confirms.</div>
-            </div>
-        </div>
-        
-        <div class="todo-master-card" id="todoCard-master-todo-2026-09-29-6" data-id="todo-2026-09-29-6" data-priority="MEDIUM" data-category="Model Calibration" data-date="2026-09-29" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
-            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-09-29-6" onchange="toggleTodo('todo-2026-09-29-6', this.checked)" style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
-            <div style="flex: 1;">
-                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
-                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Model Calibration</span>
-                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-09-29</span>
-                    <span class="todo-status-badge" id="todoBadge-master-todo-2026-09-29-6" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
-                </div>
-                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-6" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Refine Scoring Weights</div>
-                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Increase the weight of intraday relative volume (RVOL) within the Combined Score algorithm to filter out low-liquidity stocks prone to erratic micro-squeezes.</div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-09-29-5" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px;">Develop Trailing Stop-Loss / Scale-Out Logic</div>
+                <div style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement partial profit-taking (e.g., 50% at -1.5%) and activate break-even trailing stops to capture gains on positions that exhibit favorable drift but fall short of the rigid -2.0% target.</div>
             </div>
         </div>
         
@@ -36641,11 +36627,11 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                         Daily Performance Retrospective
                     </div>
                     <div style="font-size: 20px; font-weight: 800; margin-top: 6px;">Trading Session: 2026-09-29</div>
-                    <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Generated: 2026-09-29 21:35:48 &bull; Engine: <b>gemini-3.5-flash-lite</b> (Google AI Studio)</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Generated: 2026-09-29 21:58:26 &bull; Engine: <b>gemini-3.5-flash-lite</b> (Google AI Studio)</div>
                 </div>
                 <div style="text-align: right; background: rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">
                     <div style="font-size: 11px; color: #94a3b8;">High Conviction Filter</div>
-                    <div style="font-size: 15px; font-weight: 800; color: #38bdf8;">Combined Score &gt; 85</div>
+                    <div style="font-size: 15px; font-weight: 800; color: #38bdf8;">Combined Score &ge; 85</div>
                 </div>
             </div>
 
@@ -36660,12 +36646,12 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
                         <div style="font-size: 17px; font-weight: 800; color: #0284c7; margin-top: 3px;">8 Stocks</div>
-                        <div style="font-size: 10.5px; color: #64748b;">From 121 Total</div>
+                        <div style="font-size: 10.5px; color: #64748b;">From 8 Total</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">EOD Directional Profit</div>
-                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">37.5%</div>
-                        <div style="font-size: 10.5px; color: #64748b;">3 of 8 Profitable</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">62.5%</div>
+                        <div style="font-size: 10.5px; color: #64748b;">5 of 8 Profitable</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Target (2%) Reached</div>
@@ -36678,7 +36664,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
             <!-- Table -->
             <div style="padding: 16px 20px; background: #ffffff; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1;">
                 <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">
-                    🎯 Selected High Conviction Signals (Combined Score &gt; 85)
+                    🎯 Selected High Conviction Signals (Combined Score &ge; 85)
                 </div>
                 <div style="overflow-x: auto;">
                     <table style="width: 100%; border-collapse: collapse; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden;">
@@ -36702,10 +36688,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">90.0</td>
                 <td style="padding: 10px;">₹2820.0</td>
-                <td style="padding: 10px; font-weight: 600;">₹2820.0</td>
-                <td style="padding: 10px; font-weight: 700; color: #15803d;">+0.00%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+0.00%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; font-weight: 600;">₹2883.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+2.23%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">+2.23%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+2.23%</td>
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">🛑 FAILURE (+1% SL)</span></td>
             </tr>
             
@@ -36714,10 +36700,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">90.0</td>
                 <td style="padding: 10px;">₹274.4</td>
-                <td style="padding: 10px; font-weight: 600;">₹281.6</td>
-                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+2.66%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+2.66%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+2.66%</td>
+                <td style="padding: 10px; font-weight: 600;">₹279.4</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+1.86%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">+1.86%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+1.86%</td>
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">🛑 FAILURE (+1% SL)</span></td>
             </tr>
             
@@ -36726,10 +36712,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">89.0</td>
                 <td style="padding: 10px;">₹378.0</td>
-                <td style="padding: 10px; font-weight: 600;">₹376.0</td>
-                <td style="padding: 10px; font-weight: 700; color: #15803d;">-0.53%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">-0.53%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.53%</td>
+                <td style="padding: 10px; font-weight: 600;">₹377.9</td>
+                <td style="padding: 10px; font-weight: 700; color: #15803d;">-0.04%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">-0.04%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.04%</td>
                 <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
             </tr>
             
@@ -36738,10 +36724,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">88.0</td>
                 <td style="padding: 10px;">₹216.7</td>
-                <td style="padding: 10px; font-weight: 600;">₹219.4</td>
-                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+1.25%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+1.25%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+1.25%</td>
+                <td style="padding: 10px; font-weight: 600;">₹218.7</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+0.94%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">+0.94%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+0.94%</td>
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">🛑 FAILURE (+1% SL)</span></td>
             </tr>
             
@@ -36750,10 +36736,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">87.0</td>
                 <td style="padding: 10px;">₹3108.8</td>
-                <td style="padding: 10px; font-weight: 600;">₹3148.0</td>
-                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+1.26%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+1.26%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+1.26%</td>
+                <td style="padding: 10px; font-weight: 600;">₹3092.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #15803d;">-0.54%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">-0.54%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.54%</td>
                 <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
             </tr>
             
@@ -36762,10 +36748,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">87.0</td>
                 <td style="padding: 10px;">₹1005.3</td>
-                <td style="padding: 10px; font-weight: 600;">₹1014.7</td>
-                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+0.94%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+0.94%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+0.94%</td>
+                <td style="padding: 10px; font-weight: 600;">₹998.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #15803d;">-0.73%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">-0.73%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.73%</td>
                 <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
             </tr>
             
@@ -36774,10 +36760,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">87.0</td>
                 <td style="padding: 10px;">₹896.7</td>
-                <td style="padding: 10px; font-weight: 600;">₹907.2</td>
-                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">+1.17%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+1.17%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+1.17%</td>
+                <td style="padding: 10px; font-weight: 600;">₹894.2</td>
+                <td style="padding: 10px; font-weight: 700; color: #15803d;">-0.28%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">-0.28%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.28%</td>
                 <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
             </tr>
             
@@ -36786,10 +36772,10 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                 <td style="padding: 10px;"><span style="background: #fee2e2; color: #b91c1c; font-weight: 700; padding: 2px 6px; border-radius: 4px;">SHORT</span></td>
                 <td style="padding: 10px; font-weight: 700; color: #0284c7;">86.0</td>
                 <td style="padding: 10px;">₹6999.5</td>
-                <td style="padding: 10px; font-weight: 600;">₹6999.5</td>
-                <td style="padding: 10px; font-weight: 700; color: #15803d;">+0.00%</td>
-                <td style="padding: 10px; color: #15803d; font-weight: 600;">+0.00%</td>
-                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; font-weight: 600;">₹6656.5</td>
+                <td style="padding: 10px; font-weight: 700; color: #15803d;">-4.90%</td>
+                <td style="padding: 10px; color: #15803d; font-weight: 600;">-4.90%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-4.90%</td>
                 <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">🎯 SUCCESS (-2% Tgt)</span></td>
             </tr>
             
@@ -36802,7 +36788,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
             
             <div style="padding: 16px 20px; background: #f8fafc; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                    <div style="font-size: 13.5px; font-weight: 800; color: #0f172a;">⚡ Action Items Derived for this Session (6)</div>
+                    <div style="font-size: 13.5px; font-weight: 800; color: #0f172a;">⚡ Action Items Derived for this Session (5)</div>
                     <span style="font-size: 11px; color: #64748b;">Check off items as completed</span>
                 </div>
                 
@@ -36812,75 +36798,62 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                             <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">HIGH</span>
                             <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Risk Management</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-1" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Volatility-Adjusted (ATR-Based) Stop Losses</span>
+                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-1" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Implement ATR-Based Dynamic Stop Losses</span>
                             <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-1" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace static 1.0% stop losses with Average True Range (ATR) or volatility-band metrics (e.g., $1.5 \times 15\text{-min ATR}$). This prevents normal intraday market noise from prematurely stopping out valid directional signals.</div>
+                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace the static 1.0% stop-loss rule with a volatility-adjusted dynamic stop mechanism utilizing 1.25x of the 15-minute ATR to prevent premature shakeouts in high-beta F&O stocks.</div>
                     </div>
                 </div>
                 
-                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-2" data-id="todo-2026-09-29-2" data-priority="HIGH" data-category="Signal Filters" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
+                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-2" data-id="todo-2026-09-29-2" data-priority="HIGH" data-category="Execution Engine" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
                     <input type="checkbox" id="chk-panel-todo-2026-09-29-2" onchange="toggleTodo('todo-2026-09-29-2', this.checked)" style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
                     <div style="flex: 1;">
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                             <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">HIGH</span>
-                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Signal Filters</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-2" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Volume, Liquidity, and VWAP Confirmation</span>
+                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Execution Engine</span>
+                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-2" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Enforce Opening Range Time-Filter (09:15 - 09:45 AM Blackout)</span>
                             <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-2" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Incorporate intraday VWAP filters. A short signal should only be executed if the price trades consistently *below* the volume-weighted average price with expanding volume, filtering out counter-trend morning bounces.</div>
+                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Update the execution engine to restrict any trade entries during the first 30 minutes of the trading session to avoid opening price discovery noise and initial fakeouts.</div>
                     </div>
                 </div>
                 
-                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-3" data-id="todo-2026-09-29-3" data-priority="HIGH" data-category="Execution Timing" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
+                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-3" data-id="todo-2026-09-29-3" data-priority="MEDIUM" data-category="Alpha Model" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
                     <input type="checkbox" id="chk-panel-todo-2026-09-29-3" onchange="toggleTodo('todo-2026-09-29-3', this.checked)" style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
                     <div style="flex: 1;">
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">HIGH</span>
-                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Execution Timing</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-3" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Opening Bell Exclusion / Time-Based Filters</span>
+                            <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">MEDIUM</span>
+                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Alpha Model</span>
+                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-3" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Add Intraday VWAP Confirmation Filter</span>
                             <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-3" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement a temporal blackout rule. Restrict execution of algorithmic short entries until at least **09:45 AM or 10:00 AM**, allowing the initial opening range noise and institutional rebalancing to settle.</div>
+                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Require short candidate selections to be trading strictly below the session VWAP and the 30-minute Opening Range Low (ORL) prior to signal validation.</div>
                     </div>
                 </div>
                 
-                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-4" data-id="todo-2026-09-29-4" data-priority="MEDIUM" data-category="Risk Management" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
+                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-4" data-id="todo-2026-09-29-4" data-priority="HIGH" data-category="Risk Management" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
                     <input type="checkbox" id="chk-panel-todo-2026-09-29-4" onchange="toggleTodo('todo-2026-09-29-4', this.checked)" style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
                     <div style="flex: 1;">
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">MEDIUM</span>
+                            <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">HIGH</span>
                             <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Risk Management</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-4" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Adopt Dynamic Bracket Orders</span>
+                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-4" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Incorporate Index/Breadth Regime Gate</span>
                             <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-4" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Transition from static percentage targets/stops to dynamic trailing stops tied to local market structure (e.g., previous 1-hour swing highs/lows).</div>
+                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Build a macro filter that pauses short signal generation when Nifty breadth or index snapshots are flat or indicating upward directional bias.</div>
                     </div>
                 </div>
                 
-                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-5" data-id="todo-2026-09-29-5" data-priority="MEDIUM" data-category="Model Calibration" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
+                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-5" data-id="todo-2026-09-29-5" data-priority="MEDIUM" data-category="Execution Engine" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
                     <input type="checkbox" id="chk-panel-todo-2026-09-29-5" onchange="toggleTodo('todo-2026-09-29-5', this.checked)" style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
                     <div style="flex: 1;">
                         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                             <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">MEDIUM</span>
-                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Model Calibration</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-5" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Macro-Gated Model Activation</span>
+                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Execution Engine</span>
+                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-5" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Develop Trailing Stop-Loss / Scale-Out Logic</span>
                             <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-5" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
                         </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement a market-regime filter. If Nifty breadth and ATR indicate a flat/low-volatility regime, automatically scale down position sizing by 50% or suppress short-bias models until directional momentum confirms.</div>
-                    </div>
-                </div>
-                
-                <div class="todo-item-card" id="todoCard-panel-todo-2026-09-29-6" data-id="todo-2026-09-29-6" data-priority="MEDIUM" data-category="Model Calibration" data-date="2026-09-29" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s;">
-                    <input type="checkbox" id="chk-panel-todo-2026-09-29-6" onchange="toggleTodo('todo-2026-09-29-6', this.checked)" style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
-                    <div style="flex: 1;">
-                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 10.5px; padding: 2px 6px; border-radius: 4px;">MEDIUM</span>
-                            <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 6px; border-radius: 4px;">Model Calibration</span>
-                            <span class="todo-title" id="todoTitle-panel-todo-2026-09-29-6" style="font-weight: 700; color: #0f172a; font-size: 13.5px;">Refine Scoring Weights</span>
-                            <span class="todo-status-badge" id="todoBadge-panel-todo-2026-09-29-6" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
-                        </div>
-                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Increase the weight of intraday relative volume (RVOL) within the Combined Score algorithm to filter out low-liquidity stocks prone to erratic micro-squeezes.</div>
+                        <div style="font-size: 12px; color: #475569; margin-top: 4px; line-height: 1.5;">Implement partial profit-taking (e.g., 50% at -1.5%) and activate break-even trailing stops to capture gains on positions that exhibit favorable drift but fall short of the rigid -2.0% target.</div>
                     </div>
                 </div>
                 
@@ -36890,7 +36863,7 @@ NIFTY 50: 22683.75 | Change: -96.50 | Change %: -0.42% | Market: DOWN strongly |
             <!-- AI Narrative Analysis -->
             <div style="padding: 16px 20px 24px 20px; background: #ffffff; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; border-radius: 0 0 8px 8px;">
                 <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; font-size: 13.5px; line-height: 1.6;">
-                    <h1 style='color: #0f172a; margin-top: 20px; margin-bottom: 10px; font-size: 19px;'>Daily Trading Retrospective: NSE/NIFTY F&O Market</h1><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>**Date:** 2026-09-29</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>**Analyst:** Quantitative Trading & Risk Management Desk</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>1. Was the selection good for the day?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Directional Alignment with Market Breadth:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The broader market exhibited a flat profile (0.0% of stocks closing in red, mean/median return of 0.0%, and a completely flat Nifty index across all 15-minute snapshots). In a stagnant or directionless macro environment, pure short-side directional models face an inherent headwind since there is no downward market beta to drag individual names lower.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Combined Score > 85 Filter vs. Uncurated Universe:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The uncurated high-conviction registry (Baseline Final Score $\ge 10$) generated 121 signals with a dismal resolved win rate of **37.8%** (14 successes vs. 23 failures). Applying the stricter Combined Score > 85 filter pruned the list down to 8 high-conviction short candidates. While this reduced cognitive and execution load, the raw outcome remained challenging due to the flat macro context.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**EOD vs. Triggered Performance Paradox:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Despite a resolved hit-rate of 1 Success to 3 Failures for the filtered group, **3 out of 8 stocks (62.5%) closed in profit for the short direction at EOD**. This indicates that while the directional thesis was ultimately correct for a majority of the basket by the closing bell, the tight intraday mechanics caused premature stop-loss triggers before the drift materialized.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>2. What went well?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Standout Performance (AMBER):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>**AMBER** was a textbook execution, successfully hitting the -2.0% target constraint (recording a -2.12% trigger move) with clean execution off the previous day's signal.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Favorable EOD Drift:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Active trades held through the end of day showed resilience. Stocks like **BIOCON** maintained a negative drift (-0.53%), proving that the underlying scoring algorithm successfully isolated weak underlying structures relative to a flat index.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Effective Noise Reduction:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Filtering the universe from 210 equities down to 8 elite candidates via the Combined Score (>85) successfully concentrated risk capital into names with high structural vulnerability, bypassing low-quality setups in a directionless tape.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>3. What didn't go well?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Anatomy of Failures (TMPV, JIOFIN, ADANIENT):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Names like **TMPV** (+2.66%), **JIOFIN** (+1.25%), and **ADANIENT** breached the +1.0% upside threshold early in the session. In a flat market, idiosyncratic morning buying pressure easily squeezed high-beta short signals before any systemic selling could develop.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**The Asymmetric Risk-Reward Trap (1% SL vs. 2% Target):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The fixed static stop-loss of 1.0% combined with a 2.0% target creates an unfavorable risk-reward dynamic during normal intraday noise. A standard market noise swing of 1.2% to 1.5% routinely clips a 1.0% stop-loss before the asset can reverse toward its 2.0% target.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Entry Timing Vulnerability:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Several entries concentrated around the opening bell (e.g., 10:00 AM triggers for TMPV and JIOFIN) caught the initial morning volatility expansion, exposing positions to opening auction imbalances and liquidity sweeps.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>4. What can be done to improve the selection?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Volatility-Adjusted (ATR-Based) Stop Losses:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Replace static 1.0% stop losses with Average True Range (ATR) or volatility-band metrics (e.g., $1.5 \times 15\text{-min ATR}$). This prevents normal intraday market noise from prematurely stopping out valid directional signals.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Volume, Liquidity, and VWAP Confirmation:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Incorporate intraday VWAP filters. A short signal should only be executed if the price trades consistently *below* the volume-weighted average price with expanding volume, filtering out counter-trend morning bounces.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Opening Bell Exclusion / Time-Based Filters:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Implement a temporal blackout rule. Restrict execution of algorithmic short entries until at least **09:45 AM or 10:00 AM**, allowing the initial opening range noise and institutional rebalancing to settle.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>5. Recommendations to Improve</h2><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>1. **Adopt Dynamic Bracket Orders:** Transition from static percentage targets/stops to dynamic trailing stops tied to local market structure (e.g., previous 1-hour swing highs/lows).</p><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>2. **Macro-Gated Model Activation:** Implement a market-regime filter. If Nifty breadth and ATR indicate a flat/low-volatility regime, automatically scale down position sizing by 50% or suppress short-bias models until directional momentum confirms.</p><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>3. **Refine Scoring Weights:** Increase the weight of intraday relative volume (RVOL) within the Combined Score algorithm to filter out low-liquidity stocks prone to erratic micro-squeezes.</p>
+                    <h1 style='color: #0f172a; margin-top: 20px; margin-bottom: 10px; font-size: 19px;'>Daily Trading Retrospective — NSE/NIFTY F&O</h1><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>**Date:** 2026-09-29</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>**Analyst:** Expert Quantitative Trader & Risk Manager</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>1. Was the selection good for the day?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Directional Alignment with Market Breadth:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The broader market exhibited a remarkably flat profile (0.0% of stocks closing in the red, with mean and median returns at 0.0%), and the Nifty index remained tightly range-bound throughout the session. Despite a completely flat macro environment, the high-conviction selection model generated strictly **SHORT** signals. In a directionless market, forcing short entries without macro/index confirmation exposed the strategy to unnecessary beta friction.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Combined Score $\ge$ 85 Filter Performance:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The filter successfully isolated 8 high-conviction candidates out of a 210-stock F&O universe. Interestingly, despite early stop-loss breaches, **5 out of 8 stocks (62.5%) closed in profit for the short direction at EOD**. This indicates that the underlying alpha model possesses sound directional forecasting power over a multi-session or EOD horizon, even if intraday path dependency causes premature stop-outs.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Why the Majority Closed Profitable at EOD:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The divergence between intraday failures and EOD success highlights a classic timing and volatility issue. While the model correctly identified assets facing downward pressure, the chosen entry timings and rigid stop-loss thresholds caused positions to be shaken out before the terminal drift manifested in favor of the short thesis.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>2. What went well?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Standout Alpha Generation (AMBER):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>`AMBER` was the crown jewel of the session, delivering a **SUCCESS** outcome by plummeting **-4.90%** from its entry price with a **max adverse excursion of 0.0%**. This represents an ideal execution where the price moved straight to the -2.0% target without triggering any overhead noise.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Positive EOD Drift in Active Trades:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Out of the 4 trades held actively through EOD (`BIOCON`, `GRASIM`, `MOTILALOFS`, `INDUSINDBK`), **100% were floating in positive territory** at market close, led by `MOTILALOFS` (-0.73%) and `GRASIM` (-0.54%).</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Noise Reduction:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Filtering 210 volatile F&O instruments down to just 8 high-conviction names (less than 4% of the universe) demonstrates that the quantitative scoring mechanism effectively zeroes in on relative weakness candidates, preventing capital dispersion across low-alpha noise.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>3. What didn't go well?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Intraday Failures (`ADANIENT`, `TMPV`, `JIOFIN`):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Three stocks hit the static +1.0% stop loss early in the session. `ADANIENT` (+2.23% EOD), `TMPV` (+1.86% EOD), and `JIOFIN` (+0.94% EOD) demonstrated strong upside momentum right after entry, completely overriding the short thesis.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**The Asymmetric Risk-Reward Trap (1.0% SL vs. 2.0% Target):**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>A strict **1.0% Stop Loss** combined with a **2.0% Target** requires a win rate significantly higher than 67% just to break even on an expected value basis. In an intraday environment characterized by normal market noise and opening volatility, a tight 1.0% stop on high-beta F&O stocks acts as a magnet for whipsaws, cutting winning ideas before they mature.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Entry Timing Vulnerability:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Several positions (e.g., `TMPV` and `JIOFIN`) were entered right at the market open (10:00:13 AM). Opening ranges are notoriously noisy, frequently trapping momentum traders in fakeouts before the true institutional trend establishes itself post-10:30 AM.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>4. What can be done to improve the selection?</h2><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Volatility-Adjusted / ATR-Based Stop Losses:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Abandon static percentage stops (1%). Instead, scale stop-losses dynamically using the Average True Range (ATR) or intraday volatility bands (e.g., $1.5 \times \text{15-min ATR}$), allowing high-beta names like `ADANIENT` room to breathe without violating structural invalidation levels.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Liquidity and Intraday VWAP Filters:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Integrate a VWAP confirmation filter for short entries—only permit execution if the price is trading strictly below the volume-weighted average price and below the opening range low.</p><li style='margin-bottom: 5px; color: #334155; font-size: 13.5px; line-height: 1.5;'>**Time-Based Entry Filtering:**</li><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Prohibit entries during the chaotic opening 30 minutes (09:15 – 09:45 AM). Delaying execution windows ensures that initial liquidity imbalances clear out, leading to cleaner directional persistence.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>5. Recommendations to improve</h2><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>1. **Implement Adaptive Stop Losses:** Replace the fixed 1.0% stop-loss rule with a volatility-adjusted dynamic stop (e.g., $1.25 \times \text{ATR}_{14}$ on a 15-minute timeframe) to curtail premature stop-outs.</p><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>2. **Incorporate Macro/Index Filter Gates:** Restrict short execution if Nifty breadth or index snapshots are flat-to-bullish, ensuring portfolio alignment with broader market momentum.</p><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>3. **Staggered Execution Windows:** Enforce a blackout period between 09:15 and 09:45 AM. Move entry execution slots to post-opening range formation to filter out early-session price discovery noise.</p><p style='margin-top: 14px; margin-bottom: 6px; font-weight: 700; color: #0f172a; font-size: 14px;'>4. **Time-Based Exit / Partial Profit Mechanics:** Introduce trailing stops or scale-out targets (e.g., take 50% profit at -1.5%, trail the rest) to lock in gains when stocks experience favorable drift but fail to reach the full -2.0% target.</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>---</p><h2 style='color: #1e293b; margin-top: 22px; margin-bottom: 8px; font-size: 17px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;'>6. Action Items Checklist</h2><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>```json:action_items</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>[</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>{</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"id": "todo-2026-09-29-1",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"title": "Implement ATR-Based Dynamic Stop Losses",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"description": "Replace the static 1.0% stop-loss rule with a volatility-adjusted dynamic stop mechanism utilizing 1.25x of the 15-minute ATR to prevent premature shakeouts in high-beta F&O stocks.",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"priority": "HIGH",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"category": "Risk Management"</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>},</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>{</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"id": "todo-2026-09-29-2",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"title": "Enforce Opening Range Time-Filter (09:15 - 09:45 AM Blackout)",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"description": "Update the execution engine to restrict any trade entries during the first 30 minutes of the trading session to avoid opening price discovery noise and initial fakeouts.",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"priority": "HIGH",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"category": "Execution Engine"</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>},</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>{</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"id": "todo-2026-09-29-3",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"title": "Add Intraday VWAP Confirmation Filter",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"description": "Require short candidate selections to be trading strictly below the session VWAP and the 30-minute Opening Range Low (ORL) prior to signal validation.",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"priority": "MEDIUM",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"category": "Alpha Model"</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>},</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>{</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"id": "todo-2026-09-29-4",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"title": "Incorporate Index/Breadth Regime Gate",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"description": "Build a macro filter that pauses short signal generation when Nifty breadth or index snapshots are flat or indicating upward directional bias.",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"priority": "HIGH",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"category": "Risk Management"</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>},</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>{</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"id": "todo-2026-09-29-5",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"title": "Develop Trailing Stop-Loss / Scale-Out Logic",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"description": "Implement partial profit-taking (e.g., 50% at -1.5%) and activate break-even trailing stops to capture gains on positions that exhibit favorable drift but fall short of the rigid -2.0% target.",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"priority": "MEDIUM",</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>"category": "Execution Engine"</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>}</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>]</p><p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>```</p>
                 </div>
             </div>
 
