@@ -609,6 +609,17 @@ th:hover {
     display: inline-block;
 }
 
+.pred-breakeven {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #bfdbfe;
+    display: inline-block;
+}
+
 
 /* ════════════════════════════════════════════════════════════════════════════
    TAB 4: AI QUANT PREDICTIONS STYLING
@@ -1241,7 +1252,7 @@ th:hover {
   </button>
   <button class="tab-nav-btn" id="tabBtn-todos" onclick="switchDashboardTab('todos')">
     &#9889; AI Improvement To-Dos
-    <span class="tab-badge" id="nav-todos-badge">4</span>
+    <span class="tab-badge" id="nav-todos-badge">0</span>
   </button>
 </div>
 
@@ -14318,12 +14329,12 @@ NIFTY 50: 22716.20 | Change: -64.05 | Change %: -0.28% | Market: DOWN strongly |
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Target Achieved (&#10004;)</div>
       <div class="scores-kpi-val" style="color:#15803d;">2 <span style="font-size:12px;color:#888;">Calls</span></div>
-      <div class="scores-kpi-sub">BUY &ge; +2% &nbsp;|&nbsp; SELL &le; -2%</div>
+      <div class="scores-kpi-sub">Full Target (2%) or 50% Booked (1.5%)</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Stop Loss Hit (&#10008;)</div>
       <div class="scores-kpi-val" style="color:#b91c1c;">3 <span style="font-size:12px;color:#888;">Calls</span></div>
-      <div class="scores-kpi-sub">Volatility Dynamic Stop (1.25x 15m ATR)</div>
+      <div class="scores-kpi-sub">ATR SL Hit (0 at Break-Even)</div>
     </div>
   </div>
 
