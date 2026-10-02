@@ -1451,7 +1451,7 @@ th:hover {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly | 15M: NA% NA | B: 0.60 | S: 1.00
+NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -35997,7 +35997,7 @@ function onAnalyzerSearchInput(val) {
             ? '<span style="font-size:10px; background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:4px; font-weight:700;">F&O</span>'
             : '<span style="font-size:10px; background:#f1f5f9; color:#475569; padding:2px 6px; border-radius:4px; font-weight:700;">CASH</span>';
 
-        html += '<div class="analyzer-suggestion-item" onclick="selectAnalyzerStock('' + m.sym + '')">' +
+        html += '<div class="analyzer-suggestion-item" data-sym="' + m.sym + '" onclick="selectAnalyzerStock(this.dataset.sym)">' +
             '<div><strong>' + m.sym + '</strong> <span style="font-size:11px; color:#64748b; margin-left:6px;">' + m.name + '</span></div>' +
             '<div>' + tag + '</div>' +
             '</div>';
