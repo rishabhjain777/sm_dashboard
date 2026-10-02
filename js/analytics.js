@@ -79,7 +79,6 @@ window.initRetroTab = function() {
 };
 
 window.initTodosTab = function() {
-    // Restore saved todo states
     const state = getSavedTodoState();
     Object.keys(state).forEach(id => {
         if (state[id]) updateTodoItemUI(id, true);
