@@ -433,9 +433,7 @@ th:hover {
     background: #2b6cb0;
 }
 
-.tab-content {
-    display: none;
-}
+.tab-content { display: none; }
 
 .tab-content.active {
     display: block;
@@ -1394,6 +1392,13 @@ th:hover {
 
 .quant-factors-list li {
     margin-bottom: 4px;
+}
+
+/* ── Robust Tab Display Rules ── */
+.tab-content.active,
+.tab-content.active .tab-content,
+.tab-content.active [id^="tabContent-"] {
+    display: block !important;
 }
 
 /* ── Tab Lazy Loader Styles ── */
