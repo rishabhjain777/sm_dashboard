@@ -1,3 +1,801 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    background: #f5f5f5;
+}
+
+h2 {
+    margin: 0 0 8px 0;
+}
+
+.nifty {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+input,
+select {
+    padding: 6px 8px;
+    font-size: 13px;
+}
+
+.section {
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 6px;
+    margin-bottom: 3px;
+}
+
+.long-title {
+    background: #b7efb7;
+}
+
+.short-title {
+    background: #ffb3b3;
+}
+
+.cover-title {
+    background: #b8d9ff;
+}
+
+.unwind-title {
+    background: #ffd39b;
+}
+
+/* ── Layout ──────────────────────────────── */
+.main-layout {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.left-panel {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.right-panel {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* ── High Conviction ─────────────────────── */
+.high-score-box {
+    background: white;
+    border: 2px solid #888;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.high-score-box h3 {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    color: #333;
+}
+
+/* ── Movers panel ────────────────────────── */
+.movers-box {
+    background: white;
+    border: 2px solid #888;
+    border-radius: 4px;
+    padding: 6px;
+    position: sticky;
+    top: 10px;
+}
+
+.movers-box h3 {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    color: #333;
+}
+
+.profit-result {
+    color: green;
+    font-weight: bold;
+}
+
+.loss-result {
+    color: red;
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    background: white;
+    font-size: 12px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.setup {
+    min-width: 250px;
+    font-size: 12px;
+}
+
+.setup-note {
+    font-size: 11px;
+    margin: -7px 0 6px 2px;
+    color: #555;
+}
+
+th {
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+th:hover {
+    background: #444;
+}
+
+.signal-LONG {
+    background: #b7efb7;
+    font-weight: bold;
+}
+
+.signal-SHORT {
+    background: #ffb3b3;
+    font-weight: bold;
+}
+
+.signal-COVER {
+    background: #b8d9ff;
+    font-weight: bold;
+}
+
+.signal-UNWIND {
+    background: #ffd39b;
+    font-weight: bold;
+}
+
+.status-LIVE {
+    color: green;
+    font-weight: bold;
+}
+
+.status-STALE {
+    color: red;
+    font-weight: bold;
+}
+
+.profit {
+    font-weight: bold;
+}
+
+.section-label td {
+    text-align: left;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 5px 8px;
+    cursor: default;
+}
+
+.pivot-cell {
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 4px 6px;
+}
+
+.pivot-graph-wrap {
+    min-width: 140px;
+    max-width: 175px;
+    text-align: left;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.pivot-track {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    margin: 5px 0 2px 0;
+}
+
+.pivot-pipe {
+    position: absolute;
+    top: -3px;
+    width: 2.5px;
+    height: 12px;
+    border-radius: 1px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.pivot-ball {
+    position: absolute;
+    top: -3.5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    z-index: 6;
+    transition: transform 0.15s ease;
+}
+
+.pivot-ball:hover {
+    transform: scale(1.3);
+}
+
+.pivot-detail-tooltip {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", monospace;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.12s ease, visibility 0.12s ease;
+    z-index: 9999;
+}
+
+.pivot-detail-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #334155 transparent transparent transparent;
+}
+
+.pivot-graph-wrap:hover .pivot-detail-tooltip,
+.pivot-graph-wrap:focus .pivot-detail-tooltip,
+.pivot-graph-wrap:active .pivot-detail-tooltip,
+.pivot-graph-wrap.active-touch .pivot-detail-tooltip,
+.pivot-cell:hover .pivot-detail-tooltip,
+.pivot-cell:active .pivot-detail-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pivot-hover-price-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+    color: #64748b;
+    margin-top: 2px;
+    height: 11px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.cur-price-highlight {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.pivot-graph-wrap:hover .pivot-hover-price-line,
+.pivot-cell:hover .pivot-hover-price-line,
+.pivot-cell:active .pivot-hover-price-line {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ── Buy / Sell Favor Column ─────────────────── */
+.buy-favor-cell {
+    min-width: 130px;
+    max-width: 165px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.buy-favor-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.buy-room-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.buy-room-badge.room-high {
+    color: #15803d;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+}
+
+.buy-room-badge.room-low {
+    color: #b45309;
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+}
+
+.pivot-score-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.pivot-score-badge.score-high {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+.pivot-score-badge.score-mid {
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde047;
+}
+
+.pivot-score-badge.score-low {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+.pivot-score-badge.score-na {
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+/* ── Tab Navigation ──────────────────────── */
+.tab-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0px;
+}
+
+.tab-nav-btn {
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    transition: background 0.15s, color 0.15s;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.tab-nav-btn:hover {
+    background: #cbd5e0;
+    color: #1a202c;
+}
+
+.tab-nav-btn.active {
+    background: #ffffff;
+    color: #2b6cb0;
+    border-color: #ccc #ccc #ffffff #ccc;
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: -2px;
+}
+
+.tab-badge {
+    background: #2b6cb0;
+    color: white;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: normal;
+}
+
+.tab-nav-btn.active .tab-badge {
+    background: #2b6cb0;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ── Stock Scores Tab KPI Cards ─────────── */
+.scores-kpi-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.scores-kpi-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 14px;
+    flex: 1 1 180px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.scores-kpi-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.scores-kpi-val {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a202c;
+    margin-top: 2px;
+}
+
+.scores-kpi-sub {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* ── Stock Scores Table Badges ───────────── */
+.score-badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 12px;
+    min-width: 26px;
+    text-align: center;
+}
+
+.score-high {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.score-mid {
+    background: #feebc8;
+    color: #744210;
+    border: 1px solid #fbd38d;
+}
+
+.score-low {
+    background: #fed7d7;
+    color: #742a2a;
+    border: 1px solid #feb2b2;
+}
+
+.score-na {
+    background: #edf2f7;
+    color: #718096;
+}
+
+.sub-score {
+    font-weight: 600;
+}
+
+.sig-pill {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    display: inline-block;
+}
+
+.mc-link-btn {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #3182ce;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+/* ── Stock Scores Pagination Styles ───────────── */
+.scores-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    font-size: 13px;
+    color: #475569;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.scores-pagination .page-btn {
+    padding: 5px 12px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    color: #1e293b;
+    transition: all 0.15s ease;
+}
+.scores-pagination .page-btn:hover:not(:disabled) {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+.scores-pagination .page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.scores-pagination select {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    font-size: 12px;
+    background: #ffffff;
+}
+
+.badge-buy {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 11px;
+    border: 1px solid #86efac;
+    display: inline-block;
+}
+
+.badge-sell {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 11px;
+    border: 1px solid #fca5a5;
+    display: inline-block;
+}
+
+.change-no {
+    color: #16a34a;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.change-yes {
+    background: #ffedd5;
+    color: #c2410c;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #fdba74;
+    display: inline-block;
+}
+
+.pred-success {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #86efac;
+    display: inline-block;
+}
+
+.pred-failure {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #fca5a5;
+    display: inline-block;
+}
+
+.pred-breakeven {
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #bfdbfe;
+    display: inline-block;
+}
+
+/* ── 360° Unified Stock Analyzer Styles ───────────── */
+.analyzer-hero-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.analyzer-suggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.analyzer-suggestion-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.1s ease;
+}
+.analyzer-suggestion-item:hover, .analyzer-suggestion-item.active {
+    background: #eff6ff;
+}
+
+.analyzer-search-btn {
+    padding: 12px 24px;
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+.analyzer-search-btn:hover {
+    background: #1d4ed8;
+}
+
+.analyzer-chip {
+    padding: 5px 12px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.analyzer-chip:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+    color: #0f172a;
+}
+
+.analyzer-dossier-header {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.analyzer-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.analyzer-pillar-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+}
+
+.analyzer-pillar-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.analyzer-score-bar-wrap {
+    margin-bottom: 12px;
+}
+.analyzer-score-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.analyzer-score-bar-track {
+    width: 100%;
+    height: 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.analyzer-score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.analyzer-verdict-card {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+
+
 /* ════════════════════════════════════════════════════════════════════════════
    TAB 4: AI QUANT PREDICTIONS STYLING
    ════════════════════════════════════════════════════════════════════════════ */
@@ -597,7 +1395,6 @@
 .quant-factors-list li {
     margin-bottom: 4px;
 }
-
 
 /* ── Tab Lazy Loader Styles ── */
 .tab-loading-spinner {
