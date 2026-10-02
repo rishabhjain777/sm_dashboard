@@ -2,72 +2,78 @@
 <div class="scores-kpi-row">
   <div class="scores-kpi-card">
     <div class="scores-kpi-title">Universe Tracked</div>
-    <div class="scores-kpi-val">2593 <span style="font-size:12px;color:#888;">Stocks</span></div>
-    <div class="scores-kpi-sub">All NSE Listed Shares (214 Scored)</div>
+    <div class="scores-kpi-val">213</div>
+    <div class="scores-kpi-sub">All Active Listed NSE Equities</div>
   </div>
   <div class="scores-kpi-card">
-    <div class="scores-kpi-title">Top Decile (&ge;7.0)</div>
-    <div class="scores-kpi-val" style="color:#22543d;">75 <span style="font-size:12px;color:#888;">Stocks</span></div>
-    <div class="scores-kpi-sub">Top Ranked Percentile</div>
+    <div class="scores-kpi-title">Top Decile (Score &ge; 7.0)</div>
+    <div class="scores-kpi-val" style="color: #15803d;">75</div>
+    <div class="scores-kpi-sub">High Quality &amp; Financial Strength</div>
   </div>
   <div class="scores-kpi-card">
-    <div class="scores-kpi-title">Average Score</div>
-    <div class="scores-kpi-val" style="color:#2b6cb0;">5.5 <span style="font-size:12px;color:#888;">/ 10</span></div>
-    <div class="scores-kpi-sub">Universe Percentile Score</div>
+    <div class="scores-kpi-title">Top Performer</div>
+    <div class="scores-kpi-val" style="font-size:16px; color:#1d4ed8;">NMDC (10.0)</div>
+    <div class="scores-kpi-sub">Highest Composite Score in Universe</div>
   </div>
   <div class="scores-kpi-card">
-    <div class="scores-kpi-title">Top Scorer</div>
-    <div class="scores-kpi-val" style="color:#2e7d32;">NMDC (10.0)</div>
-    <div class="scores-kpi-sub">Highest Ranked in Universe</div>
+    <div class="scores-kpi-title">Coverage Status</div>
+    <div class="scores-kpi-val" style="color: #7e22ce;">100%</div>
+    <div class="scores-kpi-sub">F&amp;O + Entire NSE Cash Universe</div>
   </div>
 </div>
 
-<!-- Controls for Stock Scores -->
-<div class="controls">
+<!-- Controls Row -->
+<div class="scores-controls-row">
   <input
     type="text"
-    id="searchScores"
-    placeholder="Search Any NSE Stock / Company Name / Analysis..."
-    oninput="debouncedScoreFilter()"
-    style="min-width: 280px;"
+    id="scoresSearchInput"
+    class="scores-search"
+    placeholder="Search 213 stocks by Symbol or Company Name..."
+    oninput="onScoresSearchInput(this.value)"
   >
-  <select id="scoreCategoryFilter" onchange="applyScoreFilters()">
-    <option value="ALL" selected>All NSE Stocks (2593)</option>
-    <option value="SCORED">Scored Stocks Only (214)</option>
-    <option value="HIGH">High Score (&ge; 7.0)</option>
-    <option value="MID">Moderate (5.0 - 6.9)</option>
-    <option value="LOW">Caution (&lt; 5.0)</option>
-    <option value="UNSCORED">Unscored NSE Shares</option>
-  </select>
-  <select id="signalFilter" onchange="applyScoreFilters()">
-    <option value="ALL" selected>All Universe</option>
-    <option value="FNO">F&amp;O Universe Only</option>
-    <option value="BUY">BUY Side (LONG / COVER)</option>
-    <option value="SELL">SELL Side (SHORT / UNWIND)</option>
-  </select>
+  <div class="scores-filter-group">
+    <label>Filter:</label>
+    <select id="scoresFilterSelect" onchange="applyScoresFilters()">
+      <option value="ALL">All Stocks (213)</option>
+      <option value="TOP_DECILE">Top Decile (&ge; 7.0) (75)</option>
+      <option value="MID_TIER">Mid Tier (4.0 &ndash; 6.9)</option>
+      <option value="LOW_TIER">Low Tier (&lt; 4.0)</option>
+      <option value="BUY_SIGNALS">Buy Signals (LONG / COVER)</option>
+      <option value="SELL_SIGNALS">Sell Signals (SHORT / UNWIND)</option>
+    </select>
+  </div>
+  <div class="scores-filter-group">
+    <label>Sort By:</label>
+    <select id="scoresSortSelect" onchange="applyScoresFilters()">
+      <option value="total_score_desc">Overall Score (High &rarr; Low)</option>
+      <option value="total_score_asc">Overall Score (Low &rarr; High)</option>
+      <option value="q_desc">Quality (Q) (High &rarr; Low)</option>
+      <option value="g_desc">Growth (G) (High &rarr; Low)</option>
+      <option value="v_desc">Value (V) (High &rarr; Low)</option>
+      <option value="t_desc">Technicals (T) (High &rarr; Low)</option>
+      <option value="symbol_asc">Symbol (A &rarr; Z)</option>
+    </select>
+  </div>
 </div>
 
-<!-- Stock Scores Table -->
-<div class="section" style="margin-bottom:0;">
-<table id="scoresTable">
-<thead>
-<tr>
-  <th onclick="sortScoreTable(this, 0)" style="width: 35px; cursor:pointer;" title="Sort by default rank">#</th>
-  <th onclick="sortScoreTable(this, 1)" style="text-align: left; min-width: 150px; cursor:pointer;" title="Sort by Symbol">Stock</th>
-  <th onclick="sortScoreTable(this, 2)" style="cursor:pointer;" title="Sort by Spot Price">Spot &#8377;</th>
-  <th onclick="sortScoreTable(this, 3)" style="cursor:pointer;" title="Sort by F&amp;O Signal">F&amp;O Signal</th>
-  <th onclick="sortScoreTable(this, 4)" style="cursor:pointer;" title="Sort by Overall Score">Overall Score</th>
-  <th onclick="sortScoreTable(this, 5)" style="cursor:pointer;" title="Quality: Financial Strength &amp; Operational Excellence">Quality (Q)</th>
-  <th onclick="sortScoreTable(this, 6)" style="cursor:pointer;" title="Growth: Historical &amp; Forward Revenue/Earnings">Growth (G)</th>
-  <th onclick="sortScoreTable(this, 7)" style="cursor:pointer;" title="Value: Price Multiple &amp; Relative Valuation">Value (V)</th>
-  <th onclick="sortScoreTable(this, 8)" style="cursor:pointer;" title="Technical: Trend &amp; Momentum Indicators">Technical (T)</th>
-  <th onclick="sortScoreTable(this, 9)" style="cursor:pointer;" title="Kotak Neo Trend Proxy">Neo T-Proxy</th>
-  <th onclick="sortScoreTable(this, 10)" style="text-align: left; min-width: 260px; cursor:pointer;">Valuation &amp; Financial Analysis</th>
-  <th style="width: 60px;">MC Link</th>
-</tr>
-</thead>
-<tbody>
-
+<div class="scores-table-wrap">
+  <div id="scoresTableContainer">
+    <table class="scores-table" id="scoresTable">
+      <thead>
+        <tr>
+          <th style="width:130px;">Stock / Company</th>
+          <th style="width:70px;">Signal</th>
+          <th style="width:75px;">Spot</th>
+          <th style="width:110px;">Overall Score</th>
+          <th style="width:80px;" title="Quality: Balance sheet strength, ROE, debt levels (0-100)">Quality (Q)</th>
+          <th style="width:80px;" title="Growth: Revenue & EPS growth trajectory (0-100)">Growth (G)</th>
+          <th style="width:80px;" title="Valuation: P/E, P/B, EV/EBITDA attractiveness (0-100)">Valuation (V)</th>
+          <th style="width:90px;" title="Technicals: RSI, moving averages, momentum trend (0-100)">Technicals (T)</th>
+          <th>MoneyControl Analysis &amp; Link</th>
+        </tr>
+      </thead>
+      <tbody id="scoresTableBody">
+        
         <tr>
           <td style="color:#777; font-weight:bold;">1</td>
           <td style="text-align:left;">
@@ -814,7 +820,7 @@
           </td>
           <td>8133.50</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">76</td>
           <td class="sub-score">94</td>
           <td class="sub-score">24</td>
@@ -832,7 +838,7 @@
           </td>
           <td>383.10</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">90</td>
           <td class="sub-score">83</td>
           <td class="sub-score">53</td>
@@ -850,7 +856,7 @@
           </td>
           <td>131.34</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">76</td>
           <td class="sub-score">74</td>
           <td class="sub-score">88</td>
@@ -868,7 +874,7 @@
           </td>
           <td>1105.60</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">81</td>
           <td class="sub-score">94</td>
           <td class="sub-score">35</td>
@@ -886,7 +892,7 @@
           </td>
           <td>11386.00</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">76</td>
           <td class="sub-score">74</td>
           <td class="sub-score">94</td>
@@ -904,7 +910,7 @@
           </td>
           <td>1046.00</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">90</td>
           <td class="sub-score">89</td>
           <td class="sub-score">24</td>
@@ -922,7 +928,7 @@
           </td>
           <td>444.00</td>
           <td><span class="signal-SHORT sig-pill">SHORT</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">76</td>
           <td class="sub-score">69</td>
           <td class="sub-score">82</td>
@@ -940,7 +946,7 @@
           </td>
           <td>1464.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">90</td>
           <td class="sub-score">91</td>
           <td class="sub-score">41</td>
@@ -958,7 +964,7 @@
           </td>
           <td>3804.00</td>
           <td><span class="signal-LONG sig-pill">LONG</span></td>
-          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.0/10 (Raw MC Score: 74/100)">8.0</span></td>
           <td class="sub-score">100</td>
           <td class="sub-score">75</td>
           <td class="sub-score">25</td>
@@ -968,25 +974,19 @@
           <td><a href="https://www.moneycontrol.com/markets/stocks-score/siemens-S/" target="_blank" class="mc-link-btn" title="View SIEMENS on MoneyControl">MC &#8599;</a></td>
         </tr>
         
-</tbody>
-</table>
-</div>
-
-<!-- Scores Pagination Bar -->
-<div class="scores-pagination">
-  <div id="scoresCountInfo">Showing 1–50 of 2593 stocks</div>
-  <div style="display: flex; gap: 8px; align-items: center;">
-    <button class="page-btn" id="scoresPrevBtn" onclick="changeScorePage(-1)" disabled>&#9664; Prev</button>
-    <span id="scoresPageIndicator" style="font-weight: 600;">Page 1 of 52</span>
-    <button class="page-btn" id="scoresNextBtn" onclick="changeScorePage(1)">Next &#9654;</button>
+      </tbody>
+    </table>
   </div>
-  <div style="display: flex; gap: 6px; align-items: center;">
-    <span>Per Page:</span>
-    <select id="scoresPageSizeSelect" onchange="changeScorePageSize(this.value)">
+  <div id="scoresPagination" class="scores-pagination">
+    <button id="scoresPrevBtn" onclick="changeScoresPage(-1)">&larr; Previous</button>
+    <span id="scoresPageIndicator">Page 1 of 5</span>
+    <button id="scoresNextBtn" onclick="changeScoresPage(1)">Next &rarr;</button>
+    <span style="color:#aaa;">|</span>
+    <span style="font-size:12px; color:#555;">Show per page:</span>
+    <select id="scoresPageSizeSelect" onchange="setScoresPageSize(this.value)">
       <option value="50" selected>50</option>
       <option value="100">100</option>
       <option value="250">250</option>
-      <option value="ALL">All (2593)</option>
+      <option value="ALL">All (213)</option>
     </select>
   </div>
-</div>
