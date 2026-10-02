@@ -10,10 +10,9 @@ function applyFilters() {
     const rows = document.querySelectorAll("#mainTable tbody tr");
 
     rows.forEach(r => {
-        // Section-label rows: always visible, reset counter for each section
         if (r.classList.contains("section-label")) {
             r.style.display = "";
-            shownCount = 0; // Reset row counter for BUY SIDE and SELL SIDE
+            shownCount = 0; // Reset row counter for each section (BUY & SELL)
             return;
         }
 
