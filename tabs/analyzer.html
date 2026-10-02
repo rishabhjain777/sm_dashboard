@@ -1,39 +1,38 @@
-<div class="analyzer-hero-card">
-  <div style="font-size:18px; font-weight:800; color:#0f172a; margin-bottom:4px;">
-    &#128373; 360&#176; Stock Intelligence Dossier
-  </div>
-  <div style="font-size:13px; color:#475569; margin-bottom:14px;">
-    Search any NSE listed equity stock or F&amp;O derivative to view synthesized confluence: Market Signal, Quality/Score breakdown, AI Quant model stance, and Final Actionable Verdict.
-  </div>
-
-  <div style="position:relative; max-width:600px;">
-    <div style="display:flex; gap:8px;">
-      <input
-        type="text"
-        id="analyzerInput"
-        placeholder="Search any share symbol or name (e.g. RELIANCE, TCS, MANORAMA)..."
-        oninput="onAnalyzerSearchInput(this.value)"
-        onkeydown="onAnalyzerSearchKeyDown(event)"
-        style="flex:1; padding:10px 14px; font-size:14px; border:2px solid #cbd5e1; border-radius:8px; outline:none;"
-      >
-      <button onclick="triggerAnalyzerSearch()" class="analyzer-search-btn">
-        Analyze
-      </button>
+<div id="tabContent-analyzer" class="tab-content">
+  <div class="analyzer-hero-card">
+    <div style="font-size: 18px; font-weight: 800; color: #1e293b; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+      <span>&#128373; 360&#176; Single-Stock Intelligence &amp; Synthesis Dossier</span>
     </div>
-    <div id="analyzerSuggestions" class="analyzer-suggestions" style="display: none;"></div>
+    <div style="position: relative; max-width: 650px; margin-bottom: 12px;">
+      <div style="display: flex; gap: 10px;">
+        <input
+          type="text"
+          id="analyzerInput"
+          placeholder="Search any share by symbol or company name (e.g. RELIANCE, MANORAMA, TCS, INFY)..."
+          oninput="onAnalyzerSearchInput(this.value)"
+          onkeydown="onAnalyzerSearchKeyDown(event)"
+          autocomplete="off"
+          style="flex: 1; padding: 12px 16px; border: 2px solid #3b82f6; border-radius: 8px; font-size: 15px; font-weight: 600; outline: none; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);"
+        >
+        <button onclick="triggerAnalyzerSearch()" class="analyzer-search-btn">
+          &#128269; Analyze
+        </button>
+      </div>
+      <div id="analyzerSuggestions" class="analyzer-suggestions" style="display: none;"></div>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+      <span style="font-size: 12px; font-weight: bold; color: #64748b;">Quick Stocks:</span>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('RELIANCE')">RELIANCE</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('TCS')">TCS</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('HDFCBANK')">HDFCBANK</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('INFY')">INFY</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('MANORAMA')">MANORAMA</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('SBIN')">SBIN</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('ICICIBANK')">ICICIBANK</button>
+      <button class="analyzer-chip" onclick="selectAnalyzerStock('ZOMATO')">ZOMATO</button>
+    </div>
   </div>
 
-  <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-    <span style="font-size:12px; font-weight:700; color:#64748b;">Quick Stocks:</span>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('RELIANCE')">RELIANCE</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('TCS')">TCS</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('HDFCBANK')">HDFCBANK</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('INFY')">INFY</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('MANORAMA')">MANORAMA</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('SBIN')">SBIN</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('ICICIBANK')">ICICIBANK</button>
-    <button class="analyzer-chip" onclick="selectAnalyzerStock('ZOMATO')">ZOMATO</button>
-  </div>
+  <!-- The Unified Dossier Render Target -->
+  <div id="analyzerDossier"></div>
 </div>
-
-<div id="analyzerDossier"></div>
