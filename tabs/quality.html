@@ -1,0 +1,993 @@
+<!-- Summary KPI Cards -->
+<div class="scores-kpi-row">
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Universe Tracked</div>
+    <div class="scores-kpi-val">2593</div>
+    <div class="scores-kpi-sub">All Active Listed NSE Equities</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Top Decile (Score &ge; 7.0)</div>
+    <div class="scores-kpi-val" style="color: #15803d;">75</div>
+    <div class="scores-kpi-sub">High Quality &amp; Financial Strength</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Top Performer</div>
+    <div class="scores-kpi-val" style="font-size:16px; color:#1d4ed8;">NMDC (10.0)</div>
+    <div class="scores-kpi-sub">Highest Composite Score in Universe</div>
+  </div>
+  <div class="scores-kpi-card">
+    <div class="scores-kpi-title">Coverage Status</div>
+    <div class="scores-kpi-val" style="color: #7e22ce;">100%</div>
+    <div class="scores-kpi-sub">F&amp;O + Entire NSE Cash Universe</div>
+  </div>
+</div>
+
+<!-- Controls Row -->
+<div class="scores-controls-row">
+  <input
+    type="text"
+    id="scoresSearchInput"
+    class="scores-search"
+    placeholder="Search 2593 stocks by Symbol or Company Name..."
+    oninput="onScoresSearchInput(this.value)"
+  >
+  <div class="scores-filter-group">
+    <label>Filter:</label>
+    <select id="scoresFilterSelect" onchange="applyScoresFilters()">
+      <option value="ALL">All Stocks (2593)</option>
+      <option value="TOP_DECILE">Top Decile (&ge; 7.0) (75)</option>
+      <option value="MID_TIER">Mid Tier (4.0 &ndash; 6.9)</option>
+      <option value="LOW_TIER">Low Tier (&lt; 4.0)</option>
+      <option value="BUY_SIGNALS">Buy Signals (LONG / COVER)</option>
+      <option value="SELL_SIGNALS">Sell Signals (SHORT / UNWIND)</option>
+    </select>
+  </div>
+  <div class="scores-filter-group">
+    <label>Sort By:</label>
+    <select id="scoresSortSelect" onchange="applyScoresFilters()">
+      <option value="total_score_desc">Overall Score (High &rarr; Low)</option>
+      <option value="total_score_asc">Overall Score (Low &rarr; High)</option>
+      <option value="q_desc">Quality (Q) (High &rarr; Low)</option>
+      <option value="g_desc">Growth (G) (High &rarr; Low)</option>
+      <option value="v_desc">Value (V) (High &rarr; Low)</option>
+      <option value="t_desc">Technicals (T) (High &rarr; Low)</option>
+      <option value="symbol_asc">Symbol (A &rarr; Z)</option>
+    </select>
+  </div>
+</div>
+
+<div class="scores-table-wrap">
+  <div id="scoresTableContainer">
+    <table class="scores-table" id="scoresTable">
+      <thead>
+        <tr>
+          <th style="width:130px;">Stock / Company</th>
+          <th style="width:70px;">Signal</th>
+          <th style="width:75px;">Spot</th>
+          <th style="width:110px;">Overall Score</th>
+          <th style="width:80px;" title="Quality: Balance sheet strength, ROE, debt levels (0-100)">Quality (Q)</th>
+          <th style="width:80px;" title="Growth: Revenue & EPS growth trajectory (0-100)">Growth (G)</th>
+          <th style="width:80px;" title="Valuation: P/E, P/B, EV/EBITDA attractiveness (0-100)">Valuation (V)</th>
+          <th style="width:90px;" title="Technicals: RSI, moving averages, momentum trend (0-100)">Technicals (T)</th>
+          <th>MoneyControl Analysis &amp; Link</th>
+        </tr>
+      </thead>
+      <tbody id="scoresTableBody">
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">1</td>
+          <td style="text-align:left;">
+            <strong>NMDC</strong>
+            <div style="font-size:10px; color:#666;">NMDC</div>
+          </td>
+          <td>74.64</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 10.0/10 (Raw MC Score: 87/100)">10.0</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/nmdc-NMD02/" target="_blank" class="mc-link-btn" title="View NMDC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">2</td>
+          <td style="text-align:left;">
+            <strong>APLAPOLLO</strong>
+            <div style="font-size:10px; color:#666;">APL Apollo Tubes</div>
+          </td>
+          <td>2115.70</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.9/10 (Raw MC Score: 85/100)">9.9</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/aplapollotubes-BT09/" target="_blank" class="mc-link-btn" title="View APLAPOLLO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">3</td>
+          <td style="text-align:left;">
+            <strong>DIVISLAB</strong>
+            <div style="font-size:10px; color:#666;">Divis Laboratories</div>
+          </td>
+          <td>9249.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.9/10 (Raw MC Score: 85/100)">9.9</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/divislaboratories-DL03/" target="_blank" class="mc-link-btn" title="View DIVISLAB on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">4</td>
+          <td style="text-align:left;">
+            <strong>CAMS</strong>
+            <div style="font-size:10px; color:#666;">Computer Age Management Services</div>
+          </td>
+          <td>677.25</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.8/10 (Raw MC Score: 84/100)">9.8</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/computeragemanagementservices-CAM/" target="_blank" class="mc-link-btn" title="View CAMS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">5</td>
+          <td style="text-align:left;">
+            <strong>DRREDDY</strong>
+            <div style="font-size:10px; color:#666;">Dr Reddys Laboratories</div>
+          </td>
+          <td>1206.20</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.8/10 (Raw MC Score: 84/100)">9.8</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">69</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/drreddyslaboratories-DRL/" target="_blank" class="mc-link-btn" title="View DRREDDY on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">6</td>
+          <td style="text-align:left;">
+            <strong>ENRIN</strong>
+            <div style="font-size:10px; color:#666;">Siemens Energy India</div>
+          </td>
+          <td>3334.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.8/10 (Raw MC Score: 84/100)">9.8</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">38</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/siemensenergyindia-SEI11/" target="_blank" class="mc-link-btn" title="View ENRIN on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">7</td>
+          <td style="text-align:left;">
+            <strong>HINDZINC</strong>
+            <div style="font-size:10px; color:#666;">Hindustan Zinc</div>
+          </td>
+          <td>555.05</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.7/10 (Raw MC Score: 83/100)">9.7</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">91</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hindustanzinc-HZ/" target="_blank" class="mc-link-btn" title="View HINDZINC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">8</td>
+          <td style="text-align:left;">
+            <strong>HEROMOTOCO</strong>
+            <div style="font-size:10px; color:#666;">Hero Motocorp</div>
+          </td>
+          <td>5168.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.7/10 (Raw MC Score: 81/100)">9.7</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">59</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/heromotocorp-HHM/" target="_blank" class="mc-link-btn" title="View HEROMOTOCO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">9</td>
+          <td style="text-align:left;">
+            <strong>INDHOTEL</strong>
+            <div style="font-size:10px; color:#666;">Indian Hotels Company</div>
+          </td>
+          <td>718.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.7/10 (Raw MC Score: 81/100)">9.7</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/indianhotelscompany-IHC/" target="_blank" class="mc-link-btn" title="View INDHOTEL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">10</td>
+          <td style="text-align:left;">
+            <strong>PETRONET</strong>
+            <div style="font-size:10px; color:#666;">Petronet LNG</div>
+          </td>
+          <td>285.50</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.6/10 (Raw MC Score: 80/100)">9.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">60</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/petronetlng-PLN/" target="_blank" class="mc-link-btn" title="View PETRONET on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">11</td>
+          <td style="text-align:left;">
+            <strong>TCS</strong>
+            <div style="font-size:10px; color:#666;">Tata Consultancy Services</div>
+          </td>
+          <td>2075.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.6/10 (Raw MC Score: 80/100)">9.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/tataconsultancyservices-TCS/" target="_blank" class="mc-link-btn" title="View TCS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">12</td>
+          <td style="text-align:left;">
+            <strong>VBL</strong>
+            <div style="font-size:10px; color:#666;">Varun Beverages</div>
+          </td>
+          <td>425.30</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.6/10 (Raw MC Score: 80/100)">9.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/varunbeverages-VB05/" target="_blank" class="mc-link-btn" title="View VBL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">13</td>
+          <td style="text-align:left;">
+            <strong>BOSCHLTD</strong>
+            <div style="font-size:10px; color:#666;">Bosch</div>
+          </td>
+          <td>45480.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.4/10 (Raw MC Score: 79/100)">9.4</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bosch-B05/" target="_blank" class="mc-link-btn" title="View BOSCHLTD on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">14</td>
+          <td style="text-align:left;">
+            <strong>HAL</strong>
+            <div style="font-size:10px; color:#666;">Hindustan Aeronautics</div>
+          </td>
+          <td>4601.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.4/10 (Raw MC Score: 79/100)">9.4</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hindustanaeronautics-HAL/" target="_blank" class="mc-link-btn" title="View HAL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">15</td>
+          <td style="text-align:left;">
+            <strong>ICICIGI</strong>
+            <div style="font-size:10px; color:#666;">ICICI Lombard General Insurance Company</div>
+          </td>
+          <td>1563.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.4/10 (Raw MC Score: 79/100)">9.4</span></td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/icicilombardgeneralinsurancecompany-ILG/" target="_blank" class="mc-link-btn" title="View ICICIGI on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">16</td>
+          <td style="text-align:left;">
+            <strong>RADICO</strong>
+            <div style="font-size:10px; color:#666;">Radico Khaitan</div>
+          </td>
+          <td>4237.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.4/10 (Raw MC Score: 79/100)">9.4</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/radicokhaitan-RK01/" target="_blank" class="mc-link-btn" title="View RADICO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">17</td>
+          <td style="text-align:left;">
+            <strong>DMART</strong>
+            <div style="font-size:10px; color:#666;">Avenue Supermarts</div>
+          </td>
+          <td>3813.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.3/10 (Raw MC Score: 78/100)">9.3</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/avenuesupermarts-AS19/" target="_blank" class="mc-link-btn" title="View DMART on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">18</td>
+          <td style="text-align:left;">
+            <strong>SUPREMEIND</strong>
+            <div style="font-size:10px; color:#666;">Supreme Industries</div>
+          </td>
+          <td>3380.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.3/10 (Raw MC Score: 78/100)">9.3</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/supremeindustries-SI48/" target="_blank" class="mc-link-btn" title="View SUPREMEIND on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">19</td>
+          <td style="text-align:left;">
+            <strong>BPCL</strong>
+            <div style="font-size:10px; color:#666;">Bharat Petroleum Corporation</div>
+          </td>
+          <td>300.60</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.2/10 (Raw MC Score: 77/100)">9.2</span></td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">69</td>
+          <td class="sub-score">88</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bharatpetroleumcorporation-BPC/" target="_blank" class="mc-link-btn" title="View BPCL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">20</td>
+          <td style="text-align:left;">
+            <strong>PAGEIND</strong>
+            <div style="font-size:10px; color:#666;">Page Industries</div>
+          </td>
+          <td>36660.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.2/10 (Raw MC Score: 77/100)">9.2</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/pageindustries-PI35/" target="_blank" class="mc-link-btn" title="View PAGEIND on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">21</td>
+          <td style="text-align:left;">
+            <strong>PERSISTENT</strong>
+            <div style="font-size:10px; color:#666;">Persistent Systems</div>
+          </td>
+          <td>5367.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.2/10 (Raw MC Score: 77/100)">9.2</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/persistentsystems-PS15/" target="_blank" class="mc-link-btn" title="View PERSISTENT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">22</td>
+          <td style="text-align:left;">
+            <strong>PHOENIXLTD</strong>
+            <div style="font-size:10px; color:#666;">Phoenix Mills</div>
+          </td>
+          <td>1930.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.2/10 (Raw MC Score: 77/100)">9.2</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/phoenixmills-PM02/" target="_blank" class="mc-link-btn" title="View PHOENIXLTD on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">23</td>
+          <td style="text-align:left;">
+            <strong>TRENT</strong>
+            <div style="font-size:10px; color:#666;">Trent</div>
+          </td>
+          <td>2580.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 9.2/10 (Raw MC Score: 77/100)">9.2</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/trent-T04/" target="_blank" class="mc-link-btn" title="View TRENT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">24</td>
+          <td style="text-align:left;">
+            <strong>CANBK</strong>
+            <div style="font-size:10px; color:#666;">Canara Bank</div>
+          </td>
+          <td>118.36</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.9/10 (Raw MC Score: 76/100)">8.9</span></td>
+          <td class="sub-score">78</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/canarabank-CB06/" target="_blank" class="mc-link-btn" title="View CANBK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">25</td>
+          <td style="text-align:left;">
+            <strong>COALINDIA</strong>
+            <div style="font-size:10px; color:#666;">Coal India</div>
+          </td>
+          <td>420.40</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.9/10 (Raw MC Score: 76/100)">8.9</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">51</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/coalindia-CI11/" target="_blank" class="mc-link-btn" title="View COALINDIA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">26</td>
+          <td style="text-align:left;">
+            <strong>MANKIND</strong>
+            <div style="font-size:10px; color:#666;">Mankind Pharma</div>
+          </td>
+          <td>2535.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.9/10 (Raw MC Score: 76/100)">8.9</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/mankindpharma-MP22/" target="_blank" class="mc-link-btn" title="View MANKIND on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">27</td>
+          <td style="text-align:left;">
+            <strong>PNB</strong>
+            <div style="font-size:10px; color:#666;">Punjab National Bank</div>
+          </td>
+          <td>109.57</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.9/10 (Raw MC Score: 76/100)">8.9</span></td>
+          <td class="sub-score">75</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">80</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/punjabnationalbank-PNB05/" target="_blank" class="mc-link-btn" title="View PNB on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">28</td>
+          <td style="text-align:left;">
+            <strong>ZYDUSLIFE</strong>
+            <div style="font-size:10px; color:#666;">Zydus Lifesciences</div>
+          </td>
+          <td>1145.70</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.9/10 (Raw MC Score: 76/100)">8.9</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/zyduslifesciences-CHC/" target="_blank" class="mc-link-btn" title="View ZYDUSLIFE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">29</td>
+          <td style="text-align:left;">
+            <strong>ALKEM</strong>
+            <div style="font-size:10px; color:#666;">Alkem Laboratories</div>
+          </td>
+          <td>5220.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">47</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/alkemlaboratories-AL05/" target="_blank" class="mc-link-btn" title="View ALKEM on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">30</td>
+          <td style="text-align:left;">
+            <strong>AUROPHARMA</strong>
+            <div style="font-size:10px; color:#666;">Aurobindo Pharma</div>
+          </td>
+          <td>1676.80</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">80</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/aurobindopharma-AP/" target="_blank" class="mc-link-btn" title="View AUROPHARMA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">31</td>
+          <td style="text-align:left;">
+            <strong>CGPOWER</strong>
+            <div style="font-size:10px; color:#666;">CG Power and Industrial Solutions</div>
+          </td>
+          <td>879.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/cgpowerindustrialsolutions-CG/" target="_blank" class="mc-link-btn" title="View CGPOWER on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">32</td>
+          <td style="text-align:left;">
+            <strong>COFORGE</strong>
+            <div style="font-size:10px; color:#666;">COFORGE</div>
+          </td>
+          <td>1826.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/coforge-NII02/" target="_blank" class="mc-link-btn" title="View COFORGE on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">33</td>
+          <td style="text-align:left;">
+            <strong>FORCEMOT</strong>
+            <div style="font-size:10px; color:#666;">Force Motors</div>
+          </td>
+          <td>16800.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/forcemotors-FM01/" target="_blank" class="mc-link-btn" title="View FORCEMOT on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">34</td>
+          <td style="text-align:left;">
+            <strong>GODFRYPHLP</strong>
+            <div style="font-size:10px; color:#666;">Godfrey Phillips India</div>
+          </td>
+          <td>1849.70</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/godfreyphillipsindia-GPI/" target="_blank" class="mc-link-btn" title="View GODFRYPHLP on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">35</td>
+          <td style="text-align:left;">
+            <strong>HCLTECH</strong>
+            <div style="font-size:10px; color:#666;">HCL Technologies</div>
+          </td>
+          <td>1243.10</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">86</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/hcltechnologies-HCL02/" target="_blank" class="mc-link-btn" title="View HCLTECH on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">36</td>
+          <td style="text-align:left;">
+            <strong>LAURUSLABS</strong>
+            <div style="font-size:10px; color:#666;">Laurus Labs</div>
+          </td>
+          <td>1984.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">91</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/lauruslabs-LL05/" target="_blank" class="mc-link-btn" title="View LAURUSLABS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">37</td>
+          <td style="text-align:left;">
+            <strong>M&M</strong>
+            <div style="font-size:10px; color:#666;">Mahindra and Mahindra</div>
+          </td>
+          <td>2860.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">65</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/mahindramahindra-MM/" target="_blank" class="mc-link-btn" title="View M&M on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">38</td>
+          <td style="text-align:left;">
+            <strong>MAHABANK</strong>
+            <div style="font-size:10px; color:#666;">Bank of Maharashtra</div>
+          </td>
+          <td>80.50</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">84</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bankmaharashtra-BM05/" target="_blank" class="mc-link-btn" title="View MAHABANK on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">39</td>
+          <td style="text-align:left;">
+            <strong>MARICO</strong>
+            <div style="font-size:10px; color:#666;">Marico</div>
+          </td>
+          <td>781.35</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/marico-M13/" target="_blank" class="mc-link-btn" title="View MARICO on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">40</td>
+          <td style="text-align:left;">
+            <strong>SOLARINDS</strong>
+            <div style="font-size:10px; color:#666;">Solar Industries India</div>
+          </td>
+          <td>19400.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/solarindustriesindia-SII04/" target="_blank" class="mc-link-btn" title="View SOLARINDS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">41</td>
+          <td style="text-align:left;">
+            <strong>WAAREEENER</strong>
+            <div style="font-size:10px; color:#666;">Waaree Energies</div>
+          </td>
+          <td>2340.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.6/10 (Raw MC Score: 75/100)">8.6</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">71</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/waareeenergies-WEL01/" target="_blank" class="mc-link-btn" title="View WAAREEENER on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">42</td>
+          <td style="text-align:left;">
+            <strong>APOLLOHOSP</strong>
+            <div style="font-size:10px; color:#666;">Apollo Hospitals Enterprises</div>
+          </td>
+          <td>8133.50</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">100</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/apollohospitalsenterprises-AHE/" target="_blank" class="mc-link-btn" title="View APOLLOHOSP on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">43</td>
+          <td style="text-align:left;">
+            <strong>BEL</strong>
+            <div style="font-size:10px; color:#666;">Bharat Electronics</div>
+          </td>
+          <td>383.10</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">83</td>
+          <td class="sub-score">53</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/bharatelectronics-BE03/" target="_blank" class="mc-link-btn" title="View BEL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">44</td>
+          <td style="text-align:left;">
+            <strong>IOC</strong>
+            <div style="font-size:10px; color:#666;">Indian Oil Corporation</div>
+          </td>
+          <td>131.34</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">88</td>
+          <td class="sub-score">40</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/indianoilcorporation-IOC/" target="_blank" class="mc-link-btn" title="View IOC on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">45</td>
+          <td style="text-align:left;">
+            <strong>LODHA</strong>
+            <div style="font-size:10px; color:#666;">Lodha Developers</div>
+          </td>
+          <td>1105.60</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">81</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">35</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/lodhadevelopers-MD03/" target="_blank" class="mc-link-btn" title="View LODHA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">46</td>
+          <td style="text-align:left;">
+            <strong>MARUTI</strong>
+            <div style="font-size:10px; color:#666;">Maruti Suzuki India</div>
+          </td>
+          <td>11386.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">74</td>
+          <td class="sub-score">94</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/marutisuzukiindia-MS24/" target="_blank" class="mc-link-btn" title="View MARUTI on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">47</td>
+          <td style="text-align:left;">
+            <strong>NAM-INDIA</strong>
+            <div style="font-size:10px; color:#666;">Nippon Life India Asset Management</div>
+          </td>
+          <td>1046.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">89</td>
+          <td class="sub-score">24</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/nipponlifeindiaassetmanagement-RNL/" target="_blank" class="mc-link-btn" title="View NAM-INDIA on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">48</td>
+          <td style="text-align:left;">
+            <strong>OIL</strong>
+            <div style="font-size:10px; color:#666;">Oil India</div>
+          </td>
+          <td>444.00</td>
+          <td><span class="signal-SHORT sig-pill">SHORT</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">76</td>
+          <td class="sub-score">69</td>
+          <td class="sub-score">82</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, Average Growth Trend Stock at Attractive Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/oilindia-OI13/" target="_blank" class="mc-link-btn" title="View OIL on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">49</td>
+          <td style="text-align:left;">
+            <strong>PIDILITIND</strong>
+            <div style="font-size:10px; color:#666;">Pidilite Industries</div>
+          </td>
+          <td>1464.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">90</td>
+          <td class="sub-score">91</td>
+          <td class="sub-score">41</td>
+          <td class="sub-score">20</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock at Reasonable Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/pidiliteindustries-PI11/" target="_blank" class="mc-link-btn" title="View PIDILITIND on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+        <tr>
+          <td style="color:#777; font-weight:bold;">50</td>
+          <td style="text-align:left;">
+            <strong>SIEMENS</strong>
+            <div style="font-size:10px; color:#666;">Siemens</div>
+          </td>
+          <td>3804.00</td>
+          <td><span class="signal-LONG sig-pill">LONG</span></td>
+          <td><span class="score-badge score-high" title="Percentile Score: 8.1/10 (Raw MC Score: 74/100)">8.1</span></td>
+          <td class="sub-score">100</td>
+          <td class="sub-score">75</td>
+          <td class="sub-score">25</td>
+          <td class="sub-score">60</td>
+          <td>—</td>
+          <td style="text-align:left; font-size:11px; max-width:320px; white-space:normal; line-height:1.3;">Superior Financial Strength, High Growth Trend Stock Priced at High Valuations</td>
+          <td><a href="https://www.moneycontrol.com/markets/stocks-score/siemens-S/" target="_blank" class="mc-link-btn" title="View SIEMENS on MoneyControl">MC &#8599;</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  <div id="scoresPagination" class="scores-pagination">
+    <button id="scoresPrevBtn" onclick="changeScoresPage(-1)">&larr; Previous</button>
+    <span id="scoresPageIndicator">Page 1 of 52</span>
+    <button id="scoresNextBtn" onclick="changeScoresPage(1)">Next &rarr;</button>
+    <span style="color:#aaa;">|</span>
+    <span style="font-size:12px; color:#555;">Show per page:</span>
+    <select id="scoresPageSizeSelect" onchange="setScoresPageSize(this.value)">
+      <option value="50" selected>50</option>
+      <option value="100">100</option>
+      <option value="250">250</option>
+      <option value="ALL">All (2593)</option>
+    </select>
+  </div>
+</div>
