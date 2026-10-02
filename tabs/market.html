@@ -1,3 +1,5 @@
+<div id="tabContent-fno" class="tab-content active">
+
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
 NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
@@ -12,10 +14,23 @@ NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly 
 >
 
 <select id="expiryFilter" onchange="applyFilters()">
-    <option value="CURRENT" selected>Current</option>
-    <option value="NEXT">Next</option>
-    <option value="FAR">Far</option>
-    <option value="ALL">All Expiries</option>
+
+    <option value="CURRENT" selected>
+        Current
+    </option>
+
+    <option value="NEXT">
+        Next
+    </option>
+
+    <option value="FAR">
+        Far
+    </option>
+
+    <option value="ALL">
+        All Expiries
+    </option>
+
 </select>
 
 <select id="rowLimit" onchange="applyFilters()">
@@ -37,17 +52,29 @@ NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly 
 <thead>
 
 <tr>
+
 <th onclick="sortTable(this, 0)" style="width: 120px">Stock</th>
+
 <th onclick="sortTable(this, 1)">Spot</th>
+
 <th onclick="sortTable(this, 2)">OI % Yesterday</th>
+
 <th onclick="sortTable(this, 3)">OI % Last Query</th>
+
 <th onclick="sortTable(this, 4)">EOM P&amp;L / Lot</th>
+
 <th onclick="sortTable(this, 5)">Signal</th>
+
 <th onclick="sortTable(this, 6)">Last Signal</th>
+
 <th onclick="sortTable(this, 7)">Share Score</th>
+
 <th onclick="sortTable(this, 8)">Final Score</th>
+
 <th onclick="sortTable(this, 9)" title="15M Standard Pivot Points Channel (S3 to R3) with 7 coloured levels">S3--S2--S1--P--R1--R2--R3</th>
+
 <th onclick="sortTable(this, 10)" title="Trade Favor: Score based on 6-floor building model (BUY: Room till Resistance % | SELL: Room till Support %)">Buy Favor</th>
+
 </tr>
 
 </thead>
@@ -13058,3 +13085,5 @@ NIFTY 50: 22421.95 | Change: -198.50 | Change %: -0.88% | Market: DOWN strongly 
 </table>
 
 </div>
+
+</div><!-- /#tabContent-fno -->
