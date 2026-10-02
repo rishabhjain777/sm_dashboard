@@ -117,6 +117,10 @@ async function switchDashboardTab(rawTabId) {
     if (CACHED_TABS[tabId]) {
         container.style.display = "block";
         container.classList.add("active");
+        container.querySelectorAll(".tab-content, [id^='tabContent-']").forEach(tc => {
+            tc.classList.add("active");
+            tc.style.display = "block";
+        });
         if (cfg.init && typeof window[cfg.init] === "function") {
             window[cfg.init]();
         }
@@ -132,10 +136,25 @@ async function switchDashboardTab(rawTabId) {
     if (loader) loader.style.display = "flex";
 
     try {
-        const resp = await fetch(cfg.path);
-        if (!resp.ok) throw new Error("HTTP " + resp.status + " fetching " + cfg.path);
-        const html = await resp.text();
-        container.innerHTML = html;
+        let tabHtml = null;
+        if (window.TAB_TEMPLATES && window.TAB_TEMPLATES[tabId]) {
+            tabHtml = window.TAB_TEMPLATES[tabId];
+        } else {
+            try {
+                const resp = await fetch(cfg.path);
+                if (resp.ok) tabHtml = await resp.text();
+            } catch(fetchErr) {
+                console.warn("fetch failed for " + cfg.path, fetchErr);
+            }
+        }
+        if (!tabHtml && window.TAB_TEMPLATES && window.TAB_TEMPLATES[tabId]) {
+            tabHtml = window.TAB_TEMPLATES[tabId];
+        }
+        if (!tabHtml) {
+            throw new Error("Unable to load content for " + cfg.title);
+        }
+
+        container.innerHTML = tabHtml;
 
         if (cfg.script) {
             await loadScript(cfg.script);
@@ -144,6 +163,10 @@ async function switchDashboardTab(rawTabId) {
         CACHED_TABS[tabId] = true;
         container.style.display = "block";
         container.classList.add("active");
+        container.querySelectorAll(".tab-content, [id^='tabContent-']").forEach(tc => {
+            tc.classList.add("active");
+            tc.style.display = "block";
+        });
 
         if (cfg.init && typeof window[cfg.init] === "function") {
             window[cfg.init]();
