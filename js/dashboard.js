@@ -141,7 +141,7 @@ async function switchDashboardTab(rawTabId) {
             tabHtml = window.TAB_TEMPLATES[tabId];
         } else {
             try {
-                const resp = await fetch(cfg.path + '?v=' + Date.now(), { cache: 'no-store' });
+                const resp = await fetch(cfg.path);
                 if (resp.ok) tabHtml = await resp.text();
             } catch(fetchErr) {
                 console.warn("fetch failed for " + cfg.path, fetchErr);
