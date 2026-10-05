@@ -18,7 +18,10 @@ function applyFilters() {
             }
 
             const sym = (r.cells[0]?.textContent || "").toUpperCase();
-            const matchesSearch = !search || sym.includes(search);
+                const indexOnly = search.trim() === "INDEX";
+                const matchesSearch = indexOnly
+                    ? r.dataset.isIndex === "true"
+                    : (!search || sym.includes(search));
 
             if (matchesSearch && shownCount < maxRows) {
                 r.style.display = "";
