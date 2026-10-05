@@ -62,9 +62,7 @@ const TAB_CONFIG = {
     'analyzer': { title: '360° Stock Analyzer', path: 'tabs/analyzer.html', script: 'js/analyzer.js', init: 'initAnalyzerTab' },
     'trade-plan': { title: 'Prediction Result & Trade Plan', path: 'tabs/trade-plan.html', script: 'js/trade-plan.js', init: 'initTradePlanTab' },
     'quality': { title: 'Stock Scores (Q / G / V / T)', path: 'tabs/quality.html', script: 'js/quality.js', init: 'initQualityTab' },
-    'analytics': { title: 'AI Quant Predictions', path: 'tabs/analytics.html', script: 'js/analytics.js', init: 'initAnalyticsTab' },
-    'retrospective': { title: 'Daily Retrospective', path: 'tabs/retrospective.html', script: 'js/analytics.js', init: 'initRetroTab' },
-    'todos': { title: 'AI Improvement To-Dos', path: 'tabs/todos.html', script: 'js/analytics.js', init: 'initTodosTab' }
+    'analytics': { title: 'AI Quant Predictions', path: 'tabs/analytics.html', script: 'js/analytics.js', init: 'initAnalyticsTab' }
 };
 
 const TAB_ALIASES = {
