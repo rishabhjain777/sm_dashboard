@@ -51,8 +51,8 @@
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
-                        <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">0.0% RED</div>
-                        <div style="font-size: 10.5px; color: #64748b;">0 Down / 0 Up</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">64.3% GREEN</div>
+                        <div style="font-size: 10.5px; color: #64748b;">137 Up / 63 Down (13 Flat)</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
@@ -275,8 +275,8 @@
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
-                        <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">0.0% RED</div>
-                        <div style="font-size: 10.5px; color: #64748b;">0 Down / 0 Up</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">0.0% GREEN</div>
+                        <div style="font-size: 10.5px; color: #64748b;">0 Up / 0 Down</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
@@ -445,7 +445,7 @@
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
                         <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">72.4% RED</div>
-                        <div style="font-size: 10.5px; color: #64748b;">152 Down / 57 Up</div>
+                        <div style="font-size: 10.5px; color: #64748b;">57 Up / 152 Down</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
@@ -633,7 +633,7 @@
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
                         <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">72.4% RED</div>
-                        <div style="font-size: 10.5px; color: #64748b;">152 Down / 57 Up</div>
+                        <div style="font-size: 10.5px; color: #64748b;">57 Up / 152 Down</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
@@ -806,8 +806,8 @@
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
-                        <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">0.0% RED</div>
-                        <div style="font-size: 10.5px; color: #64748b;">0 Down / 0 Up</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">0.0% GREEN</div>
+                        <div style="font-size: 10.5px; color: #64748b;">0 Up / 0 Down</div>
                     </div>
                     <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
                         <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
@@ -1125,6 +1125,42 @@
         } catch(e) {}
     }
 
+    function toggleTodo(todoId, isChecked) {
+        let state = {};
+        try { state = JSON.parse(localStorage.getItem("fno_retrospective_todos_state_v1") || "{}"); } catch(e) {}
+        state[todoId] = isChecked;
+        try { localStorage.setItem("fno_retrospective_todos_state_v1", JSON.stringify(state)); } catch(e) {}
+        if (typeof window.syncTodoVisuals === "function") {
+            window.syncTodoVisuals(todoId, isChecked);
+        } else {
+            ["panel", "sa", "master"].forEach(pfx => {
+                const chk = document.getElementById("chk-" + pfx + "-" + todoId);
+                const card = document.getElementById("todoCard-" + pfx + "-" + todoId);
+                const title = document.getElementById("todoTitle-" + pfx + "-" + todoId);
+                const badge = document.getElementById("todoBadge-" + pfx + "-" + todoId);
+                if (chk) chk.checked = isChecked;
+                if (card) {
+                    card.setAttribute("data-completed", isChecked ? "true" : "false");
+                    card.style.background = isChecked ? "#f0fdf4" : "#ffffff";
+                    card.style.borderColor = isChecked ? "#86efac" : "#e2e8f0";
+                }
+                if (title) {
+                    title.style.textDecoration = isChecked ? "line-through" : "none";
+                    title.style.color = isChecked ? "#15803d" : "#0f172a";
+                }
+                if (badge) {
+                    badge.innerHTML = isChecked ? "✅ Done" : "⏳ Pending";
+                    badge.style.background = isChecked ? "#dcfce7" : "#f1f5f9";
+                    badge.style.color = isChecked ? "#15803d" : "#64748b";
+                }
+            });
+        }
+        if (typeof window.recalcTodoProgress === "function") {
+            window.recalcTodoProgress();
+        }
+    }
+    window.toggleTodo = toggleTodo;
+
     (function initRetroTab() {
         try {
             const savedDate = localStorage.getItem("selectedRetroDate");
@@ -1133,6 +1169,11 @@
                 selectEl.value = savedDate;
                 switchRetroDate(savedDate);
             }
+
+            const state = JSON.parse(localStorage.getItem("fno_retrospective_todos_state_v1") || "{}");
+            Object.keys(state).forEach(id => {
+                if (state[id]) toggleTodo(id, true);
+            });
         } catch(e) {}
     })();
     </script>
