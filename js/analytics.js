@@ -9,7 +9,8 @@ function switchRetroDate(selectedDate) {
 
 const TODO_STORAGE_KEY = "fno_retrospective_todos_state_v1";
 const CUSTOM_TODO_KEY = "fno_custom_todos_v1";
-let currentStatusFilter = "all";
+let currentTodoView = "pending";
+let currentPriorityFilter = "HIGH";
 
 function getSavedTodoState() {
     try {
@@ -26,65 +27,43 @@ function saveTodoState(state) {
     } catch(e) {}
 }
 
-function getCustomTodos() {
-    try {
-        const raw = localStorage.getItem(CUSTOM_TODO_KEY);
-        return raw ? JSON.parse(raw) : [];
-    } catch(e) {
-        return [];
-    }
-}
-
-function toggleTodoStatus(todoId) {
+function toggleTodo(todoId, isChecked) {
     const state = getSavedTodoState();
-    state[todoId] = !state[todoId];
+    state[todoId] = isChecked;
     saveTodoState(state);
-    updateTodoItemUI(todoId, state[todoId]);
-    updateTodoCounters();
-}
-
-function updateTodoItemUI(todoId, isDone) {
-    const item = document.getElementById("todo-item-" + todoId);
-    const cb = document.getElementById("todo-cb-" + todoId);
-    if (!item) return;
-
-    if (isDone) {
-        item.classList.add("completed");
-        if (cb) cb.checked = true;
-    } else {
-        item.classList.remove("completed");
-        if (cb) cb.checked = false;
+    if (typeof window.syncTodoVisuals === "function") {
+        window.syncTodoVisuals(todoId, isChecked);
+    }
+    if (typeof window.recalcTodoProgress === "function") {
+        window.recalcTodoProgress();
     }
 }
 
-function updateTodoCounters() {
-    const items = document.querySelectorAll(".todo-item");
-    let completed = 0;
-    items.forEach(it => {
-        if (it.classList.contains("completed")) completed++;
-    });
-    const total = items.length;
-    const pending = total - completed;
-
-    const navBadge = document.getElementById("nav-todos-badge");
-    if (navBadge) navBadge.textContent = pending;
-}
+window.toggleTodo = toggleTodo;
 
 window.initAnalyticsTab = function() {
     // Quant UI hooks
 };
 
 window.initRetroTab = function() {
-    // Retrospective tab hooks
+    try {
+        const savedDate = localStorage.getItem("selectedRetroDate");
+        const selectEl = document.getElementById("retroDateSelect");
+        if (savedDate && document.getElementById("retroPanel-" + savedDate) && selectEl) {
+            selectEl.value = savedDate;
+            switchRetroDate(savedDate);
+        }
+        const state = getSavedTodoState();
+        Object.keys(state).forEach(id => {
+            if (state[id] && typeof window.toggleTodo === "function") window.toggleTodo(id, true);
+        });
+    } catch(e) {}
 };
 
 window.initTodosTab = function() {
-    // Restore saved todo states
-    const state = getSavedTodoState();
-    Object.keys(state).forEach(id => {
-        if (state[id]) updateTodoItemUI(id, true);
-    });
-    updateTodoCounters();
+    try {
+        if (typeof window.recalcTodoProgress === "function") window.recalcTodoProgress();
+    } catch(e) {}
 };
 
 // ── AI Quant Predictions Client Logic ──
