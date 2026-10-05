@@ -1485,7 +1485,7 @@ th:hover {
   </button>
   <button class="tab-nav-btn" id="tabBtn-prediction" onclick="switchDashboardTab('prediction')">
     &#127919; Prediction Result
-    <span class="tab-badge" id="pred-badge">3 Active</span>
+    <span class="tab-badge" id="pred-badge">0 Active</span>
   </button>
   <button class="tab-nav-btn" id="tabBtn-scores" onclick="switchDashboardTab('scores')">
     &#9733; Stock Scores (Q / G / V / T)
@@ -8907,7 +8907,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
 <!-- ── Full-width High Conviction Signals & Trade Plan ───── -->
 <div class="section" style="margin-bottom:20px;">
 <div class="high-score-box" style="width:100%;">
-<h3>&#9733; High Conviction Signals &nbsp;(3 Active &bull; Combined Score &ge; 85)</h3>
+<h3>&#9733; High Conviction Signals &nbsp;(0 Active &bull; Total Score &gt; 9.0)</h3>
 <table id="highScoreTable">
 <thead><tr>
   <th onclick="sortTable(this, 0)">Stock</th>
@@ -8916,10 +8916,10 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
   <th onclick="sortTable(this, 3)" title="Target: BUY +2.0% | SELL -2.0%">Target</th>
   <th onclick="sortTable(this, 4)" title="Volatility-adjusted Stop Loss (1.25x 15m ATR)">Stop Loss</th>
   <th onclick="sortTable(this, 5)">Signal at Call</th>
-  <th onclick="sortTable(this, 6)" title="Trade Favor Score based on 6-floor building model">Buy Favor Score</th>
-  <th onclick="sortTable(this, 7)">Final Score</th>
-  <th onclick="sortTable(this, 8)" title="MoneyControl Stock Score (Percentile 1 to 10)">Stock Score</th>
-  <th onclick="sortTable(this, 9)" title="Audit / View Column: Stock Score (Percentile) × Final Score (Out of 100)">Combined Score</th>
+  <th onclick="sortTable(this, 6)" title="Score-A: Signal Conviction Score (5 to 10)">Score-A</th>
+  <th onclick="sortTable(this, 7)" title="Score-B: Percentile Stock Score (BUY: 1-10, SELL: 11 - Stock Score)">Score-B</th>
+  <th onclick="sortTable(this, 8)" title="Score-C: Percentile AI Quant Score (BUY: 1-10, SELL: 11 - Quant Score)">Score-C</th>
+  <th onclick="sortTable(this, 9)" title="Total Score = Score-A × Score-B × Score-C × NiftyScore / 1000 (Above 9.0)">Total Score</th>
   <th onclick="sortTable(this, 10)">Signal Side</th>
   <th onclick="sortTable(this, 11)">Current Price</th>
   <th onclick="sortTable(this, 12)">Signal Change post Call</th>
@@ -8928,106 +8928,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
   <th onclick="sortTable(this, 15)" title="AI Quantitative Prediction: Intraday & Swing Models (Score 0-100, Direction & Conviction)">AI Quantitative Prediction<br><span style="font-size:10px; font-weight:normal; color:#64748b;">(Intraday &amp; Swing)</span></th>
 </tr></thead>
 <tbody>
-
-        <tr>
-          <td><b>PETRONET</b></td>
-          <td>2026-10-05 14:29</td>
-          <td>₹290.05</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹295.85'>₹295.85 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹287.15'>₹287.15 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-high">7.9</span></td>
-          <td style="font-weight:bold; color:#1e293b;">10.00</td>
-          <td><span class="score-badge score-high" title="Stock Score (Percentile): 9.6/10">9.6</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (Audit): Stock Score (9.6) × Final Score (10.00) = 96.0 / 100">96.0</span></td>
-          <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹290.00</td>
-          <td><span class="change-no">NO</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td style="font-weight:bold; color:#b91c1c;">-0.02%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('PETRONET')" style="cursor:pointer;" title="PETRONET AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: BUY (BUY: 65.0 | SELL: 9.5) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.287.5) | Trading near session highs (100% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): BUY (BUY: 65.0 | SELL: 28.1) | Conf: 74%&#10;Key: Multi-day price base above Floor Pivot | Persistent Long buildup across cycles&#10;Click to inspect deep dive">
-            <span style="display:none">65.00</span>
-            <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">65.0 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">65.0 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">74%</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
-        <tr>
-          <td><b>COALINDIA</b></td>
-          <td>2026-10-05 14:29</td>
-          <td>₹426.40</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹434.93'>₹434.93 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹422.14'>₹422.14 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-high">8.4</span></td>
-          <td style="font-weight:bold; color:#1e293b;">10.00</td>
-          <td><span class="score-badge score-high" title="Stock Score (Percentile): 8.9/10">8.9</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (Audit): Stock Score (8.9) × Final Score (10.00) = 89.0 / 100">89.0</span></td>
-          <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹425.10</td>
-          <td><span class="change-no">NO</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td style="font-weight:bold; color:#b91c1c;">-0.30%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('COALINDIA')" style="cursor:pointer;" title="COALINDIA AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: BUY (BUY: 67.0 | SELL: 9.0) | Conf: 79%&#10;Key: Trading above Central Pivot (Rs.421.0) | Trading near session highs (88% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): STRONG BUY (BUY: 84.0 | SELL: 10.5) | Conf: 93%&#10;Key: Strong structural technical posture (Tech: 100/100) | Multi-day price base above Floor Pivot&#10;Click to inspect deep dive">
-            <span style="display:none">67.00</span>
-            <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">67.0 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">79%</span>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-strong-buy" style="font-size:10px; padding:1px 6px;">84.0 STRONG BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">93%</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
-        <tr>
-          <td><b>TCS</b></td>
-          <td>2026-10-05 13:51</td>
-          <td>₹2108.80</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹2150.98'>₹2150.98 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss (1.25x 15m ATR): ₹2087.71'>₹2087.71 <span style='font-size:11px; font-weight:normal;'>(-1.00%)</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td><span class="pivot-score-badge score-fav-mid">5.0</span></td>
-          <td style="font-weight:bold; color:#1e293b;">9.00</td>
-          <td><span class="score-badge score-high" title="Stock Score (Percentile): 9.6/10">9.6</span></td>
-          <td><span style="font-weight:700; color:#15803d;" title="Combined Score (Audit): Stock Score (9.6) × Final Score (9.00) = 86.4 / 100">86.4</span></td>
-          <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹2114.40</td>
-          <td><span class="change-yes">YES</span></td>
-          <td class="signal-COVER">COVER</td>
-          <td style="font-weight:bold; color:#15803d;">+0.27%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('TCS')" style="cursor:pointer;" title="TCS AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: BUY (BUY: 66.0 | SELL: 13.5) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.2,097.6) | Trading near session highs (100% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): NEUTRAL (BUY: 45.1 | SELL: 38.2) | Conf: 40%&#10;Key: Multi-day price base above Floor Pivot | Superior Quality & Growth profile (Q: 90, G: 86)&#10;Click to inspect deep dive">
-            <span style="display:none">66.00</span>
-            <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">66.0 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-neutral" style="font-size:10px; padding:1px 6px;">45.1 NEUTRAL</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">40%</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
+<tr><td colspan='16' style='color:#888; text-align:center; padding:16px;'>No active signals above High Conviction threshold (Total Score &gt; 9.0)</td></tr>
 </tbody>
 </table>
 </div>
@@ -9082,7 +8983,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>MOTILALOFS</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>97.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>1.2</span></td>
           <td>2026-09-29 12:21</td>
           <td>₹1005.30</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹985.19'>₹985.19 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9097,7 +8998,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>BIOCON</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>99.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>0.4</span></td>
           <td>2026-09-28 14:19</td>
           <td>₹378.00</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹370.44'>₹370.44 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9112,7 +9013,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>GRASIM</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>97.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>2.8</span></td>
           <td>2026-09-29 10:48</td>
           <td>₹3108.80</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹3046.62'>₹3046.62 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9127,7 +9028,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>INDUSINDBK</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>97.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>0.6</span></td>
           <td>2026-09-29 13:53</td>
           <td>₹896.70</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹878.77'>₹878.77 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9142,7 +9043,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>ADANIENT</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>100.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>1.3</span></td>
           <td>2026-09-28 15:24</td>
           <td>₹2820.00</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹2763.60'>₹2763.60 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9157,7 +9058,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>JIOFIN</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>98.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>0.5</span></td>
           <td>2026-09-29 10:00</td>
           <td>₹216.69</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹212.36'>₹212.36 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9172,7 +9073,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>TMPV</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>100.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>0.6</span></td>
           <td>2026-09-29 10:00</td>
           <td>₹274.35</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹268.86'>₹268.86 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
@@ -9187,7 +9088,7 @@ NIFTY 50: 22555.75 | Change: 133.80 | Change %: 0.60% | Market: UP strongly | 15
           <td><b>AMBER</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
-          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>96.0</span></td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>0.6</span></td>
           <td>2026-09-28 15:24</td>
           <td>₹6999.50</td>
           <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹6859.51'>₹6859.51 <span style='font-size:11px; font-weight:normal;'>(-2.0%)</span></td>
