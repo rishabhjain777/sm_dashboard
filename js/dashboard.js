@@ -51,6 +51,9 @@ function sortTable(header, colIndex) {
 
     const tbody = table.querySelector("tbody");
     data.forEach(item => tbody.appendChild(item.row));
+    if (typeof applyFilters === "function") {
+        applyFilters();
+    }
 }
 
 // ── Tab Registry & Configuration ─────────────────────────────────────
