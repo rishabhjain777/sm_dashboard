@@ -51,6 +51,9 @@ function sortTable(header, colIndex) {
 
     const tbody = table.querySelector("tbody");
     data.forEach(item => tbody.appendChild(item.row));
+    if (typeof applyFilters === "function") {
+        applyFilters();
+    }
 }
 
 // ── Tab Registry & Configuration ─────────────────────────────────────
@@ -59,9 +62,7 @@ const TAB_CONFIG = {
     'analyzer': { title: '360° Stock Analyzer', path: 'tabs/analyzer.html', script: 'js/analyzer.js', init: 'initAnalyzerTab' },
     'trade-plan': { title: 'Prediction Result & Trade Plan', path: 'tabs/trade-plan.html', script: 'js/trade-plan.js', init: 'initTradePlanTab' },
     'quality': { title: 'Stock Scores (Q / G / V / T)', path: 'tabs/quality.html', script: 'js/quality.js', init: 'initQualityTab' },
-    'analytics': { title: 'AI Quant Predictions', path: 'tabs/analytics.html', script: 'js/analytics.js', init: 'initAnalyticsTab' },
-    'retrospective': { title: 'Daily Retrospective', path: 'tabs/retrospective.html', script: 'js/analytics.js', init: 'initRetroTab' },
-    'todos': { title: 'AI Improvement To-Dos', path: 'tabs/todos.html', script: 'js/analytics.js', init: 'initTodosTab' }
+    'analytics': { title: 'AI Quant Predictions', path: 'tabs/analytics.html', script: 'js/analytics.js', init: 'initAnalyticsTab' }
 };
 
 const TAB_ALIASES = {
@@ -137,19 +138,19 @@ async function switchDashboardTab(rawTabId) {
 
     try {
         let tabHtml = null;
-        try {
-            // Priority 1: Network fetch (always fresh on GitHub Pages)
-            const resp = await fetch(cfg.path);
-            if (resp.ok) tabHtml = await resp.text();
-        } catch(fetchErr) {
-            console.warn("fetch failed for " + cfg.path, fetchErr);
+        if (window.TAB_TEMPLATES && window.TAB_TEMPLATES[tabId]) {
+            tabHtml = window.TAB_TEMPLATES[tabId];
+        } else {
+            try {
+                const resp = await fetch(cfg.path);
+                if (resp.ok) tabHtml = await resp.text();
+            } catch(fetchErr) {
+                console.warn("fetch failed for " + cfg.path, fetchErr);
+            }
         }
-
-        // Priority 2: Offline fallback via embedded templates
         if (!tabHtml && window.TAB_TEMPLATES && window.TAB_TEMPLATES[tabId]) {
             tabHtml = window.TAB_TEMPLATES[tabId];
         }
-
         if (!tabHtml) {
             throw new Error("Unable to load content for " + cfg.title);
         }
