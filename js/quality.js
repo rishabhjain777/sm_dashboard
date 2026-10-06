@@ -30,7 +30,7 @@ function renderScoresPage() {
     const endIdx = (scoresPageSize === "ALL") ? total : Math.min(startIdx + scoresPageSize, total);
     const slice = filteredScoresData.slice(startIdx, endIdx);
 
-    let rowsHtml = "";
+    let html = "";
     for (let i = 0; i < slice.length; i++) {
         const r = slice[i];
         const sym = r.symbol || "";
@@ -62,7 +62,7 @@ function renderScoresPage() {
             return "dim-red";
         }
 
-        rowsHtml += '<tr>' +
+        html += '<tr>' +
             '<td><div style="font-weight:700;">' + sym + '</div><div style="font-size:11px; color:#64748b;">' + comp + '</div></td>' +
             '<td><span class="signal-' + sig + ' sig-pill">' + sig + '</span></td>' +
             '<td style="text-align:right;">' + spot + '</td>' +
@@ -75,7 +75,7 @@ function renderScoresPage() {
             '</tr>';
     }
 
-    tbody.innerHTML = rowsHtml;
+    tbody.innerHTML = html;
     if (indicator) {
         indicator.textContent = 'Page ' + scoresCurrentPage + ' of ' + totalPages + ' (' + total + ' stocks)';
     }
