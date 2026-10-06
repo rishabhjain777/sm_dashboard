@@ -1497,11 +1497,11 @@ th:hover {
   </button>
   <button class="tab-nav-btn" id="tabBtn-retrospective" onclick="switchDashboardTab('retrospective')">
     &#128221; Daily Retrospective
-    <span class="tab-badge">5</span>
+    <span class="tab-badge">6</span>
   </button>
   <button class="tab-nav-btn" id="tabBtn-todos" onclick="switchDashboardTab('todos')">
     &#9889; AI Improvement To-Dos
-    <span class="tab-badge" id="nav-todos-badge">14</span>
+    <span class="tab-badge" id="nav-todos-badge">18</span>
   </button>
 </div>
 
@@ -29380,7 +29380,8 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                 <span style="font-weight: 800; font-size: 13.5px; color: #0f172a;">📅 Trading Session Date:</span>
                 <select id="retroDateSelect" onchange="switchRetroDate(this.value)" style="padding: 6px 14px; font-size: 13.5px; font-weight: 700; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc; color: #0f172a; cursor: pointer;">
-                    <option value="2026-10-05">2026-10-05 (Latest)</option>
+                    <option value="2026-10-06">2026-10-06 (Latest)</option>
+<option value="2026-10-05">2026-10-05</option>
 <option value="2026-10-02">2026-10-02</option>
 <option value="2026-10-01">2026-10-01</option>
 <option value="2026-09-30">2026-09-30</option>
@@ -29390,10 +29391,10 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <span style="background: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 12px;">
-                    Incremental Archive (5 Sessions)
+                    Incremental Archive (6 Sessions)
                 </span>
                 <button onclick="switchDashboardTab('todos')" style="background: #0f172a; color: #ffffff; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;">
-                    ⚡ Open AI Improvement To-Dos Tab (<span id="btnTodoHeaderCount">19</span>) &rarr;
+                    ⚡ Open AI Improvement To-Dos Tab (<span id="btnTodoHeaderCount">23</span>) &rarr;
                 </button>
             </div>
         </div>
@@ -29401,7 +29402,281 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
         <!-- Individual Daily Panels Container -->
         <div id="retroPanelsContainer">
             
-        <div id="retroPanel-2026-10-05" class="retro-date-panel" style="display: block;">
+        <div id="retroPanel-2026-10-06" class="retro-date-panel" style="display: block;">
+            
+            <!-- Panel Header -->
+            <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 18px 22px; border-radius: 8px 8px 0 0; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <div style="font-size: 11px; background: #38bdf8; color: #0f172a; display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 800; text-transform: uppercase;">
+                        Daily Performance Retrospective
+                    </div>
+                    <div style="font-size: 20px; font-weight: 800; margin-top: 6px;">Trading Session: 2026-10-06</div>
+                    <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Generated: 2026-10-06 15:30:13 &bull; Engine: <b>gemini-3.5-flash-lite</b> (Google AI Studio)</div>
+                </div>
+                <div style="text-align: right; background: rgba(255,255,255,0.08); padding: 8px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);">
+                    <div style="font-size: 11px; color: #94a3b8;">High Conviction Filter</div>
+                    <div style="font-size: 15px; font-weight: 800; color: #38bdf8;">Combined Score &ge; 85</div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div style="padding: 16px 20px; background: #f1f5f9; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1;">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center;">
+                    <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Universe Breadth</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">62.1% GREEN</div>
+                        <div style="font-size: 10.5px; color: #64748b;">136 Up / 64 Down (19 Flat)</div>
+                    </div>
+                    <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Qualified Signals</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #0284c7; margin-top: 3px;">5 Stocks</div>
+                        <div style="font-size: 10.5px; color: #64748b;">From 5 Total</div>
+                    </div>
+                    <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">EOD Directional Profit</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #dc2626; margin-top: 3px;">0.0%</div>
+                        <div style="font-size: 10.5px; color: #64748b;">0 of 5 Profitable</div>
+                    </div>
+                    <div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                        <div style="font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase;">Target (2%) Reached</div>
+                        <div style="font-size: 17px; font-weight: 800; color: #16a34a; margin-top: 3px;">1 Stocks</div>
+                        <div style="font-size: 10.5px; color: #64748b;">1 Reached 2% Target</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div style="padding: 16px 20px; background: #ffffff; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1;">
+                <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">
+                    🎯 Selected High Conviction Signals (Combined Score &ge; 85)
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden;">
+                        <thead>
+                            <tr style="background: #0f172a; color: #ffffff; font-size: 11px; text-transform: uppercase;">
+                                <th style="padding: 8px; text-align: left;">Stock</th>
+                                <th style="padding: 8px;">Signal</th>
+                                <th style="padding: 8px;">Comb Score</th>
+                                <th style="padding: 8px;">Entry</th>
+                                <th style="padding: 8px;">EOD Close</th>
+                                <th style="padding: 8px;">EOD Return</th>
+                                <th style="padding: 8px;">Max Fav</th>
+                                <th style="padding: 8px;">Max Adv</th>
+                                <th style="padding: 8px;">Outcome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+            <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px; text-align: center;">
+                <td style="padding: 10px; font-weight: 700; text-align: left; color: #0f172a;">DIVISLAB</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 2px 6px; border-radius: 4px;">LONG</span></td>
+                <td style="padding: 10px; font-weight: 700; color: #0284c7;">98.0</td>
+                <td style="padding: 10px;">₹9380.0</td>
+                <td style="padding: 10px; font-weight: 600;">₹9196.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">-1.96%</td>
+                <td style="padding: 10px; color: #64748b; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-1.96%</td>
+                <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px; text-align: center;">
+                <td style="padding: 10px; font-weight: 700; text-align: left; color: #0f172a;">CAMS</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 2px 6px; border-radius: 4px;">LONG</span></td>
+                <td style="padding: 10px; font-weight: 700; color: #0284c7;">89.3</td>
+                <td style="padding: 10px;">₹690.5</td>
+                <td style="padding: 10px; font-weight: 600;">₹683.9</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">-0.97%</td>
+                <td style="padding: 10px; color: #64748b; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.97%</td>
+                <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px; text-align: center;">
+                <td style="padding: 10px; font-weight: 700; text-align: left; color: #0f172a;">HAL</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 2px 6px; border-radius: 4px;">LONG</span></td>
+                <td style="padding: 10px; font-weight: 700; color: #0284c7;">88.4</td>
+                <td style="padding: 10px;">₹4763.0</td>
+                <td style="padding: 10px; font-weight: 600;">₹4680.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">-1.74%</td>
+                <td style="padding: 10px; color: #64748b; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-1.95%</td>
+                <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px; text-align: center;">
+                <td style="padding: 10px; font-weight: 700; text-align: left; color: #0f172a;">INDHOTEL</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 2px 6px; border-radius: 4px;">LONG</span></td>
+                <td style="padding: 10px; font-weight: 700; color: #0284c7;">87.5</td>
+                <td style="padding: 10px;">₹729.1</td>
+                <td style="padding: 10px; font-weight: 600;">₹725.0</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">-0.56%</td>
+                <td style="padding: 10px; color: #64748b; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-0.77%</td>
+                <td style="padding: 10px;"><span style="background: #f1f5f9; color: #475569; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">⏳ ACTIVE (Open)</span></td>
+            </tr>
+            
+            <tr style="border-bottom: 1px solid #e2e8f0; font-size: 12px; text-align: center;">
+                <td style="padding: 10px; font-weight: 700; text-align: left; color: #0f172a;">RADICO</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 2px 6px; border-radius: 4px;">LONG</span></td>
+                <td style="padding: 10px; font-weight: 700; color: #0284c7;">85.7</td>
+                <td style="padding: 10px;">₹4350.8</td>
+                <td style="padding: 10px; font-weight: 600;">₹4289.1</td>
+                <td style="padding: 10px; font-weight: 700; color: #b91c1c;">-1.42%</td>
+                <td style="padding: 10px; color: #64748b; font-weight: 600;">+0.00%</td>
+                <td style="padding: 10px; color: #b91c1c; font-weight: 600;">-1.42%</td>
+                <td style="padding: 10px;"><span style="background: #dcfce7; color: #15803d; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11px;">🎯 SUCCESS (+2% Tgt)</span></td>
+            </tr>
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- AI Narrative Analysis (includes rich Section 6 Action Items Checklist) -->
+            <div style="padding: 16px 20px 24px 20px; background: #ffffff; border-left: 1px solid #cbd5e1; border-right: 1px solid #cbd5e1; border-bottom: 1px solid #cbd5e1; border-radius: 0 0 8px 8px;">
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; font-size: 13.5px; line-height: 1.6;">
+                    <h1 style='color: #0f172a; margin-top: 20px; margin-bottom: 10px; font-size: 19px;'>Daily Trading Retrospective: 2026-10-06</h1>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>1) Was the Selection Good for the Day?</h3>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Directional Alignment with Market Breadth:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The broader NSE F&O universe displayed a mildly bullish breadth overall (136 advancing vs. 64 declining stocks, or ~62.1% positive). However, the underlying benchmark Nifty condition was flat throughout the entire session across all recorded intraday snapshots. Despite the general positive breadth count, the <i>mean</i> return across the universe was actually slightly negative (-0.34%), indicating that the breadth skew was driven largely by numerous small-cap gains while heavyweights and index constituents lagged or drifted downward.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Combined Score >= 85 Filter Performance:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The high-conviction screening filter successfully isolated 5 top-tier candidate stocks (<code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">DIVISLAB</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">CAMS</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">HAL</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">INDHOTEL</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">RADICO</code>), all commanding high structural scores (<code>>85</code>). However, <b>all 5 selected signals were strictly LONG (BUY)</b>.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Selection Performance & EOD P&L:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The execution efficiency of these selections was poor on a directional basis. Out of 5 triggered trades, 0 closed in directional profit at EOD (0.0% win rate for directional continuation). Although only 1 trade formally achieved its outcome state (<code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">RADICO</code> logged as a <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">SUCCESS</code> based on its intraday trajectory hitting the target threshold earlier via a +2.08% trigger move before reversing to close down -1.42%), the remaining 4 active positions lingered underwater through market close. The selection captured stocks that suffered severe intraday degradation, showing a complete mismatch between the preliminary model score and the intraday price action.</p>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>2) What Went Well?</h3>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Noise Reduction via Quantitative Filtering:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Filtering down a 219-stock universe to just 5 high-conviction candidates successfully restricted over-trading. Capital was not indiscriminately deployed across erratic movers, keeping portfolio exposure tightly bounded.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Intraday Volatility Capture (Partial Success):</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'><code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">RADICO</code> demonstrated that the quantitative scoring model is capable of identifying pre-market/early-session momentum ignition, touching the +2.0% target boundary before the broader market/sector drag pulled it back down.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Strict Process Adherence:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The automated framework logged exact entry timestamps, prices, and end-of-day states cleanly without manual emotional interference, allowing for objective post-trade attribution.</p>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>3) What Didn't Go Well?</h3>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Severe Post-Entry Drawdowns & Active Drift:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>All 5 active positions (<code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">DIVISLAB</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">CAMS</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">HAL</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">INDHOTEL</code>, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">RADICO</code>) finished the session in negative territory at EOD (ranging from -0.56% on <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">INDHOTEL</code> to -1.96% on <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">DIVISLAB</code>). The model bought into high-scoring dips or breakouts that immediately transformed into sustained downward trends.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Asymmetric Risk-Reward Vulnerability:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>The rigid static parameters (Target: +2.0%, Stop Loss: -1.0%) exposed the portfolio to whipsaws. In a flat Nifty environment where individual high-beta stocks experience normal intraday noise bands exceeding 1.5%, a tight 1.0% stop loss is highly susceptible to premature triggering or getting trapped in standard intraday pullbacks before any real directional move can materialize. Conversely, holding active positions through EOD without time-based exits resulted in open-ended drawdowns when trades failed to reach targets.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Opening Noise Concentration:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Entries were heavily front-loaded into the morning session (e.g., <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">RADICO</code> at 09:33 AM, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">INDHOTEL</code> at 10:24 AM, <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">HAL</code> at 11:16 AM), catching the volatile opening auction noise where false breakouts are most prevalent.</p>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>4) What Can Be Done to Improve the Selection?</h3>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Volatility & ATR-Based Dynamic Stops:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Replace the rigid static 1.0% stop loss with Average True Range (ATR)-based or volatility-adjusted stop thresholds. High-beta names like <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">DIVISLAB</code> and <code style="background: #f1f5f9; padding: 2px 5px; border-radius: 3px; font-size: 12px; color: #0f172a; font-family: monospace;">HAL</code> require wider breathing room relative to their daily standard deviation to avoid being choked out by normal market micro-structure noise.</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Volume & Intraday VWAP Confirmation:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Incorporate real-time volume profile and Volume Weighted Average Price (VWAP) filters. No long trade should execute unless the price is firmly holding above the 15-minute VWAP with expanding relative volume (RVOL > 1.5).</p>
+<ul style='margin: 8px 0; padding-left: 20px;'>
+<li style='margin-bottom: 6px; color: #334155; font-size: 13.5px; line-height: 1.5;'><b>Delayed Execution Window:</b></li>
+</ul>
+<p style='margin-bottom: 8px; color: #334155; font-size: 13.5px; line-height: 1.6;'>Implement a mandatory time buffer, delaying trade executions until at least 09:45 AM or 10:00 AM. This allows the market to digest opening auction imbalances, establish clear institutional liquidity levels, and filter out fake momentum signals.</p>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>5) Recommendations to Improve</h3>
+<div style='margin: 8px 0 8px 4px; font-size: 13.5px; line-height: 1.5;'><span style='font-weight: 700; color: #0f172a;'>1. </span><b>Enforce Multi-Timeframe Trend Filters:</b> Do not take LONG signals when the broader index (Nifty/BankNifty) is flat or showing intraday weakness, regardless of individual stock scores.</div>
+<div style='margin: 8px 0 8px 4px; font-size: 13.5px; line-height: 1.5;'><span style='font-weight: 700; color: #0f172a;'>2. </span><b>Incorporate Time-Based Exits:</b> If a trade fails to reach its target or hit its stop loss within 3 hours of entry (or by 14:00 IST), force a time-based flat exit to eliminate EOD holding drag.</div>
+<div style='margin: 8px 0 8px 4px; font-size: 13.5px; line-height: 1.5;'><span style='font-weight: 700; color: #0f172a;'>3. </span><b>Dynamic Position Sizing via ATR:</b> Scale position sizes inversely to the stock's 14-period ATR to normalize risk unit exposure across diverse volatility profiles.</div>
+<hr style='border: none; border-top: 1px solid #e2e8f0; margin: 18px 0;'>
+<h3 style='color: #0f172a; margin-top: 18px; margin-bottom: 6px; font-size: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 3px;'>6) Action Items Checklist</h3>
+
+    <div style="margin-top: 24px; padding-top: 14px; border-top: 2px solid #cbd5e1;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <h3 style="color: #0f172a; margin: 0; font-size: 16px; font-weight: 800;">
+                    ⚡ 6. Action Items Checklist (Engineering To-Dos)
+                </h3>
+                <div style="font-size: 12px; color: #64748b; margin-top: 2px;">
+                    Concrete quantitative trading improvements generated by AI. Check off items as they are implemented.
+                </div>
+            </div>
+            <span style="background: #e0f2fe; color: #0369a1; padding: 3px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700;">
+                4 Tasks
+            </span>
+        </div>
+        <div style="margin-top: 10px;">
+            
+            <div class="todo-item-card" id="todoCard-panel-todo-2026-10-06-1" data-id="todo-2026-10-06-1" data-priority="HIGH" data-category="Risk Management" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+                <input type="checkbox" id="chk-panel-todo-2026-10-06-1" onchange="toggleTodo('todo-2026-10-06-1', this.checked)"  style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 7px; border-radius: 4px;">HIGH</span>
+                        <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 7px; border-radius: 4px;">Risk Management</span>
+                        <span class="todo-title" id="todoTitle-panel-todo-2026-10-06-1" style="font-weight: 700; color: #0f172a; font-size: 14px; text-decoration: none;">Implement ATR-Based Dynamic Stop Loss and Targets</span>
+                        <span class="todo-status-badge" id="todoBadge-panel-todo-2026-10-06-1" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                    </div>
+                    <div style="font-size: 12.5px; color: #475569; margin-top: 5px; line-height: 1.5;">Replace static +/- 1%/2% rules with a multiple of the 14-period ATR (e.g., 1.5x ATR stop loss, 3.0x ATR target) to account for individual stock volatility profiles.</div>
+                </div>
+            </div>
+            
+            <div class="todo-item-card" id="todoCard-panel-todo-2026-10-06-2" data-id="todo-2026-10-06-2" data-priority="HIGH" data-category="Execution Engine" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+                <input type="checkbox" id="chk-panel-todo-2026-10-06-2" onchange="toggleTodo('todo-2026-10-06-2', this.checked)"  style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 7px; border-radius: 4px;">HIGH</span>
+                        <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 7px; border-radius: 4px;">Execution Engine</span>
+                        <span class="todo-title" id="todoTitle-panel-todo-2026-10-06-2" style="font-weight: 700; color: #0f172a; font-size: 14px; text-decoration: none;">Enforce Opening Session Time Buffer (09:45 AM Lock)</span>
+                        <span class="todo-status-badge" id="todoBadge-panel-todo-2026-10-06-2" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                    </div>
+                    <div style="font-size: 12.5px; color: #475569; margin-top: 5px; line-height: 1.5;">Modify the execution engine to restrict signal triggers from firing before 09:45 AM to avoid opening auction volatility noise and false breakouts.</div>
+                </div>
+            </div>
+            
+            <div class="todo-item-card" id="todoCard-panel-todo-2026-10-06-3" data-id="todo-2026-10-06-3" data-priority="HIGH" data-category="Alpha Generation" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+                <input type="checkbox" id="chk-panel-todo-2026-10-06-3" onchange="toggleTodo('todo-2026-10-06-3', this.checked)"  style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 10.5px; padding: 2px 7px; border-radius: 4px;">HIGH</span>
+                        <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 7px; border-radius: 4px;">Alpha Generation</span>
+                        <span class="todo-title" id="todoTitle-panel-todo-2026-10-06-3" style="font-weight: 700; color: #0f172a; font-size: 14px; text-decoration: none;">Add Intraday VWAP and Relative Volume (RVOL) Filters</span>
+                        <span class="todo-status-badge" id="todoBadge-panel-todo-2026-10-06-3" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                    </div>
+                    <div style="font-size: 12.5px; color: #475569; margin-top: 5px; line-height: 1.5;">Require price to be trading above 15-minute VWAP with an RVOL > 1.5 threshold prior to confirming any high-convction LONG signal entry.</div>
+                </div>
+            </div>
+            
+            <div class="todo-item-card" id="todoCard-panel-todo-2026-10-06-4" data-id="todo-2026-10-06-4" data-priority="MEDIUM" data-category="Risk Management" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b45309; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+                <input type="checkbox" id="chk-panel-todo-2026-10-06-4" onchange="toggleTodo('todo-2026-10-06-4', this.checked)"  style="width: 18px; height: 18px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 10.5px; padding: 2px 7px; border-radius: 4px;">MEDIUM</span>
+                        <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11px; padding: 2px 7px; border-radius: 4px;">Risk Management</span>
+                        <span class="todo-title" id="todoTitle-panel-todo-2026-10-06-4" style="font-weight: 700; color: #0f172a; font-size: 14px; text-decoration: none;">Introduce Time-Based Intraday Exit Rule (Square-Off)</span>
+                        <span class="todo-status-badge" id="todoBadge-panel-todo-2026-10-06-4" style="margin-left: auto; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                    </div>
+                    <div style="font-size: 12.5px; color: #475569; margin-top: 5px; line-height: 1.5;">Add an automated EOD risk rule to square off all active intraday positions by 14:45 IST to prevent holding adverse drift into the closing auction.</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="retroPanel-2026-10-05" class="retro-date-panel" style="display: none;">
             
             <!-- Panel Header -->
             <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 18px 22px; border-radius: 8px 8px 0 0; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
@@ -30583,11 +30858,11 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
                     <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
                         <span style="font-size: 11.5px; font-weight: 700; color: #64748b; text-transform: uppercase;">Implementation:</span>
                         <span style="font-size: 13.5px; font-weight: 800; color: #0f172a;">
-                            <span id="todoCompletedCount">5</span> of <span id="todoTotalCount">19</span> Done (<span id="todoPercentText">26%</span>)
+                            <span id="todoCompletedCount">5</span> of <span id="todoTotalCount">23</span> Done (<span id="todoPercentText">22%</span>)
                         </span>
                     </div>
                     <div style="width: 100%; height: 7px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 6px;">
-                        <div id="todoProgressBar" style="width: 26%; height: 100%; background: linear-gradient(90deg, #10b981, #059669); border-radius: 999px; transition: width 0.3s ease;"></div>
+                        <div id="todoProgressBar" style="width: 22%; height: 100%; background: linear-gradient(90deg, #10b981, #059669); border-radius: 999px; transition: width 0.3s ease;"></div>
                     </div>
                 </div>
             </div>
@@ -30597,7 +30872,7 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
                 <!-- Sub-Tabs: Pending Tasks (Default Active) vs Completed Tasks -->
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <button class="todo-view-btn" id="todoTabBtn-pending" onclick="switchTodoView('pending')" style="padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 800; border: 1px solid #0f172a; background: #0f172a; color: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
-                        ⏳ Pending Tasks (<span id="todoPendingTabCount">14</span>)
+                        ⏳ Pending Tasks (<span id="todoPendingTabCount">18</span>)
                     </button>
                     <button class="todo-view-btn" id="todoTabBtn-completed" onclick="switchTodoView('completed')" style="padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 800; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
                         ✅ Completed Tasks (<span id="todoCompletedTabCount">5</span>)
@@ -30932,6 +31207,62 @@ NIFTY 50: 22717.70 | Change: 161.95 | Change %: 0.72% | Market: UP strongly | 15
                 </div>
                 <div class="todo-title" id="todoTitle-master-todo-20261005-4" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Incorporate Intraday VWAP Trend Filter</div>
                 <div class="todo-desc" style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Require price to be above/below the 15-minute rolling VWAP as a mandatory prerequisite for LONG/SHORT signal validation.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-2026-10-06-1" data-id="todo-2026-10-06-1" data-priority="HIGH" data-category="Risk Management" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-10-06-1" onchange="toggleTodo('todo-2026-10-06-1', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Risk Management</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-06</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-2026-10-06-1" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-10-06-1" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Implement ATR-Based Dynamic Stop Loss and Targets</div>
+                <div class="todo-desc" style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Replace static +/- 1%/2% rules with a multiple of the 14-period ATR (e.g., 1.5x ATR stop loss, 3.0x ATR target) to account for individual stock volatility profiles.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-2026-10-06-2" data-id="todo-2026-10-06-2" data-priority="HIGH" data-category="Execution Engine" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-10-06-2" onchange="toggleTodo('todo-2026-10-06-2', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Execution Engine</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-06</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-2026-10-06-2" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-10-06-2" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Enforce Opening Session Time Buffer (09:45 AM Lock)</div>
+                <div class="todo-desc" style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Modify the execution engine to restrict signal triggers from firing before 09:45 AM to avoid opening auction volatility noise and false breakouts.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-2026-10-06-3" data-id="todo-2026-10-06-3" data-priority="HIGH" data-category="Alpha Generation" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b91c1c; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-10-06-3" onchange="toggleTodo('todo-2026-10-06-3', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">HIGH PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Alpha Generation</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-06</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-2026-10-06-3" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-10-06-3" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Add Intraday VWAP and Relative Volume (RVOL) Filters</div>
+                <div class="todo-desc" style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Require price to be trading above 15-minute VWAP with an RVOL > 1.5 threshold prior to confirming any high-convction LONG signal entry.</div>
+            </div>
+        </div>
+        
+        <div class="todo-master-card" id="todoCard-master-todo-2026-10-06-4" data-id="todo-2026-10-06-4" data-priority="MEDIUM" data-category="Risk Management" data-date="2026-10-06" data-completed="false" style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #b45309; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); transition: all 0.2s;">
+            <input type="checkbox" class="master-todo-chk" id="chk-master-todo-2026-10-06-4" onchange="toggleTodo('todo-2026-10-06-4', this.checked)"  style="width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; margin-top: 3px; flex-shrink: 0;">
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #fef3c7; color: #b45309; font-weight: 700; font-size: 11px; padding: 2px 7px; border-radius: 4px;">MEDIUM PRIORITY</span>
+                    <span style="background: #f1f5f9; color: #475569; font-weight: 600; font-size: 11.5px; padding: 2px 8px; border-radius: 4px;">Risk Management</span>
+                    <span style="background: #e2e8f0; color: #334155; font-size: 11px; padding: 2px 7px; border-radius: 4px;">📅 2026-10-06</span>
+                    <span class="todo-status-badge" id="todoBadge-master-todo-2026-10-06-4" style="margin-left: auto; font-size: 11.5px; font-weight: 700; padding: 2px 9px; border-radius: 4px; background: #f1f5f9; color: #64748b;">⏳ Pending</span>
+                </div>
+                <div class="todo-title" id="todoTitle-master-todo-2026-10-06-4" style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-top: 6px; text-decoration: none;">Introduce Time-Based Intraday Exit Rule (Square-Off)</div>
+                <div class="todo-desc" style="font-size: 13px; color: #475569; margin-top: 4px; line-height: 1.5;">Add an automated EOD risk rule to square off all active intraday positions by 14:45 IST to prevent holding adverse drift into the closing auction.</div>
             </div>
         </div>
         
