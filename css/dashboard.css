@@ -491,9 +491,7 @@ th:hover {
     background: #2b6cb0;
 }
 
-.tab-content {
-    display: none;
-}
+.tab-content { display: none; }
 
 .tab-content.active {
     display: block;
