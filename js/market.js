@@ -4,32 +4,28 @@ function applyFilters() {
     const expiry = document.getElementById("expiryFilter")?.value || "CURRENT";
     const limit = document.getElementById("rowLimit")?.value || "5";
 
+    let shownCount = 0;
     const maxRows = limit === "ALL" ? Infinity : parseInt(limit, 10);
 
-    const tables = document.querySelectorAll("#buyTable, #sellTable, #mainTable");
-    tables.forEach(table => {
-        let shownCount = 0;
-        const rows = table.querySelectorAll("tbody tr");
-        rows.forEach(r => {
-            if (r.classList.contains("section-label")) {
-                r.style.display = "";
-                shownCount = 0;
-                return;
-            }
+    const rows = document.querySelectorAll("#mainTable tbody tr");
 
-            const sym = (r.cells[0]?.textContent || "").toUpperCase();
-                const indexOnly = search.trim() === "INDEX";
-                const matchesSearch = indexOnly
-                    ? r.dataset.isIndex === "true"
-                    : (!search || sym.includes(search));
+    rows.forEach(r => {
+        // Section-label rows: always visible, reset counter for each section
+        if (r.classList.contains("section-label")) {
+            r.style.display = "";
+            shownCount = 0; // Reset row counter for BUY SIDE and SELL SIDE
+            return;
+        }
 
-            if (matchesSearch && shownCount < maxRows) {
-                r.style.display = "";
-                shownCount++;
-            } else {
-                r.style.display = "none";
-            }
-        });
+        const sym = (r.cells[0]?.textContent || "").toUpperCase();
+        const matchesSearch = !search || sym.includes(search);
+
+        if (matchesSearch && shownCount < maxRows) {
+            r.style.display = "";
+            shownCount++;
+        } else {
+            r.style.display = "none";
+        }
     });
 
     // Expiry column visibility
@@ -46,6 +42,6 @@ window.initMarketTab = function() {
 };
 
 // Auto-run if table exists
-if (document.getElementById("buyTable") || document.getElementById("mainTable")) {
+if (document.getElementById("mainTable")) {
     applyFilters();
 }
