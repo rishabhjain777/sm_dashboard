@@ -710,6 +710,28 @@ th.desc::after {
     display: inline-block;
 }
 
+.pred-exit-profit {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #86efac;
+    display: inline-block;
+}
+
+.pred-exit-loss {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #fca5a5;
+    display: inline-block;
+}
+
 .pred-failure {
     background: #fee2e2;
     color: #b91c1c;
@@ -1521,7 +1543,7 @@ th.desc::after {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly | 15M: 0.12% MILD_UP | B: 0.60 | S: 1.00
+NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -8956,13 +8978,28 @@ NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly 
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Success Rate</div>
-      <div class="scores-kpi-val" style="color:#15803d;">70.0%</div>
-      <div class="scores-kpi-sub">14 Won / 20 Resolved</div>
+      <div class="scores-kpi-val" style="color:#15803d;">90.0%</div>
+      <div class="scores-kpi-sub">18 Won / 20 Resolved</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Target Achieved (&#10004;)</div>
-      <div class="scores-kpi-val" style="color:#15803d;">14 <span style="font-size:12px;color:#888;">Calls</span></div>
-      <div class="scores-kpi-sub">Full Target (2%) or 50% Booked (1.5%)</div>
+      <div class="scores-kpi-val" style="color:#15803d;">12 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-sub">Full Target (2.0%)</div>
+    </div>
+    <div class="scores-kpi-card">
+      <div class="scores-kpi-title">SUCCESS (50% BOOKED)</div>
+      <div class="scores-kpi-val" style="color:#15803d;">2 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-sub">Partial Target (+1.5%)</div>
+    </div>
+    <div class="scores-kpi-card">
+      <div class="scores-kpi-title">Exit at profit</div>
+      <div class="scores-kpi-val" style="color:#15803d;">4 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-sub">Market Exit with Profit</div>
+    </div>
+    <div class="scores-kpi-card">
+      <div class="scores-kpi-title">Exit as loss</div>
+      <div class="scores-kpi-val" style="color:#b91c1c;">0 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-sub">Market Exit with Loss</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Stop Loss Hit (&#10008;)</div>
@@ -9020,7 +9057,7 @@ NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly 
           <td>₹6572.50</td>
           <td style="font-weight:bold; color:#b91c1c;">-0.73%</td>
           <td style="font-weight:bold; color:#15803d;">+0.73%</td>
-          <td><span class="pred-failure">&#10008; FAILURE</span></td>
+          <td><span class="pred-exit-profit">&#10004; Exit at profit</span></td>
           <td>2026-10-08 15:14</td>
         </tr>
         
@@ -9036,7 +9073,7 @@ NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly 
           <td>₹1041.30</td>
           <td style="font-weight:bold; color:#b91c1c;">-0.10%</td>
           <td style="font-weight:bold; color:#15803d;">+0.10%</td>
-          <td><span class="pred-failure">&#10008; FAILURE</span></td>
+          <td><span class="pred-exit-profit">&#10004; Exit at profit</span></td>
           <td>2026-10-08 15:14</td>
         </tr>
         
@@ -9052,7 +9089,7 @@ NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly 
           <td>₹1321.50</td>
           <td style="font-weight:bold; color:#b91c1c;">-0.46%</td>
           <td style="font-weight:bold; color:#15803d;">+0.46%</td>
-          <td><span class="pred-failure">&#10008; FAILURE</span></td>
+          <td><span class="pred-exit-profit">&#10004; Exit at profit</span></td>
           <td>2026-10-08 15:14</td>
         </tr>
         
@@ -9068,7 +9105,7 @@ NIFTY 50: 22216.00 | Change: -387.05 | Change %: -1.71% | Market: DOWN strongly 
           <td>₹6572.50</td>
           <td style="font-weight:bold; color:#b91c1c;">-0.73%</td>
           <td style="font-weight:bold; color:#15803d;">+0.73%</td>
-          <td><span class="pred-failure">&#10008; FAILURE</span></td>
+          <td><span class="pred-exit-profit">&#10004; Exit at profit</span></td>
           <td>2026-10-08 15:14</td>
         </tr>
         
