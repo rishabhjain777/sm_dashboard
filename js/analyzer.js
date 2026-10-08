@@ -527,6 +527,9 @@ window.onAnalyzerSearchInput = onAnalyzerSearchInput;
 window.onAnalyzerSearchKeyDown = onAnalyzerSearchKeyDown;
 window.triggerAnalyzerSearch = triggerAnalyzerSearch;
 window.selectAnalyzerStock = selectAnalyzerStock;
+window.renderFullDossierHtml = renderFullDossierHtml;
+window.computeUnifiedVerdict = computeUnifiedVerdict;
+window.renderScoreBar = renderScoreBar;
 window.initAnalyzerDefault = initAnalyzerDefault;
 window.initAnalyzerTab = initAnalyzerDefault;
 
