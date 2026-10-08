@@ -208,6 +208,18 @@ th:hover {
     background: #444;
 }
 
+th.asc::after {
+    content: " ▲";
+    font-size: 9px;
+    opacity: 0.8;
+}
+
+th.desc::after {
+    content: " ▼";
+    font-size: 9px;
+    opacity: 0.8;
+}
+
 .signal-LONG {
     background: #b7efb7;
     font-weight: bold;
@@ -1459,6 +1471,18 @@ th:hover {
 .tab-content.active .tab-content,
 .tab-content.active [id^="tabContent-"] {
     display: block !important;
+}
+
+/* ── Table Column Sort Indicators ── */
+th.asc::after {
+    content: " ▲";
+    font-size: 9px;
+    opacity: 0.8;
+}
+th.desc::after {
+    content: " ▼";
+    font-size: 9px;
+    opacity: 0.8;
 }
 
 /* ── Tab Lazy Loader Styles ── */
