@@ -698,6 +698,28 @@ th.desc::after {
     display: inline-block;
 }
 
+.pred-exit-profit {
+    background: #dcfce7;
+    color: #15803d;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #86efac;
+    display: inline-block;
+}
+
+.pred-exit-loss {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    border: 1px solid #fca5a5;
+    display: inline-block;
+}
+
 .pred-failure {
     background: #fee2e2;
     color: #b91c1c;
