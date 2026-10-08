@@ -41,242 +41,258 @@ function applyFilters() {
     });
 }
 
-// ── 360° Stock Analyzer Modal & Sharing Controller ───────────────────
-if (typeof loadScript === "function") {
-    loadScript("js/analyzer.js").catch(() => {});
-}
+// ── 360° Stock Intelligence Modal & Share Controller ─────────────────
+window.currentModalCommodity = "RELIANCE";
+window.currentModalStock = "RELIANCE";
 
-async function ensureAnalyzerLoaded() {
-    if (typeof renderFullDossierHtml === "function" && window.ANALYZER_DATA && Object.keys(window.ANALYZER_DATA).length > 0) {
+async function ensureAnalyzerDataLoaded() {
+    if (window.ANALYZER_DATA && Object.keys(window.ANALYZER_DATA).length > 0 && typeof window.renderFullDossierHtml === "function") {
         return true;
     }
     if (typeof loadScript === "function") {
         try {
             await loadScript("js/analyzer.js");
             return true;
-        } catch (e) {
-            console.error("Failed to load analyzer.js:", e);
+        } catch(e) {
+            console.error("Failed to load js/analyzer.js", e);
         }
     }
     return false;
 }
 
-function ensureAnalyzerModalInDOM() {
-    let modal = document.getElementById("analyzerModal");
-    if (!modal) {
-        modal = document.createElement("div");
-        modal.id = "analyzerModal";
-        modal.className = "analyzer-modal-backdrop";
-        modal.style.display = "none";
-        modal.onclick = handleAnalyzerModalBackdrop;
-        modal.innerHTML = `
-          <div class="analyzer-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="analyzerModalTitle">
-            <div class="analyzer-modal-header">
-              <div class="analyzer-modal-title-wrap">
-                <span class="analyzer-modal-icon">&#128373;</span>
-                <div>
-                  <h3 id="analyzerModalTitle" class="analyzer-modal-title">360° Stock Analysis Dossier</h3>
-                  <div id="analyzerModalSubtitle" class="analyzer-modal-subtitle">Synthesized Multi-Factor Intelligence</div>
-                </div>
-              </div>
-              <div class="analyzer-modal-actions">
-                <button type="button" class="analyzer-modal-btn analyzer-modal-share-btn" onclick="shareStockAnalysis()" title="Share or Copy Analysis Summary">
-                  &#128203; Share Result
-                </button>
-                <button type="button" class="analyzer-modal-close" onclick="closeStockAnalyzerModal()" title="Close (Esc)">
-                  &times;
-                </button>
-              </div>
-            </div>
-            <div id="analyzerModalBody" class="analyzer-modal-body">
-              <div class="tab-loading-spinner" style="padding:40px 20px;">
-                <div class="tab-spinner"></div>
-                <div>Synthesizing stock intelligence...</div>
-              </div>
-            </div>
-          </div>
-          <div id="analyzerShareToast" class="analyzer-toast" style="display:none;"></div>
-        `;
-        document.body.appendChild(modal);
+function getFirstVisibleStock() {
+    const searchVal = (document.getElementById("search")?.value || "").trim().toUpperCase();
+    if (searchVal && window.ANALYZER_DATA && window.ANALYZER_DATA[searchVal]) {
+        return searchVal;
     }
-    return modal;
-}
-
-async function openStockAnalyzerModal(symbol) {
-    const sym = (symbol || "").trim().toUpperCase();
-    if (!sym) return;
-
-    const modal = ensureAnalyzerModalInDOM();
-    const modalBody = document.getElementById("analyzerModalBody");
-    const modalTitle = document.getElementById("analyzerModalTitle");
-    const modalSubtitle = document.getElementById("analyzerModalSubtitle");
-
-    if (modalTitle) modalTitle.textContent = sym + " — 360° Stock Analysis";
-    if (modalSubtitle) modalSubtitle.textContent = "Loading multi-factor confluence dossier...";
-    if (modalBody) {
-        modalBody.innerHTML = `
-          <div class="tab-loading-spinner" style="padding:40px 20px;">
-            <div class="tab-spinner"></div>
-            <div>Synthesizing stock intelligence for ${sym}...</div>
-          </div>
-        `;
-    }
-
-    modal.style.display = "flex";
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden";
-
-    await ensureAnalyzerLoaded();
-
-    const data = (window.ANALYZER_DATA && window.ANALYZER_DATA[sym]) ? window.ANALYZER_DATA[sym] : null;
-    window._currentModalStockData = data;
-
-    if (!data) {
-        if (modalBody) {
-            modalBody.innerHTML = `
-              <div style="padding: 40px 20px; text-align: center; color: #64748b;">
-                <div style="font-size: 32px; margin-bottom: 12px;">⚠️</div>
-                <div style="font-size: 16px; font-weight: 700; color: #1e293b;">Stock '${sym}' not found in analyzer database</div>
-                <div style="font-size: 13px; margin-top: 6px;">Multi-factor intelligence payload will update in the next sync cycle.</div>
-              </div>
-            `;
-        }
-        return;
-    }
-
-    const company = data.company_name || sym;
-    if (modalTitle) modalTitle.textContent = sym + " (" + company + ")";
-    if (modalSubtitle) modalSubtitle.textContent = "Synthesized Confluence: F&O Flow + Quality Scores + AI Quant + Actionable Verdict";
-
-    if (typeof renderFullDossierHtml === "function") {
-        modalBody.innerHTML = renderFullDossierHtml(data);
-    } else {
-        modalBody.innerHTML = `<pre style="padding:15px; font-size:12px;">` + JSON.stringify(data, null, 2) + `</pre>`;
-    }
-}
-
-function closeStockAnalyzerModal() {
-    const modal = document.getElementById("analyzerModal");
-    if (modal) {
-        modal.classList.remove("open");
-        modal.style.display = "none";
-    }
-    document.body.style.overflow = "";
-}
-
-function handleAnalyzerModalBackdrop(event) {
-    if (event.target && event.target.id === "analyzerModal") {
-        closeStockAnalyzerModal();
-    }
-}
-
-if (!window._analyzerEscAttached) {
-    window._analyzerEscAttached = true;
-    document.addEventListener("keydown", function(e) {
-        if (e.key === "Escape") {
-            const modal = document.getElementById("analyzerModal");
-            if (modal && modal.style.display !== "none") {
-                closeStockAnalyzerModal();
+    for (const tableId of ["buyTable", "sellTable", "mainTable"]) {
+        const table = document.getElementById(tableId);
+        if (!table) continue;
+        const rows = table.querySelectorAll("tbody tr");
+        for (const r of rows) {
+            if (r.style.display !== "none" && r.cells.length > 0) {
+                const sym = r.cells[0].textContent.trim().toUpperCase();
+                if (sym && window.ANALYZER_DATA && window.ANALYZER_DATA[sym]) {
+                    return sym;
+                }
             }
         }
-    });
+    }
+    return "RELIANCE";
 }
+const getFirstVisibleCommodity = getFirstVisibleStock;
 
-function shareStockAnalysis() {
-    const d = window._currentModalStockData;
-    if (!d) return;
+function populateModalCommodityControls() {
+    if (!window.ANALYZER_DATA) return;
+    const symbols = Object.keys(window.ANALYZER_DATA);
+    if (!symbols.length) return;
 
-    const sym = d.symbol;
-    const spot = (d.spot && !isNaN(d.spot)) ? ("₹" + Number(d.spot).toFixed(2)) : (d.spot || "NA");
-    const sig = d.fno ? d.fno.signal : "N/A";
-    const sc = (d.score && d.score.total_score != null) ? (Number(d.score.total_score).toFixed(1) + "/10") : "N/A";
-    const quant = (d.quant && d.quant.intraday_signal) ? (d.quant.intraday_signal + (d.quant.intraday_conf ? ` (${Number(d.quant.intraday_conf).toFixed(1)}%)` : "")) : "N/A";
-
-    let verdictText = "N/A";
-    let strategyText = "";
-    if (typeof computeUnifiedVerdict === "function") {
-        const v = computeUnifiedVerdict(d.fno, d.score, d.quant);
-        verdictText = `${v.label} (${v.score}/100)`;
-        strategyText = v.strategy;
+    const sel = document.getElementById("modalCommoditySelect") || document.getElementById("modalStockSelect");
+    if (sel && sel.options.length !== symbols.length) {
+        sel.innerHTML = "";
+        symbols.forEach(s => {
+            const opt = document.createElement("option");
+            opt.value = s;
+            opt.textContent = s;
+            sel.appendChild(opt);
+        });
     }
 
-    const shareContent = [
-        `📊 360° Stock Intelligence: ${sym}`,
-        `• Spot: ${spot}`,
-        `• Market Signal (F&O): ${sig}`,
-        `• Stock Score (QGVT): ${sc}`,
-        `• AI Quant Stance: ${quant}`,
-        `• Composite Verdict: ${verdictText}`,
-        strategyText ? `• Strategy: ${strategyText}` : "",
-        `Generated from NSE F&O Market Dashboard`
-    ].filter(Boolean).join("\n");
+    const chipsWrap = document.getElementById("modalCommodityChips") || document.getElementById("modalStockChips");
+    if (chipsWrap && !chipsWrap.hasChildNodes()) {
+        chipsWrap.innerHTML = "";
+        symbols.slice(0, 16).forEach(s => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "modal-chip";
+            btn.dataset.sym = s;
+            btn.textContent = s;
+            btn.onclick = () => switchModalCommodity(s);
+            chipsWrap.appendChild(btn);
+        });
+    }
+}
+const populateModalStockControls = populateModalCommodityControls;
+
+async function openMarketAnalyzerModal(symbol) {
+    await ensureAnalyzerDataLoaded();
+
+    let targetSym = symbol ? symbol.trim().toUpperCase() : getFirstVisibleStock();
+    if (!window.ANALYZER_DATA || !window.ANALYZER_DATA[targetSym]) {
+        if (window.ANALYZER_DATA) {
+            const keys = Object.keys(window.ANALYZER_DATA);
+            if (keys.length > 0) targetSym = keys[0];
+        }
+    }
+
+    populateModalCommodityControls();
+    switchModalCommodity(targetSym);
+
+    const modal = document.getElementById("marketAnalyzerModal") || document.getElementById("analyzerModal");
+    if (modal) {
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+}
+const openStockAnalyzerModal = openMarketAnalyzerModal;
+
+function switchModalCommodity(symbol) {
+    if (!symbol) return;
+    const sym = symbol.trim().toUpperCase();
+    window.currentModalCommodity = sym;
+    window.currentModalStock = sym;
+
+    const sel = document.getElementById("modalCommoditySelect") || document.getElementById("modalStockSelect");
+    if (sel && sel.value !== sym) sel.value = sym;
+
+    document.querySelectorAll(".modal-chip").forEach(c => {
+        if (c.dataset.sym === sym) {
+            c.classList.add("active");
+        } else {
+            c.classList.remove("active");
+        }
+    });
+
+    const body = document.getElementById("modalDossierBody") || document.getElementById("analyzerModalBody");
+    if (!body) return;
+
+    const d = window.ANALYZER_DATA ? window.ANALYZER_DATA[sym] : null;
+    if (d && typeof window.renderFullDossierHtml === "function") {
+        body.innerHTML = window.renderFullDossierHtml(d);
+    } else {
+        body.innerHTML = '<div style="padding:40px; text-align:center; color:#888;">No analyzer intelligence available for ' + sym + '</div>';
+    }
+}
+const switchModalStock = switchModalCommodity;
+
+function closeMarketAnalyzerModal(event) {
+    if (event && event.target && event.target.id !== "marketAnalyzerModal" && event.target.id !== "analyzerModal" && !event.target.classList.contains("modal-close-btn") && !event.target.classList.contains("analyzer-modal-close")) {
+        return;
+    }
+    const modal = document.getElementById("marketAnalyzerModal") || document.getElementById("analyzerModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+}
+const closeStockAnalyzerModal = closeMarketAnalyzerModal;
+
+function generateDossierShareText(sym) {
+    const d = window.ANALYZER_DATA ? window.ANALYZER_DATA[sym] : null;
+    if (!d) return "Stock " + sym + " intelligence not found.";
+
+    const name = d.company_name || sym;
+    const spot = (d.spot !== null && d.spot !== undefined && d.spot !== "NA" && !isNaN(d.spot))
+        ? ("₹" + Number(d.spot).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+        : (d.spot || "NA");
+
+    const fnoSig = d.fno ? d.fno.signal : "NA";
+    const finalScore = d.fno && d.fno.final_score !== null ? d.fno.final_score : "—";
+    const pivot = d.fno && d.fno.pivot !== null ? ("₹" + Number(d.fno.pivot).toFixed(2)) : "—";
+    const r1 = d.fno && d.fno.r1 !== null ? ("₹" + Number(d.fno.r1).toFixed(2)) : "—";
+    const s1 = d.fno && d.fno.s1 !== null ? ("₹" + Number(d.fno.s1).toFixed(2)) : "—";
+    const oiYest = d.fno && d.fno.oi_yesterday !== null ? (d.fno.oi_yesterday + "%") : "—";
+    const oiIntra = d.fno && d.fno.oi_last_query !== null ? (d.fno.oi_last_query + "%") : "—";
+
+    const mcScore = d.score && d.score.total_score !== null ? (Number(d.score.total_score).toFixed(1) + "/10") : "—";
+    const aiSig = d.quant && d.quant.intraday_signal ? d.quant.intraday_signal : "—";
+    const aiConf = d.quant && d.quant.intraday_conf !== null ? (Number(d.quant.intraday_conf).toFixed(1) + "%") : "—";
+    const risk = d.quant && d.quant.risk_level ? d.quant.risk_level : "—";
+
+    let verdictLabel = "NEUTRAL";
+    let verdictScore = 50;
+    let strategy = "";
+    if (typeof window.computeUnifiedVerdict === "function") {
+        const v = window.computeUnifiedVerdict(d.fno, d.score, d.quant);
+        verdictLabel = v.label;
+        verdictScore = v.score;
+        strategy = v.strategy;
+    }
+
+    const lines = [
+        "📊 NSE 360° STOCK INTELLIGENCE: " + sym + (name !== sym ? (" (" + name + ")") : ""),
+        "💰 Spot Price: " + spot,
+        "--------------------------------------------------",
+        "🎯 Composite Stance: " + verdictLabel + " (" + verdictScore + "/100)",
+        "📈 F&O Market Signal: " + fnoSig + " | Final Score: " + finalScore + "/10",
+        "⚡ AI Quant Model: " + aiSig + " (" + aiConf + " Confidence) | Risk: " + risk,
+        "⭐ QGVT Stock Score: " + mcScore,
+        "📍 Key Levels: Pivot " + pivot + " | R1: " + r1 + " | S1: " + s1,
+        "🔄 OI Shifts: Yesterday " + oiYest + " | Intraday " + oiIntra,
+        strategy ? ("💡 Actionable Strategy: " + strategy) : "",
+        "--------------------------------------------------",
+        "Live NSE F&O Dashboard: " + window.location.href.split("#")[0]
+    ].filter(Boolean);
+
+    return lines.join("\n");
+}
+
+async function shareCurrentModalDossier() {
+    const sym = window.currentModalCommodity || window.currentModalStock || "RELIANCE";
+    const text = generateDossierShareText(sym);
 
     if (navigator.share) {
-        navigator.share({
-            title: `360° Stock Analysis - ${sym}`,
-            text: shareContent
-        }).then(() => {
-            showShareToast("Shared successfully!");
-        }).catch(() => {
-            copyShareText(shareContent);
-        });
-    } else {
-        copyShareText(shareContent);
+        try {
+            await navigator.share({
+                title: "NSE 360° Dossier: " + sym,
+                text: text
+            });
+            showShareToast("✓ Shared successfully!");
+            return;
+        } catch(e) {}
     }
-}
 
-function copyShareText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-            showShareToast("✅ Analysis summary copied to clipboard!");
-        }).catch(() => {
-            fallbackCopy(text);
-        });
-    } else {
-        fallbackCopy(text);
+        try {
+            await navigator.clipboard.writeText(text);
+            showShareToast("✓ Copied Dossier to clipboard!");
+            return;
+        } catch(e) {}
     }
-}
 
-function fallbackCopy(text) {
     const ta = document.createElement("textarea");
     ta.value = text;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
     document.body.appendChild(ta);
     ta.select();
-    try {
-        document.execCommand("copy");
-        showShareToast("✅ Analysis summary copied to clipboard!");
-    } catch (e) {
-        prompt("Copy stock analysis:", text);
-    }
+    document.execCommand("copy");
     document.body.removeChild(ta);
+    showShareToast("✓ Copied Dossier to clipboard!");
 }
+const shareStockAnalysis = shareCurrentModalDossier;
 
 function showShareToast(msg) {
-    let toast = document.getElementById("analyzerShareToast");
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "analyzerShareToast";
-        toast.className = "analyzer-toast";
-        document.body.appendChild(toast);
+    let t = document.getElementById("shareToast") || document.getElementById("analyzerShareToast");
+    if (!t) {
+        t = document.createElement("div");
+        t.id = "shareToast";
+        t.className = "share-toast";
+        document.body.appendChild(t);
     }
-    toast.textContent = msg;
-    toast.style.display = "block";
-    toast.classList.add("show");
-    setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => { toast.style.display = "none"; }, 300);
-    }, 2500);
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(() => { t.classList.remove("show"); }, 2500);
 }
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        const modal = document.getElementById("marketAnalyzerModal") || document.getElementById("analyzerModal");
+        if (modal && modal.style.display !== "none") {
+            closeMarketAnalyzerModal();
+        }
+    }
+});
 
 window.initMarketTab = function() {
     applyFilters();
 };
 
+window.openMarketAnalyzerModal = openMarketAnalyzerModal;
 window.openStockAnalyzerModal = openStockAnalyzerModal;
+window.closeMarketAnalyzerModal = closeMarketAnalyzerModal;
 window.closeStockAnalyzerModal = closeStockAnalyzerModal;
-window.handleAnalyzerModalBackdrop = handleAnalyzerModalBackdrop;
+window.switchModalCommodity = switchModalCommodity;
+window.switchModalStock = switchModalStock;
+window.shareCurrentModalDossier = shareCurrentModalDossier;
 window.shareStockAnalysis = shareStockAnalysis;
 
 // Auto-run if table exists
