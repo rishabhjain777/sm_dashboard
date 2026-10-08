@@ -754,6 +754,38 @@ th.desc::after {
     display: inline-block;
 }
 
+/* ── Resolved Predictions Date Filter Bar ───────── */
+.prediction-filter-bar {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.prediction-filter-bar select,
+.prediction-filter-bar input[type="date"],
+.prediction-filter-bar button {
+    font-family: inherit;
+    transition: all 0.15s ease;
+}
+
+.prediction-filter-bar select:hover,
+.prediction-filter-bar input[type="date"]:hover {
+    border-color: #94a3b8;
+}
+
+.prediction-filter-bar button:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
 /* ── 360° Unified Stock Analyzer Styles ───────────── */
 .analyzer-hero-card {
     background: #ffffff;
@@ -1543,7 +1575,7 @@ th.desc::after {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly | 15M: 0.07% MILD_UP | B: 0.60 | S: 1.00
+NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
