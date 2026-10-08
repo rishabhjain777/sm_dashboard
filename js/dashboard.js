@@ -65,6 +65,9 @@ function sortTable(header, colIndex) {
     if (typeof applyFilters === "function") {
         applyFilters();
     }
+    if (typeof applyPredictionDateFilter === "function") {
+        applyPredictionDateFilter();
+    }
 }
 
 // ── Tab Registry & Configuration ─────────────────────────────────────
