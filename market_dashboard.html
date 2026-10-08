@@ -8973,40 +8973,80 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
   <div class="scores-kpi-row" style="margin-bottom:16px;">
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Total Predictions</div>
-      <div class="scores-kpi-val">20 <span style="font-size:12px;color:#888;">Calls</span></div>
-      <div class="scores-kpi-sub">Target: 2% | Dynamic 1.25x ATR SL</div>
+      <div class="scores-kpi-val" id="kpi-total-val">20 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-sub" id="kpi-total-sub">Target: 2% | Dynamic 1.25x ATR SL</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Success Rate</div>
-      <div class="scores-kpi-val" style="color:#15803d;">90.0%</div>
-      <div class="scores-kpi-sub">18 Won / 20 Resolved</div>
+      <div class="scores-kpi-val" id="kpi-winrate-val" style="color:#15803d;">90.0%</div>
+      <div class="scores-kpi-sub" id="kpi-winrate-sub">18 Won / 20 Resolved</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Target Achieved (&#10004;)</div>
-      <div class="scores-kpi-val" style="color:#15803d;">12 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-tgt-val" style="color:#15803d;">12 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">Full Target (2.0%)</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">SUCCESS (50% BOOKED)</div>
-      <div class="scores-kpi-val" style="color:#15803d;">2 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-pb-val" style="color:#15803d;">2 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">Partial Target (+1.5%)</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Exit at profit</div>
-      <div class="scores-kpi-val" style="color:#15803d;">4 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-profit-val" style="color:#15803d;">4 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">Market Exit with Profit</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Exit as loss</div>
-      <div class="scores-kpi-val" style="color:#b91c1c;">0 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-loss-val" style="color:#b91c1c;">0 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">Market Exit with Loss</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Stop Loss Hit (&#10008;)</div>
-      <div class="scores-kpi-val" style="color:#b91c1c;">1 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-sl-val" style="color:#b91c1c;">1 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">ATR SL Hit (1 at Break-Even)</div>
     </div>
   </div>
+
+  
+  <!-- ── Resolved Predictions Date Filter Bar ── -->
+  <div class="prediction-filter-bar" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,0.04); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="font-size:13px; font-weight:700; color:#1e293b;">📅 Filter by Date:</span>
+        <select id="predDateSelect" onchange="applyPredictionDateFilter()" style="padding:6px 12px; font-size:13px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc; font-weight:600; color:#0f172a; cursor:pointer;">
+          <option value="ALL">All Dates (All History)</option>
+          <option value="2026-10-08">2026-10-08 (Today)</option>
+<option value="2026-10-07">2026-10-07</option>
+<option value="2026-10-06">2026-10-06</option>
+
+        </select>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="font-size:12px; color:#64748b; font-weight:600;">Custom Date:</span>
+        <input type="date" id="predCustomDate" onchange="onPredictionCustomDateChange(this.value)" style="padding:5px 8px; font-size:12px; border:1px solid #cbd5e1; border-radius:6px; background:#ffffff; color:#0f172a; cursor:pointer;" title="Pick any specific date">
+      </div>
+
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span style="font-size:12px; color:#64748b; font-weight:600;">Filter On:</span>
+        <select id="predDateField" onchange="applyPredictionDateFilter()" style="padding:5px 8px; font-size:12px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc; color:#334155; cursor:pointer;">
+          <option value="trigger">Triggered Date</option>
+          <option value="entry">Entry Date</option>
+          <option value="both">Either (Triggered or Entry)</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="resetPredictionDateFilter()" style="padding:5px 12px; font-size:12px; font-weight:700; border:1px solid #cbd5e1; border-radius:6px; background:#f1f5f9; color:#475569; cursor:pointer; transition:all 0.15s ease;">
+        Reset
+      </button>
+    </div>
+
+    <div id="predFilterSummary" style="font-size:12px; font-weight:700; color:#0284c7; background:#f0f9ff; border:1px solid #bae6fd; padding:5px 12px; border-radius:6px;">
+      Showing all 20 predictions
+    </div>
+  </div>
+
 
   <div class="section">
     <table id="predictionTable">
@@ -9029,7 +9069,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
       </thead>
       <tbody>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="SUCCESS (50% BOOKED)" data-profit="0.75">
           <td><b>RVNL</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9045,7 +9085,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 15:14</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="Exit at profit" data-profit="0.73">
           <td><b>AMBER</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9061,7 +9101,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 15:14</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="Exit at profit" data-profit="0.1">
           <td><b>360ONE</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9077,7 +9117,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 15:14</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="Exit at profit" data-profit="0.46">
           <td><b>MFSL</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9093,7 +9133,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 15:14</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="Exit at profit" data-profit="0.73">
           <td><b>AMBER</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9109,7 +9149,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 15:14</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>IRFC</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9125,7 +9165,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 14:48</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-08" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>AMBER</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9141,7 +9181,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 12:33</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>BIOCON</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9157,7 +9197,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 11:22</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>BIOCON</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9173,7 +9213,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 11:22</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>GRASIM</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9189,7 +9229,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 10:40</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>JSWENERGY</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9205,7 +9245,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 09:25</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>RVNL</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9221,7 +9261,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 09:24</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-08" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>CHOLAFIN</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9237,7 +9277,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-08 09:16</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-07" data-outcome="BREAK_EVEN" data-profit="0.0">
           <td><b>HAL</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -9253,7 +9293,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 13:11</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-07" data-trigger-date="2026-10-07" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>ADANIENT</b></td>
           <td><span class="badge-sell">SELL</span></td>
           <td class="signal-SHORT">SHORT</td>
@@ -9269,7 +9309,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 13:08</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-07" data-outcome="SUCCESS (50% BOOKED)" data-profit="0.75">
           <td><b>INDHOTEL</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -9285,7 +9325,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 12:25</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-07" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>CAMS</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -9301,7 +9341,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 10:55</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-07" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>DIVISLAB</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -9317,7 +9357,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 09:17</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-07" data-outcome="FAILURE" data-profit="-1.22">
           <td><b>ICICIGI</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -9333,7 +9373,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
           <td>2026-10-07 09:15</td>
         </tr>
         
-        <tr>
+        <tr data-entry-date="2026-10-06" data-trigger-date="2026-10-06" data-outcome="SUCCESS" data-profit="1.75">
           <td><b>RADICO</b></td>
           <td><span class="badge-buy">BUY</span></td>
           <td class="signal-LONG">LONG</td>
@@ -32584,6 +32624,186 @@ document.addEventListener("click", function(e) {
         wrap.classList.toggle("active-touch");
     }
 });
+
+// ── Prediction Table Date Filter Logic ──
+function populatePredictionDateOptions() {
+    const dateSelect = document.getElementById("predDateSelect");
+    const table = document.getElementById("predictionTable");
+    if (!dateSelect || !table) return;
+
+    const existingVals = new Set(Array.from(dateSelect.options).map(o => o.value));
+    const dates = new Set();
+    table.querySelectorAll("tbody tr:not(.no-pred-row)").forEach(r => {
+        const tDate = r.getAttribute("data-trigger-date") || (r.cells[12] ? r.cells[12].textContent.trim().slice(0, 10) : "");
+        const eDate = r.getAttribute("data-entry-date") || (r.cells[4] ? r.cells[4].textContent.trim().slice(0, 10) : "");
+        if (tDate && /^\d{4}-\d{2}-\d{2}$/.test(tDate)) dates.add(tDate);
+        if (eDate && /^\d{4}-\d{2}-\d{2}$/.test(eDate)) dates.add(eDate);
+    });
+
+    const sortedDates = Array.from(dates).sort().reverse();
+    const todayStr = new Date().toISOString().slice(0, 10);
+
+    sortedDates.forEach(d => {
+        if (!existingVals.has(d)) {
+            const opt = document.createElement("option");
+            opt.value = d;
+            opt.textContent = (d === todayStr) ? `${d} (Today)` : d;
+            dateSelect.appendChild(opt);
+            existingVals.add(d);
+        }
+    });
+}
+
+function applyPredictionDateFilter() {
+    const dateSelect = document.getElementById("predDateSelect");
+    const customDate = document.getElementById("predCustomDate");
+    const dateField = document.getElementById("predDateField");
+    const table = document.getElementById("predictionTable");
+    const summary = document.getElementById("predFilterSummary");
+    if (!table) return;
+
+    let selectedDate = dateSelect ? dateSelect.value : "ALL";
+    const matchField = dateField ? dateField.value : "trigger";
+
+    const rows = table.querySelectorAll("tbody tr:not(.no-pred-row)");
+    let visibleCount = 0;
+    let tgtCount = 0;
+    let pbCount = 0;
+    let exitProfitCount = 0;
+    let exitLossCount = 0;
+    let slCount = 0;
+    let beCount = 0;
+
+    rows.forEach(r => {
+        const tDate = r.getAttribute("data-trigger-date") || (r.cells[12] ? r.cells[12].textContent.trim().slice(0, 10) : "");
+        const eDate = r.getAttribute("data-entry-date") || (r.cells[4] ? r.cells[4].textContent.trim().slice(0, 10) : "");
+        const out = r.getAttribute("data-outcome") || (r.cells[11] ? r.cells[11].textContent.trim() : "");
+
+        let match = false;
+        if (selectedDate === "ALL" || !selectedDate) {
+            match = true;
+        } else if (matchField === "trigger") {
+            match = (tDate === selectedDate);
+        } else if (matchField === "entry") {
+            match = (eDate === selectedDate);
+        } else if (matchField === "both") {
+            match = (tDate === selectedDate || eDate === selectedDate);
+        }
+
+        if (match) {
+            r.style.display = "";
+            visibleCount++;
+
+            // Categorize for live KPI update
+            if (out.includes("50% BOOKED")) {
+                pbCount++;
+            } else if (out.includes("Exit at profit") || (out.toLowerCase().includes("exit") && out.toLowerCase().includes("profit"))) {
+                exitProfitCount++;
+            } else if (out.includes("Exit as loss") || (out.toLowerCase().includes("exit") && out.toLowerCase().includes("loss"))) {
+                exitLossCount++;
+            } else if (out.includes("SUCCESS")) {
+                tgtCount++;
+            } else if (out.includes("BREAK_EVEN") || out.includes("BREAK EVEN")) {
+                beCount++;
+            } else {
+                slCount++;
+            }
+        } else {
+            r.style.display = "none";
+        }
+    });
+
+    // Handle empty state
+    let noRow = table.querySelector(".no-pred-row");
+    if (visibleCount === 0) {
+        if (!noRow) {
+            const tbody = table.querySelector("tbody");
+            noRow = document.createElement("tr");
+            noRow.className = "no-pred-row";
+            noRow.innerHTML = `<td colspan="13" style="text-align:center; padding:24px; color:#64748b; font-size:13px;">No resolved predictions found for date: <b>${selectedDate}</b></td>`;
+            if (tbody) tbody.appendChild(noRow);
+        } else {
+            noRow.style.display = "";
+            const bEl = noRow.querySelector("b");
+            if (bEl) bEl.textContent = selectedDate;
+        }
+    } else if (noRow) {
+        noRow.style.display = "none";
+    }
+
+    // Update KPI Card Numbers Dynamically
+    const winCount = tgtCount + pbCount + exitProfitCount;
+    const winRate = visibleCount > 0 ? ((winCount / visibleCount) * 100).toFixed(1) : "0.0";
+
+    const setKpi = (id, html) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = html;
+    };
+
+    setKpi("kpi-total-val", `${visibleCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+    setKpi("kpi-winrate-val", `${winRate}%`);
+    setKpi("kpi-winrate-sub", `${winCount} Won / ${visibleCount} Resolved`);
+    setKpi("kpi-tgt-val", `${tgtCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+    setKpi("kpi-pb-val", `${pbCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+    setKpi("kpi-profit-val", `${exitProfitCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+    setKpi("kpi-loss-val", `${exitLossCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+    setKpi("kpi-sl-val", `${slCount} <span style="font-size:12px;color:#888;">Calls</span>`);
+
+    // Update Summary Badge
+    if (summary) {
+        if (selectedDate === "ALL" || !selectedDate) {
+            summary.textContent = `Showing all ${visibleCount} predictions`;
+            summary.style.color = "#0284c7";
+            summary.style.background = "#f0f9ff";
+            summary.style.borderColor = "#bae6fd";
+        } else {
+            summary.textContent = `Showing ${visibleCount} of ${rows.length} predictions (${selectedDate})`;
+            summary.style.color = "#15803d";
+            summary.style.background = "#f0fdf4";
+            summary.style.borderColor = "#bbf7d0";
+        }
+    }
+}
+
+function onPredictionCustomDateChange(val) {
+    const dateSelect = document.getElementById("predDateSelect");
+    if (!val) {
+        if (dateSelect) dateSelect.value = "ALL";
+    } else {
+        if (dateSelect) {
+            let found = false;
+            for (let i = 0; i < dateSelect.options.length; i++) {
+                if (dateSelect.options[i].value === val) {
+                    dateSelect.selectedIndex = i;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                const opt = document.createElement("option");
+                opt.value = val;
+                opt.textContent = val;
+                dateSelect.appendChild(opt);
+                dateSelect.value = val;
+            }
+        }
+    }
+    applyPredictionDateFilter();
+}
+
+function resetPredictionDateFilter() {
+    const dateSelect = document.getElementById("predDateSelect");
+    const customDate = document.getElementById("predCustomDate");
+    const dateField = document.getElementById("predDateField");
+    if (dateSelect) dateSelect.value = "ALL";
+    if (customDate) customDate.value = "";
+    if (dateField) dateField.value = "trigger";
+    applyPredictionDateFilter();
+}
+
+if (document.getElementById("predictionTable")) {
+    populatePredictionDateOptions();
+}
 
 </script>
 
