@@ -1545,10 +1545,6 @@ th.desc::after {
   <button class="tab-nav-btn active" id="tabBtn-fno" onclick="switchDashboardTab('fno')">
     &#128202; F&amp;O Market Signals
   </button>
-  <button class="tab-nav-btn" id="tabBtn-analyzer" onclick="switchDashboardTab('analyzer')">
-    &#128373; 360&#176; Stock Analyzer
-    <span class="tab-badge" style="background:#2563eb; color:white;">Unified</span>
-  </button>
   <button class="tab-nav-btn" id="tabBtn-prediction" onclick="switchDashboardTab('prediction')">
     &#127919; Prediction Result
     <span class="tab-badge" id="pred-badge">0 Active</span>
@@ -1575,7 +1571,7 @@ th.desc::after {
 <div id="tabContent-fno" class="tab-content active">
 
 <div class="nifty" style="background: #ffcdd2; border: 1px solid #c62828; color: #b71c1c;">
-NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly | 15M: 0.00% FLAT | B: 0.60 | S: 1.00
+NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly | 15M: NA% NA | B: 0.60 | S: 1.00
 </div>
 
 <div class="controls">
@@ -1645,6 +1641,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
         <th onclick="sortTable(this, 8)" title="Score-C: Percentile AI Quant Score (1 to 10)">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = Score-A × Score-B × Score-C × NiftyScore / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3)">Pivot Points</th>
+        <th style="width: 105px; text-align: center;">360° Analysis</th>
       </tr>
     </thead>
     <tbody>
@@ -1681,6 +1678,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TCS')" title="View 360° Stock Analysis for TCS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1715,6 +1717,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DIVISLAB')" title="View 360° Stock Analysis for DIVISLAB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1749,6 +1756,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MAHABANK')" title="View 360° Stock Analysis for MAHABANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1783,6 +1795,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('COFORGE')" title="View 360° Stock Analysis for COFORGE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1817,6 +1834,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ICICIGI')" title="View 360° Stock Analysis for ICICIGI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1851,6 +1873,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KEI')" title="View 360° Stock Analysis for KEI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1885,6 +1912,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ALKEM')" title="View 360° Stock Analysis for ALKEM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1919,6 +1951,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HAL')" title="View 360° Stock Analysis for HAL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1953,6 +1990,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PFC')" title="View 360° Stock Analysis for PFC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -1987,6 +2029,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KALYANKJIL')" title="View 360° Stock Analysis for KALYANKJIL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2021,6 +2068,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TECHM')" title="View 360° Stock Analysis for TECHM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2055,6 +2107,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ETERNAL')" title="View 360° Stock Analysis for ETERNAL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2089,6 +2146,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SUNPHARMA')" title="View 360° Stock Analysis for SUNPHARMA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2123,6 +2185,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ITC')" title="View 360° Stock Analysis for ITC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2157,6 +2224,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MARICO')" title="View 360° Stock Analysis for MARICO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2191,6 +2263,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PETRONET')" title="View 360° Stock Analysis for PETRONET">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2225,6 +2302,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ICICIBANK')" title="View 360° Stock Analysis for ICICIBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2259,6 +2341,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CAMS')" title="View 360° Stock Analysis for CAMS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2293,6 +2380,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KOTAKBANK')" title="View 360° Stock Analysis for KOTAKBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2327,6 +2419,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('APLAPOLLO')" title="View 360° Stock Analysis for APLAPOLLO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2361,6 +2458,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INDHOTEL')" title="View 360° Stock Analysis for INDHOTEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2395,6 +2497,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HINDZINC')" title="View 360° Stock Analysis for HINDZINC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2429,6 +2536,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('COALINDIA')" title="View 360° Stock Analysis for COALINDIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2463,6 +2575,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NYKAA')" title="View 360° Stock Analysis for NYKAA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2497,6 +2614,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('AUROPHARMA')" title="View 360° Stock Analysis for AUROPHARMA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2531,6 +2653,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NAUKRI')" title="View 360° Stock Analysis for NAUKRI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2565,6 +2692,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PHOENIXLTD')" title="View 360° Stock Analysis for PHOENIXLTD">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2599,6 +2731,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SOLARINDS')" title="View 360° Stock Analysis for SOLARINDS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2633,6 +2770,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('OIL')" title="View 360° Stock Analysis for OIL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2667,6 +2809,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ZYDUSLIFE')" title="View 360° Stock Analysis for ZYDUSLIFE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2701,6 +2848,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BANKINDIA')" title="View 360° Stock Analysis for BANKINDIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2735,6 +2887,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NMDC')" title="View 360° Stock Analysis for NMDC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2769,6 +2926,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ENRIN')" title="View 360° Stock Analysis for ENRIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2803,6 +2965,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BLUESTARCO')" title="View 360° Stock Analysis for BLUESTARCO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2837,6 +3004,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CIPLA')" title="View 360° Stock Analysis for CIPLA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2871,6 +3043,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('UNOMINDA')" title="View 360° Stock Analysis for UNOMINDA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2905,6 +3082,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BEL')" title="View 360° Stock Analysis for BEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2939,6 +3121,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BHARTIARTL')" title="View 360° Stock Analysis for BHARTIARTL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -2973,6 +3160,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LTM')" title="View 360° Stock Analysis for LTM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3007,6 +3199,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NTPC')" title="View 360° Stock Analysis for NTPC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3041,6 +3238,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LUPIN')" title="View 360° Stock Analysis for LUPIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3075,6 +3277,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('WAAREEENER')" title="View 360° Stock Analysis for WAAREEENER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3109,6 +3316,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('FEDERALBNK')" title="View 360° Stock Analysis for FEDERALBNK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3143,6 +3355,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MAXHEALTH')" title="View 360° Stock Analysis for MAXHEALTH">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3177,6 +3394,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PREMIERENE')" title="View 360° Stock Analysis for PREMIERENE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3211,6 +3433,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ADANIENSOL')" title="View 360° Stock Analysis for ADANIENSOL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3245,6 +3472,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('FORTIS')" title="View 360° Stock Analysis for FORTIS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3279,6 +3511,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('OBEROIRLTY')" title="View 360° Stock Analysis for OBEROIRLTY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3313,6 +3550,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MCX')" title="View 360° Stock Analysis for MCX">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3347,6 +3589,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('UPL')" title="View 360° Stock Analysis for UPL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3381,6 +3628,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MANKIND')" title="View 360° Stock Analysis for MANKIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3415,6 +3667,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BSE')" title="View 360° Stock Analysis for BSE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3449,6 +3706,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ONGC')" title="View 360° Stock Analysis for ONGC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3483,6 +3745,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BAJAJHLDNG')" title="View 360° Stock Analysis for BAJAJHLDNG">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3517,6 +3784,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GODFRYPHLP')" title="View 360° Stock Analysis for GODFRYPHLP">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3551,6 +3823,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('VMM')" title="View 360° Stock Analysis for VMM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3585,6 +3862,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('UNITDSPR')" title="View 360° Stock Analysis for UNITDSPR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3619,6 +3901,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IEX')" title="View 360° Stock Analysis for IEX">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3653,6 +3940,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LICI')" title="View 360° Stock Analysis for LICI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3687,6 +3979,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('YESBANK')" title="View 360° Stock Analysis for YESBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3721,6 +4018,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TIINDIA')" title="View 360° Stock Analysis for TIINDIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3755,6 +4057,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BDL')" title="View 360° Stock Analysis for BDL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3789,6 +4096,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CUMMINSIND')" title="View 360° Stock Analysis for CUMMINSIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3823,6 +4135,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BRITANNIA')" title="View 360° Stock Analysis for BRITANNIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3857,6 +4174,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TITAN')" title="View 360° Stock Analysis for TITAN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3891,6 +4213,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ABB')" title="View 360° Stock Analysis for ABB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3925,6 +4252,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KAYNES')" title="View 360° Stock Analysis for KAYNES">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3959,6 +4291,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('COCHINSHIP')" title="View 360° Stock Analysis for COCHINSHIP">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -3993,6 +4330,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GMRAIRPORT')" title="View 360° Stock Analysis for GMRAIRPORT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4027,6 +4369,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DIXON')" title="View 360° Stock Analysis for DIXON">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4061,6 +4408,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SBIN')" title="View 360° Stock Analysis for SBIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4095,6 +4447,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MPHASIS')" title="View 360° Stock Analysis for MPHASIS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4129,6 +4486,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SHREECEM')" title="View 360° Stock Analysis for SHREECEM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4163,6 +4525,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BAJFINANCE')" title="View 360° Stock Analysis for BAJFINANCE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4197,6 +4564,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('AMBUJACEM')" title="View 360° Stock Analysis for AMBUJACEM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4231,6 +4603,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BHEL')" title="View 360° Stock Analysis for BHEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4265,6 +4642,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BHARATFORG')" title="View 360° Stock Analysis for BHARATFORG">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4299,6 +4681,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TATASTEEL')" title="View 360° Stock Analysis for TATASTEEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4333,6 +4720,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HINDPETRO')" title="View 360° Stock Analysis for HINDPETRO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4367,6 +4759,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HYUNDAI')" title="View 360° Stock Analysis for HYUNDAI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4401,6 +4798,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('360ONE')" title="View 360° Stock Analysis for 360ONE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4435,6 +4837,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ICICIPRULI')" title="View 360° Stock Analysis for ICICIPRULI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4469,6 +4876,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ASHOKLEY')" title="View 360° Stock Analysis for ASHOKLEY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4503,6 +4915,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PGEL')" title="View 360° Stock Analysis for PGEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4537,6 +4954,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NHPC')" title="View 360° Stock Analysis for NHPC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4571,6 +4993,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MAZDOCK')" title="View 360° Stock Analysis for MAZDOCK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4605,6 +5032,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('JINDALSTEL')" title="View 360° Stock Analysis for JINDALSTEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4639,6 +5071,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GAIL')" title="View 360° Stock Analysis for GAIL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4673,6 +5110,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GODREJPROP')" title="View 360° Stock Analysis for GODREJPROP">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4707,6 +5149,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SBILIFE')" title="View 360° Stock Analysis for SBILIFE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4741,6 +5188,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INOXWIND')" title="View 360° Stock Analysis for INOXWIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4775,6 +5227,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PRESTIGE')" title="View 360° Stock Analysis for PRESTIGE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4809,6 +5266,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ANGELONE')" title="View 360° Stock Analysis for ANGELONE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4843,6 +5305,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SWIGGY')" title="View 360° Stock Analysis for SWIGGY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4877,6 +5344,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MOTILALOFS')" title="View 360° Stock Analysis for MOTILALOFS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4911,6 +5383,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ADANIGREEN')" title="View 360° Stock Analysis for ADANIGREEN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4945,6 +5422,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TMPV')" title="View 360° Stock Analysis for TMPV">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -4979,6 +5461,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IRFC')" title="View 360° Stock Analysis for IRFC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
     </tbody>
@@ -5005,6 +5492,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
         <th onclick="sortTable(this, 8)" title="Score-C: Percentile AI Quant Score for Sell: 11 - QuantScore ((11-1) to (11-10))">Score AI Quant</th>
         <th onclick="sortTable(this, 9)" title="Final Score = Score-A × Score-B × Score-C × NiftyScore / 1000">Final Score</th>
         <th onclick="sortTable(this, 10)" title="15M Standard Pivot Points Channel (S3 to R3)">Pivot Points</th>
+        <th style="width: 105px; text-align: center;">360° Analysis</th>
       </tr>
     </thead>
     <tbody>
@@ -5041,6 +5529,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('AMBER')" title="View 360° Stock Analysis for AMBER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5075,6 +5568,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('JSWENERGY')" title="View 360° Stock Analysis for JSWENERGY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5109,6 +5607,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LT')" title="View 360° Stock Analysis for LT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5143,6 +5646,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TATAPOWER')" title="View 360° Stock Analysis for TATAPOWER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5177,6 +5685,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LTF')" title="View 360° Stock Analysis for LTF">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5211,6 +5724,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ASIANPAINT')" title="View 360° Stock Analysis for ASIANPAINT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5245,6 +5763,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HINDUNILVR')" title="View 360° Stock Analysis for HINDUNILVR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5279,6 +5802,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INDUSINDBK')" title="View 360° Stock Analysis for INDUSINDBK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5313,6 +5841,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ATHERENERG')" title="View 360° Stock Analysis for ATHERENERG">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5347,6 +5880,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TVSMOTOR')" title="View 360° Stock Analysis for TVSMOTOR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5381,6 +5919,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PIIND')" title="View 360° Stock Analysis for PIIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5415,6 +5958,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('EICHERMOT')" title="View 360° Stock Analysis for EICHERMOT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5449,6 +5997,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BAJAJFINSV')" title="View 360° Stock Analysis for BAJAJFINSV">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5483,6 +6036,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TATAELXSI')" title="View 360° Stock Analysis for TATAELXSI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5517,6 +6075,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SHRIRAMFIN')" title="View 360° Stock Analysis for SHRIRAMFIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5551,6 +6114,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NESTLEIND')" title="View 360° Stock Analysis for NESTLEIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5585,6 +6153,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BAJAJ-AUTO')" title="View 360° Stock Analysis for BAJAJ-AUTO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5619,6 +6192,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GODREJCP')" title="View 360° Stock Analysis for GODREJCP">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5653,6 +6231,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ADANIENT')" title="View 360° Stock Analysis for ADANIENT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5687,6 +6270,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BIOCON')" title="View 360° Stock Analysis for BIOCON">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5721,6 +6309,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('JSWSTEEL')" title="View 360° Stock Analysis for JSWSTEEL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5755,6 +6348,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MOTHERSON')" title="View 360° Stock Analysis for MOTHERSON">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5789,6 +6387,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NBCC')" title="View 360° Stock Analysis for NBCC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5823,6 +6426,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INDIGO')" title="View 360° Stock Analysis for INDIGO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5857,6 +6465,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('COLPAL')" title="View 360° Stock Analysis for COLPAL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5891,6 +6504,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('RVNL')" title="View 360° Stock Analysis for RVNL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5925,6 +6543,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('VOLTAS')" title="View 360° Stock Analysis for VOLTAS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5959,6 +6582,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MFSL')" title="View 360° Stock Analysis for MFSL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -5993,6 +6621,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GRASIM')" title="View 360° Stock Analysis for GRASIM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6027,6 +6660,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('RBLBANK')" title="View 360° Stock Analysis for RBLBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6061,6 +6699,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ANANDRATHI')" title="View 360° Stock Analysis for ANANDRATHI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6095,6 +6738,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('JIOFIN')" title="View 360° Stock Analysis for JIOFIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6129,6 +6777,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NATIONALUM')" title="View 360° Stock Analysis for NATIONALUM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6163,6 +6816,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KPITTECH')" title="View 360° Stock Analysis for KPITTECH">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6197,6 +6855,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('POWERGRID')" title="View 360° Stock Analysis for POWERGRID">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6231,6 +6894,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PAYTM')" title="View 360° Stock Analysis for PAYTM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6265,6 +6933,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('AXISBANK')" title="View 360° Stock Analysis for AXISBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6299,6 +6972,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('KFINTECH')" title="View 360° Stock Analysis for KFINTECH">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6333,6 +7011,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CHOLAFIN')" title="View 360° Stock Analysis for CHOLAFIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6367,6 +7050,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('POLICYBZR')" title="View 360° Stock Analysis for POLICYBZR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6401,6 +7089,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('UJJIVANSFB')" title="View 360° Stock Analysis for UJJIVANSFB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6435,6 +7128,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MANAPPURAM')" title="View 360° Stock Analysis for MANAPPURAM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6469,6 +7167,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BANDHANBNK')" title="View 360° Stock Analysis for BANDHANBNK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6503,6 +7206,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ABCAPITAL')" title="View 360° Stock Analysis for ABCAPITAL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6537,6 +7245,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IREDA')" title="View 360° Stock Analysis for IREDA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6571,6 +7284,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SUZLON')" title="View 360° Stock Analysis for SUZLON">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6605,6 +7323,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IDFCFIRSTB')" title="View 360° Stock Analysis for IDFCFIRSTB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6639,6 +7362,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PATANJALI')" title="View 360° Stock Analysis for PATANJALI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6673,6 +7401,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GLENMARK')" title="View 360° Stock Analysis for GLENMARK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6707,6 +7440,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IDEA')" title="View 360° Stock Analysis for IDEA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6741,6 +7479,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SBICARD')" title="View 360° Stock Analysis for SBICARD">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6775,6 +7518,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MUTHOOTFIN')" title="View 360° Stock Analysis for MUTHOOTFIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6809,6 +7557,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DELHIVERY')" title="View 360° Stock Analysis for DELHIVERY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6843,6 +7596,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CONCOR')" title="View 360° Stock Analysis for CONCOR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6877,6 +7635,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CROMPTON')" title="View 360° Stock Analysis for CROMPTON">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6911,6 +7674,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('MARUTI')" title="View 360° Stock Analysis for MARUTI">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6945,6 +7713,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('VEDL')" title="View 360° Stock Analysis for VEDL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -6979,6 +7752,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DLF')" title="View 360° Stock Analysis for DLF">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7013,6 +7791,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('RECLTD')" title="View 360° Stock Analysis for RECLTD">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7047,6 +7830,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('JUBLFOOD')" title="View 360° Stock Analysis for JUBLFOOD">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7081,6 +7869,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('GVT&D')" title="View 360° Stock Analysis for GVT&D">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7115,6 +7908,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('NAM-INDIA')" title="View 360° Stock Analysis for NAM-INDIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7149,6 +7947,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('AUBANK')" title="View 360° Stock Analysis for AUBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7183,6 +7986,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ADANIPOWER')" title="View 360° Stock Analysis for ADANIPOWER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7217,6 +8025,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('FORCEMOT')" title="View 360° Stock Analysis for FORCEMOT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7251,6 +8064,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CDSL')" title="View 360° Stock Analysis for CDSL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7285,6 +8103,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('POWERINDIA')" title="View 360° Stock Analysis for POWERINDIA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7319,6 +8142,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HCLTECH')" title="View 360° Stock Analysis for HCLTECH">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7353,6 +8181,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SIEMENS')" title="View 360° Stock Analysis for SIEMENS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7387,6 +8220,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('APOLLOHOSP')" title="View 360° Stock Analysis for APOLLOHOSP">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7421,6 +8259,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PIDILITIND')" title="View 360° Stock Analysis for PIDILITIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7455,6 +8298,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('M&M')" title="View 360° Stock Analysis for M&M">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7489,6 +8337,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('RELIANCE')" title="View 360° Stock Analysis for RELIANCE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7523,6 +8376,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INDIANB')" title="View 360° Stock Analysis for INDIANB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7557,6 +8415,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TATACONSUM')" title="View 360° Stock Analysis for TATACONSUM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7591,6 +8454,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ULTRACEMCO')" title="View 360° Stock Analysis for ULTRACEMCO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7625,6 +8493,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HAVELLS')" title="View 360° Stock Analysis for HAVELLS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7659,6 +8532,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DABUR')" title="View 360° Stock Analysis for DABUR">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7693,6 +8571,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SONACOMS')" title="View 360° Stock Analysis for SONACOMS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7727,6 +8610,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HINDALCO')" title="View 360° Stock Analysis for HINDALCO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7761,6 +8649,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INDUSTOWER')" title="View 360° Stock Analysis for INDUSTOWER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7795,6 +8688,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HDFCAMC')" title="View 360° Stock Analysis for HDFCAMC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7829,6 +8727,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BPCL')" title="View 360° Stock Analysis for BPCL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7863,6 +8766,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ADANIPORTS')" title="View 360° Stock Analysis for ADANIPORTS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7897,6 +8805,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('OFSS')" title="View 360° Stock Analysis for OFSS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7931,6 +8844,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TORNTPHARM')" title="View 360° Stock Analysis for TORNTPHARM">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7965,6 +8883,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('IOC')" title="View 360° Stock Analysis for IOC">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -7999,6 +8922,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SAIL')" title="View 360° Stock Analysis for SAIL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8033,6 +8961,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('POLYCAB')" title="View 360° Stock Analysis for POLYCAB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8067,6 +9000,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('INFY')" title="View 360° Stock Analysis for INFY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8101,6 +9039,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CGPOWER')" title="View 360° Stock Analysis for CGPOWER">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8135,6 +9078,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PAGEIND')" title="View 360° Stock Analysis for PAGEIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8169,6 +9117,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('WIPRO')" title="View 360° Stock Analysis for WIPRO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8203,6 +9156,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('UNIONBANK')" title="View 360° Stock Analysis for UNIONBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8237,6 +9195,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HDFCBANK')" title="View 360° Stock Analysis for HDFCBANK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8271,6 +9234,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PERSISTENT')" title="View 360° Stock Analysis for PERSISTENT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8305,6 +9273,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LODHA')" title="View 360° Stock Analysis for LODHA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8339,6 +9312,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SAGILITY')" title="View 360° Stock Analysis for SAGILITY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8373,6 +9351,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DRREDDY')" title="View 360° Stock Analysis for DRREDDY">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8407,6 +9390,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LAURUSLABS')" title="View 360° Stock Analysis for LAURUSLABS">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8441,6 +9429,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SUPREMEIND')" title="View 360° Stock Analysis for SUPREMEIND">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8475,6 +9468,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('CANBK')" title="View 360° Stock Analysis for CANBK">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8509,6 +9507,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('VBL')" title="View 360° Stock Analysis for VBL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8543,6 +9546,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('TRENT')" title="View 360° Stock Analysis for TRENT">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8577,6 +9585,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HDFCLIFE')" title="View 360° Stock Analysis for HDFCLIFE">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8611,6 +9624,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('RADICO')" title="View 360° Stock Analysis for RADICO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8645,6 +9663,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('HEROMOTOCO')" title="View 360° Stock Analysis for HEROMOTOCO">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8679,6 +9702,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('ASTRAL')" title="View 360° Stock Analysis for ASTRAL">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8713,6 +9741,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PNBHOUSING')" title="View 360° Stock Analysis for PNBHOUSING">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8747,6 +9780,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('LICHSGFIN')" title="View 360° Stock Analysis for LICHSGFIN">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8781,6 +9819,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BOSCHLTD')" title="View 360° Stock Analysis for BOSCHLTD">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8815,6 +9858,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('DMART')" title="View 360° Stock Analysis for DMART">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8849,6 +9897,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('BANKBARODA')" title="View 360° Stock Analysis for BANKBARODA">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8883,6 +9936,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('PNB')" title="View 360° Stock Analysis for PNB">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
         <tr>
@@ -8917,6 +9975,11 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
               </div>
             </div>
             </td>
+          <td style="text-align:center;">
+            <button type="button" class="analyzer-row-btn" onclick="openStockAnalyzerModal('SRF')" title="View 360° Stock Analysis for SRF">
+              &#128373; Analyze
+            </button>
+          </td>
         </tr>
         
     </tbody>
@@ -9048,7 +10111,7 @@ NIFTY 50: 22231.80 | Change: -371.25 | Change %: -1.64% | Market: DOWN strongly 
         <span style="font-size:13px; font-weight:700; color:#1e293b;">📅 Filter by Date:</span>
         <select id="predDateSelect" onchange="applyPredictionDateFilter()" style="padding:6px 12px; font-size:13px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc; font-weight:600; color:#0f172a; cursor:pointer;">
           <option value="ALL">All Dates (All History)</option>
-          <option value="2026-10-08">2026-10-08 (Today)</option>
+          <option value="2026-10-08">2026-10-08</option>
 <option value="2026-10-07">2026-10-07</option>
 <option value="2026-10-06">2026-10-06</option>
 
