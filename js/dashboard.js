@@ -2,9 +2,18 @@
 let sortDirections = {};
 
 function numericValue(value) {
-    value = (value || "").replace(/[₹,%]/g, "").trim();
-    if (value === "NA" || value === "" || value === "—") return null;
-    let n = parseFloat(value);
+    if (!value) return null;
+    let s = (value || "").replace(/[₹,]/g, "").trim();
+    if (s === "NA" || s === "" || s === "—" || s === "-") return null;
+
+    // Date / Time detection (e.g. 2026-10-08 09:18, 2026-10-08, 2026/10/08 12:41:20)
+    if (/^\d{4}[-/]\d{1,2}[-/]\d{1,2}/.test(s)) {
+        let ts = Date.parse(s.replace(/-/g, "/"));
+        if (!isNaN(ts)) return ts;
+    }
+
+    let clean = s.replace("%", "").trim();
+    let n = parseFloat(clean);
     return isNaN(n) ? null : n;
 }
 
@@ -46,6 +55,8 @@ function sortTable(header, colIndex) {
         if (nA !== null && nB !== null) {
             return asc ? nA - nB : nB - nA;
         }
+        if (nA !== null && nB === null) return -1;
+        if (nA === null && nB !== null) return 1;
         return asc ? vA.localeCompare(vB) : vB.localeCompare(vA);
     });
 
