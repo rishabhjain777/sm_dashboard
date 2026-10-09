@@ -184,7 +184,7 @@ function renderFullDossierHtml(d) {
             '</div>' +
             '<div style="text-align:right;">' +
               '<div style="font-size:11px; color:#64748b; font-weight:700;">Final Score / Rank</div>' +
-              '<div style="font-size:18px; font-weight:800; color:' + sigColor + ';">' + (d.fno.final_score !== null ? d.fno.final_score : "—") + ' <span style="font-size:12px; color:#888;">/100</span></div>' +
+              '<div style="font-size:18px; font-weight:800; color:' + sigColor + ';">' + (d.fno.final_score !== null ? d.fno.final_score : "—") + ' <span style="font-size:12px; color:#888;">/10</span></div>' +
             '</div>' +
           '</div>' +
           '<div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px; margin-bottom:12px; font-size:12px;">' +
