@@ -7,11 +7,22 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>NSE F&amp;O Market Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css?v=1791565080">
+  <link rel="stylesheet" href="css/dashboard.css?v=1791571251">
+  <script src="js/theme.js?v=1791571251"></script>
 </head>
 <body>
 
-  <h2>NSE F&amp;O Market Dashboard</h2>
+  <header class="dashboard-header">
+    <h1 class="header-title">NSE F&amp;O Market Dashboard</h1>
+    <div class="header-meta">
+      <span class="header-meta-badge">NSE MARKET</span>
+      <div class="theme-toggle-wrap" title="Switch theme" role="group" aria-label="Color theme">
+        <button class="theme-btn" id="themeBtn-light" onclick="setTheme('light')" aria-label="Light theme" title="Light theme">&#9728;</button>
+        <button class="theme-btn" id="themeBtn-system" onclick="setTheme('system')" aria-label="System theme" title="System theme">&#9681;</button>
+        <button class="theme-btn" id="themeBtn-dark" onclick="setTheme('dark')" aria-label="Dark theme" title="Dark theme">&#9790;</button>
+      </div>
+    </div>
+  </header>
 
 
   <div class="tab-nav">
@@ -22,14 +33,6 @@
       &#127919; Prediction Result
       <span class="tab-badge" id="pred-badge">0 Active</span>
     </button>
-    <button class="tab-nav-btn" id="tabBtn-quality" onclick="switchDashboardTab('quality')">
-      &#9733; Stock Scores (Q / G / V / T)
-      <span class="tab-badge">213</span>
-    </button>
-    <button class="tab-nav-btn" id="tabBtn-analytics" onclick="switchDashboardTab('analytics')">
-      &#9889; AI Quant Predictions
-      <span class="tab-badge">213</span>
-    </button>
   </div>
 
   <div id="tab-container">
@@ -39,8 +42,8 @@
     </div>
   </div>
 
-  <script src="js/tab-templates.js?v=1791565080"></script>
-  <script src="js/analyzer.js?v=1791565080"></script>
-  <script src="js/dashboard.js?v=1791565080"></script>
+  <script src="js/tab-templates.js?v=1791571251"></script>
+  <script src="js/analyzer.js?v=1791571251"></script>
+  <script src="js/dashboard.js?v=1791571251"></script>
 </body>
 </html>
