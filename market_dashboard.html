@@ -860,6 +860,7 @@ th.desc::after {
 }
 .market-analyzer-modal-container {
     background: #ffffff;
+    opacity: 1;
     border-radius: 14px;
     max-width: 1150px;
     width: 100%;
@@ -869,7 +870,7 @@ th.desc::after {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
     border: 1px solid #cbd5e1;
     overflow: hidden;
-    animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes modalPopIn {
     from { transform: scale(0.96); opacity: 0; }
