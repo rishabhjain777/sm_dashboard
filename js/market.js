@@ -82,7 +82,7 @@ function getFirstVisibleStock() {
 }
 const getFirstVisibleCommodity = getFirstVisibleStock;
 
-function populateModalCommodityControls() {
+function populateModalCommodityControls(activeSym) {
     if (!window.ANALYZER_DATA) return;
     const symbols = Object.keys(window.ANALYZER_DATA);
     if (!symbols.length) return;
