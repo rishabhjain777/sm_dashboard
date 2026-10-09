@@ -99,12 +99,16 @@ function populateModalCommodityControls() {
     }
 
     const chipsWrap = document.getElementById("modalCommodityChips") || document.getElementById("modalStockChips");
-    if (chipsWrap && !chipsWrap.hasChildNodes()) {
+    if (chipsWrap) {
+        let displayList = symbols.slice(0, 18);
+        if (activeSym && !displayList.includes(activeSym) && symbols.includes(activeSym)) {
+            displayList = [activeSym, ...displayList.slice(0, 17)];
+        }
         chipsWrap.innerHTML = "";
-        symbols.slice(0, 16).forEach(s => {
+        displayList.forEach(s => {
             const btn = document.createElement("button");
             btn.type = "button";
-            btn.className = "modal-chip";
+            btn.className = "modal-chip" + (s === activeSym ? " active" : "");
             btn.dataset.sym = s;
             btn.textContent = s;
             btn.onclick = () => switchModalCommodity(s);
@@ -125,7 +129,7 @@ async function openMarketAnalyzerModal(symbol) {
         }
     }
 
-    populateModalCommodityControls();
+    populateModalCommodityControls(targetSym);
     switchModalCommodity(targetSym);
 
     const modal = document.getElementById("marketAnalyzerModal") || document.getElementById("analyzerModal");
@@ -145,13 +149,18 @@ function switchModalCommodity(symbol) {
     const sel = document.getElementById("modalCommoditySelect") || document.getElementById("modalStockSelect");
     if (sel && sel.value !== sym) sel.value = sym;
 
+    let chipFound = false;
     document.querySelectorAll(".modal-chip").forEach(c => {
         if (c.dataset.sym === sym) {
             c.classList.add("active");
+            chipFound = true;
         } else {
             c.classList.remove("active");
         }
     });
+    if (!chipFound) {
+        populateModalCommodityControls(sym);
+    }
 
     const body = document.getElementById("modalDossierBody") || document.getElementById("analyzerModalBody");
     if (!body) return;
@@ -164,6 +173,20 @@ function switchModalCommodity(symbol) {
     }
 }
 const switchModalStock = switchModalCommodity;
+
+function openCurrentInAnalyzerTab() {
+    const sym = window.currentModalCommodity || window.currentModalStock || "RELIANCE";
+    closeMarketAnalyzerModal();
+    if (typeof switchDashboardTab === "function") {
+        switchDashboardTab("analyzer");
+    }
+    setTimeout(() => {
+        if (typeof selectAnalyzerStock === "function") {
+            selectAnalyzerStock(sym);
+        }
+    }, 150);
+}
+window.openCurrentInAnalyzerTab = openCurrentInAnalyzerTab;
 
 function closeMarketAnalyzerModal(event) {
     if (event && event.target && event.target.id !== "marketAnalyzerModal" && event.target.id !== "analyzerModal" && !event.target.classList.contains("modal-close-btn") && !event.target.classList.contains("analyzer-modal-close")) {
@@ -294,6 +317,7 @@ window.switchModalCommodity = switchModalCommodity;
 window.switchModalStock = switchModalStock;
 window.shareCurrentModalDossier = shareCurrentModalDossier;
 window.shareStockAnalysis = shareStockAnalysis;
+window.openCurrentInAnalyzerTab = openCurrentInAnalyzerTab;
 
 // Auto-run if table exists
 if (document.getElementById("buyTable") || document.getElementById("mainTable")) {
