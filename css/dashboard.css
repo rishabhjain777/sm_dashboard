@@ -1792,6 +1792,126 @@ body.dark-theme .modal-dossier-body {
     margin-bottom: 4px;
 }
 
+/* ── Readable dashboard palette and dark-mode contrast ── */
+:root {
+    --bg-page: #f0ebdd;
+    --bg-card: #faf6eb;
+    --bg-header: #f6f1e5;
+}
+
+[data-theme="dark"] {
+    --bg-page: #0b1220;
+    --bg-card: #172235;
+    --bg-header: #0b1220;
+    --text-secondary: #c2cede;
+    --text-muted: #a7b4c7;
+    --border-light: #3a4a60;
+    --border-medium: #52647d;
+}
+
+.board-refresh-time {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    margin: -8px 0 12px;
+}
+
+[data-theme="dark"] .header-subtitle,
+[data-theme="dark"] .header-meta-badge,
+[data-theme="dark"] .tab-nav-btn,
+[data-theme="dark"] .theme-btn,
+[data-theme="dark"] .scores-kpi-title,
+[data-theme="dark"] .scores-filter-group label,
+[data-theme="dark"] .scores-pagination,
+[data-theme="dark"] .board-refresh-time {
+    color: #c2cede;
+}
+
+[data-theme="dark"] .theme-btn:hover {
+    background: #3a4a60;
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .tab-nav-btn.active {
+    color: #93c5fd;
+}
+
+[data-theme="dark"] .fno-signals-table .symbol-clickable {
+    color: #93c5fd !important;
+}
+
+[data-theme="dark"] .scores-kpi-sub,
+[data-theme="dark"] .pivot-hover-price-line {
+    color: #a7b4c7;
+}
+
+[data-theme="dark"] .scores-table thead th,
+[data-theme="dark"] .fno-signals-table th {
+    color: #e2e8f0;
+}
+
+body.dark-theme .fno-signals-table th {
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="color:#0f172a"],
+[data-theme="dark"] #modalDossierBody [style*="color:#1e293b"],
+[data-theme="dark"] #modalDossierBody [style*="color:#334155"],
+[data-theme="dark"] #modalDossierBody [style*="color:#475569"],
+[data-theme="dark"] #modalDossierBody [style*="color:#64748b"],
+[data-theme="dark"] #modalDossierBody [style*="color:#888"] {
+    color: #d5deea !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="color:#15803d"],
+[data-theme="dark"] #modalDossierBody [style*="color:#059669"] {
+    color: #4ade80 !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="color:#1d4ed8"],
+[data-theme="dark"] #modalDossierBody [style*="color:#2563eb"] {
+    color: #93c5fd !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="color:#b91c1c"],
+[data-theme="dark"] #modalDossierBody [style*="color:#991b1b"] {
+    color: #fca5a5 !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="color:#b45309"],
+[data-theme="dark"] #modalDossierBody [style*="color:#92400e"] {
+    color: #fcd34d !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="background:#f8fafc"],
+[data-theme="dark"] #modalDossierBody [style*="background:#ffffff"],
+[data-theme="dark"] #modalDossierBody [style*="background:#fff"],
+[data-theme="dark"] #modalDossierBody [style*="background:#f1f5f9"] {
+    background: #243349 !important;
+    border-color: #40536e !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="background:#eff6ff"] {
+    background: #1d3554 !important;
+    border-color: #33577f !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="background:#dcfce7"] {
+    background: #123b2d !important;
+    border-color: #23734b !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="background:#fef3c7"] {
+    background: #473819 !important;
+    border-color: #806125 !important;
+}
+
+[data-theme="dark"] #modalDossierBody [style*="background:#faf5ff"] {
+    background: #38234e !important;
+    border-color: #634183 !important;
+}
+
 /* ── Robust Tab Display Rules ── */
 .tab-content.active,
 .tab-content.active .tab-content,
