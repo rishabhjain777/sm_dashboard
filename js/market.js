@@ -306,6 +306,11 @@ document.addEventListener("keydown", function(e) {
 });
 
 window.initMarketTab = function() {
+    const rowLimit = document.getElementById("rowLimit");
+    if (rowLimit && !rowLimit.dataset.initialized) {
+        rowLimit.value = "ALL";
+        rowLimit.dataset.initialized = "true";
+    }
     applyFilters();
 };
 
