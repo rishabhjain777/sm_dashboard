@@ -93,7 +93,8 @@ function loadScript(src) {
     if (!src || LOADED_SCRIPTS[src]) return Promise.resolve();
     return new Promise((resolve, reject) => {
         const s = document.createElement("script");
-        s.src = src;
+        const separator = src.includes("?") ? "&" : "?";
+        s.src = src + separator + "v=" + Date.now();
         s.onload = () => { LOADED_SCRIPTS[src] = true; resolve(); };
         s.onerror = (e) => reject(e);
         document.body.appendChild(s);
