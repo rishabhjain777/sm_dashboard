@@ -232,7 +232,9 @@ select {
 }
 
 .fno-signals-table,
-.scores-table {
+.scores-table,
+#predictionTable,
+#highScoreTable {
     overflow: hidden;
     border: 1px solid var(--brand-border);
     border-radius: 9px;
@@ -243,7 +245,9 @@ select {
 }
 
 .fno-signals-table th,
-.scores-table thead th {
+.scores-table thead th,
+#predictionTable thead th,
+#highScoreTable thead th {
     padding: 10px 9px;
     border-color: #3a4d62;
     background: var(--brand-table-head);
@@ -256,7 +260,9 @@ select {
 }
 
 .fno-signals-table td,
-.scores-table td {
+.scores-table td,
+#predictionTable td,
+#highScoreTable td {
     padding: 8px 9px;
     border-color: #e9e7e1;
     color: var(--brand-text);
@@ -265,13 +271,25 @@ select {
     line-height: 1.4;
 }
 
+#predictionTable td b,
+#highScoreTable td b,
+.stock-symbol {
+    color: var(--brand-text);
+    font-weight: 750;
+    letter-spacing: 0.02em;
+}
+
 .fno-signals-table tbody tr:nth-child(even),
-.scores-table tbody tr:nth-child(even) {
+.scores-table tbody tr:nth-child(even),
+#predictionTable tbody tr:nth-child(even),
+#highScoreTable tbody tr:nth-child(even) {
     background: rgba(23, 105, 170, 0.025);
 }
 
 .fno-signals-table tbody tr:hover,
-.scores-table tbody tr:hover {
+.scores-table tbody tr:hover,
+#predictionTable tbody tr:hover,
+#highScoreTable tbody tr:hover {
     background: rgba(23, 105, 170, 0.075);
 }
 
@@ -476,18 +494,30 @@ select {
 }
 
 [data-theme="dark"] .fno-signals-table td,
-[data-theme="dark"] .scores-table td {
+[data-theme="dark"] .scores-table td,
+[data-theme="dark"] #predictionTable td,
+[data-theme="dark"] #highScoreTable td {
     border-color: #34445a;
     color: #e2eaf4;
 }
 
+[data-theme="dark"] #predictionTable td b,
+[data-theme="dark"] #highScoreTable td b,
+[data-theme="dark"] .stock-symbol {
+    color: #ffffff !important;
+}
+
 [data-theme="dark"] .fno-signals-table tbody tr:nth-child(even),
-[data-theme="dark"] .scores-table tbody tr:nth-child(even) {
+[data-theme="dark"] .scores-table tbody tr:nth-child(even),
+[data-theme="dark"] #predictionTable tbody tr:nth-child(even),
+[data-theme="dark"] #highScoreTable tbody tr:nth-child(even) {
     background: rgba(148, 163, 184, 0.045);
 }
 
 [data-theme="dark"] .fno-signals-table tbody tr:hover,
-[data-theme="dark"] .scores-table tbody tr:hover {
+[data-theme="dark"] .scores-table tbody tr:hover,
+[data-theme="dark"] #predictionTable tbody tr:hover,
+[data-theme="dark"] #highScoreTable tbody tr:hover {
     background: rgba(96, 165, 250, 0.12);
 }
 
