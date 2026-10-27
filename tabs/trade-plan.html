@@ -1,7 +1,7 @@
 <!-- ── Full-width High Conviction Signals & Trade Plan ───── -->
 <div class="section" style="margin-bottom:20px;">
 <div class="high-score-box" style="width:100%;">
-<h3>&#9733; High Conviction Signals &nbsp;(1 Active &bull; Total Score &gt; 9.0)</h3>
+<h3>&#9733; High Conviction Signals &nbsp;(0 Active &bull; Total Score &gt; 9.0)</h3>
 <table id="highScoreTable" class="fno-signals-table">
 <thead><tr>
   <th onclick="sortTable(this, 0)">Stock</th>
@@ -22,40 +22,7 @@
   <th onclick="sortTable(this, 15)" title="AI Quantitative Prediction: Intraday & Swing Models (Score 0-100, Direction & Conviction)">AI Quantitative Prediction<br><span style="font-size:10px; font-weight:normal; color:#64748b;">(Intraday &amp; Swing)</span></th>
 </tr></thead>
 <tbody>
-
-        <tr>
-          <td><b>DRREDDY</b></td>
-          <td>2026-10-26 13:51</td>
-          <td>₹1310.80</td>
-          <td style='font-weight:700; color:#15803d;' title='Target Price: ₹1337.02'>₹1337.02 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
-          <td style='font-weight:700; color:#b91c1c;' title='Hybrid Adaptive Dynamic Stop Loss (1.25x 15m ATR, Min 0.85% Floor): ₹1289.70'>₹1289.70 <span style='font-size:11px; font-weight:normal;'>(-1.81%)</span></td>
-          <td class="signal-LONG">LONG</td>
-          <td><span class="score-badge score-high" title="Score-A (Via Signal): 10.0/10">10.0</span></td>
-          <td><span class="score-badge score-high" title="Score-B (Via Stock Score): 9.8/10">9.8</span></td>
-          <td><span class="score-badge score-high" title="Score-C (Via AI Quant): 9.9/10">9.9</span></td>
-          <td style="font-weight:bold; font-size:1.05em; color:#15803d;" title="Total Score = Score-A (10.0) × Score-B (9.8) × Score-C (9.9) × NiftyScore / 1000 = 9.70">9.70</td>
-          <td><span class="badge-buy">BUY</span></td>
-          <td style="font-weight:600;">₹1318.20</td>
-          <td><span class="change-yes">YES</span></td>
-          <td class="signal-COVER">COVER</td>
-          <td style="font-weight:bold; color:#15803d;">+0.56%</td>
-          <td class="quant-hc-cell" onclick="openQuantModal('DRREDDY')" style="cursor:pointer;" title="DRREDDY AI Quantitative Prediction&#10;----------------------------------------&#10;⚡ INTRADAY: STRONG BUY (BUY: 76.0 | SELL: 16.0) | Conf: 86%&#10;Key: Breakout above Pivot R1 (Rs.1,291.0) | Trading near session highs (99% of range)&#10;----------------------------------------&#10;📅 SWING (1-15D): BUY (BUY: 64.0 | SELL: 22.4) | Conf: 78%&#10;Key: Strong structural technical posture (Tech: 80/100) | Multi-day price base above Floor Pivot&#10;Click to inspect deep dive">
-            <span style="display:none">76.00</span>
-            <div style="display:flex; flex-direction:column; gap:3px; min-width:145px;">
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">⚡ Intra:</span>
-                <span class="quant-sig-pill sig-strong-buy" style="font-size:10px; padding:1px 6px;">76.0 STRONG BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">86%</span>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
-                <span style="font-size:10px; font-weight:700; color:#475569;">📅 Swing:</span>
-                <span class="quant-sig-pill sig-buy" style="font-size:10px; padding:1px 6px;">64.0 BUY</span>
-                <span style="font-size:9.5px; color:#64748b; font-weight:600;">78%</span>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
+<tr><td colspan='16' style='color:#888; text-align:center; padding:16px;'>No active signals above High Conviction threshold (Total Score &gt; 9.0)</td></tr>
 </tbody>
 </table>
 </div>
@@ -66,13 +33,13 @@
   <div class="scores-kpi-row" style="margin-bottom:16px;">
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Total Predictions</div>
-      <div class="scores-kpi-val" id="kpi-total-val">72 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-total-val">73 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub" id="kpi-total-sub">Target: 2% | Dynamic 1.25x ATR SL</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Success Rate</div>
-      <div class="scores-kpi-val" id="kpi-winrate-val" style="color:#15803d;">56.9%</div>
-      <div class="scores-kpi-sub" id="kpi-winrate-sub">41 Won / 72 Resolved</div>
+      <div class="scores-kpi-val" id="kpi-winrate-val" style="color:#15803d;">57.5%</div>
+      <div class="scores-kpi-sub" id="kpi-winrate-sub">42 Won / 73 Resolved</div>
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Target Achieved (&#10004;)</div>
@@ -86,7 +53,7 @@
     </div>
     <div class="scores-kpi-card">
       <div class="scores-kpi-title">Exit at profit</div>
-      <div class="scores-kpi-val" id="kpi-profit-val" style="color:#15803d;">20 <span style="font-size:12px;color:#888;">Calls</span></div>
+      <div class="scores-kpi-val" id="kpi-profit-val" style="color:#15803d;">21 <span style="font-size:12px;color:#888;">Calls</span></div>
       <div class="scores-kpi-sub">Market Exit with Profit</div>
     </div>
     <div class="scores-kpi-card">
@@ -109,7 +76,8 @@
         <span style="font-size:13px; font-weight:700; color:#1e293b;">📅 Filter by Date:</span>
         <select id="predDateSelect" onchange="applyPredictionDateFilter()" style="padding:6px 12px; font-size:13px; border:1px solid #cbd5e1; border-radius:6px; background:#f8fafc; font-weight:600; color:#0f172a; cursor:pointer;">
           <option value="ALL">All Dates (All History)</option>
-          <option value="2026-10-26">2026-10-26</option>
+          <option value="2026-10-27">2026-10-27 (Today)</option>
+<option value="2026-10-26">2026-10-26</option>
 <option value="2026-10-23">2026-10-23</option>
 <option value="2026-10-22">2026-10-22</option>
 <option value="2026-10-21">2026-10-21</option>
@@ -146,7 +114,7 @@
     </div>
 
     <div id="predFilterSummary" style="font-size:12px; font-weight:700; color:#0284c7; background:#f0f9ff; border:1px solid #bae6fd; padding:5px 12px; border-radius:6px;">
-      Showing all 72 predictions
+      Showing all 73 predictions
     </div>
   </div>
 
@@ -171,6 +139,22 @@
         </tr>
       </thead>
       <tbody>
+        
+        <tr data-entry-date="2026-10-26" data-trigger-date="2026-10-27" data-outcome="Exit at profit" data-profit="0.43">
+          <td><b class="stock-symbol">DRREDDY</b></td>
+          <td><span class="badge-buy">BUY</span></td>
+          <td class="signal-LONG">LONG</td>
+          <td><span class='badge-stk badge-stk-hi' style='font-size:12px; font-weight:700;'>9.7</span></td>
+          <td>2026-10-26 13:51</td>
+          <td>₹1310.80</td>
+          <td style='font-weight:700; color:#15803d;' title='Target Price (2%): ₹1337.02'>₹1337.02 <span style='font-size:11px; font-weight:normal;'>(+2.0%)</span></td>
+          <td style='font-weight:700; color:#b91c1c;' title='Dynamic ATR Stop Loss: ₹1289.70'>₹1289.70 <span style='font-size:11px; font-weight:normal;'>(-1.61%)</span></td>
+          <td>₹1316.40</td>
+          <td style="font-weight:bold; color:#15803d;">+0.43%</td>
+          <td style="font-weight:bold; color:#15803d;">+0.43%</td>
+          <td><span class="pred-exit-profit">&#10004; Exit at profit</span></td>
+          <td>2026-10-27 15:00</td>
+        </tr>
         
         <tr data-entry-date="2026-10-26" data-trigger-date="2026-10-26" data-outcome="Exit as loss" data-profit="-0.59">
           <td><b class="stock-symbol">ADANIENT</b></td>
